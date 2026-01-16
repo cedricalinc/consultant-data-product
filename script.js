@@ -1,3 +1,5 @@
+
+
 // 1. Initialisation du Smooth Scroll (Lenis)
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
@@ -57,4 +59,44 @@ gsap.utils.toArray(".project-row").forEach(row => {
         y: 100,
         filter: "blur(10px)"
     });
+});
+
+
+
+
+// 1. Gestion du clic fluide vers les sections
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        // Utilisation de Lenis pour un scroll ultra-fluide
+        lenis.scrollTo(targetSection, {
+            offset: 0,
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Easing premium
+        });
+    });
+});
+
+// 2. Mise en avant du lien actif au scroll (Highlight)
+gsap.utils.toArray("section").forEach((section) => {
+    const id = section.getAttribute("id");
+    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+
+    if (link) {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 40%",
+            end: "bottom 40%",
+            onToggle: (self) => {
+                if (self.isActive) {
+                    link.classList.add("text-blue-500", "scale-110");
+                } else {
+                    link.classList.remove("text-blue-500", "scale-110");
+                }
+            },
+        });
+    }
 });
