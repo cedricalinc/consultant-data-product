@@ -100,3 +100,65 @@ gsap.utils.toArray("section").forEach((section) => {
         });
     }
 });
+
+// --- 1. CURSEUR PERSONNALISÉ ---
+const cursor = document.querySelector("#custom-cursor");
+window.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, {
+        x: e.clientX - 8,
+        y: e.clientY - 8,
+        duration: 0.3,
+        ease: "power2.out"
+    });
+});
+
+// --- 2. EFFET DE PARALLAXE SUR LES SECTIONS ---
+// Cela empêche l'effet "bloc" en faisant bouger les fonds moins vite
+gsap.utils.toArray("section").forEach((section, i) => {
+    const content = section.querySelector(".container, .max-w-4xl");
+    
+    gsap.fromTo(content, 
+        { y: 100, opacity: 0 }, 
+        {
+            y: -100,
+            opacity: 1,
+            scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        }
+    );
+});
+
+// --- 3. RÉVÉLATION DU TEXTE (Style Twinbru) ---
+// On anime les phrases pour qu'elles "montent" depuis l'invisible
+const texts = document.querySelectorAll(".reveal-text");
+texts.forEach((text) => {
+    gsap.from(text, {
+        scrollTrigger: {
+            trigger: text,
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+        },
+        y: 50,
+        opacity: 0,
+        blur: 10,
+        duration: 1.5,
+        ease: "power3.out"
+    });
+});
+
+// --- 4. ANIMATION DES CARTES FORMATION (Décalage) ---
+gsap.from(".edu-card", {
+    scrollTrigger: {
+        trigger: "#education",
+        start: "top 70%",
+    },
+    x: 100,
+    opacity: 0,
+    stagger: 0.2, // Les cartes arrivent les unes après les autres
+    duration: 1,
+    ease: "expo.out"
+});
