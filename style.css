@@ -26,3 +26,28 @@ body::before {
     pointer-events: none;
     z-index: 100;
 }
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: #3b82f6; /* Blue-500 */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* On change le curseur pour les liens */
+a, button {
+    cursor: pointer;
+}
