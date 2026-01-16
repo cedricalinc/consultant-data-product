@@ -1,3 +1,5 @@
+/* ... (le reste de ton CSS reste inchangé) ... */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,17 +7,14 @@
     cursor: none !important;
 }
 
-html {
-    scroll-behavior: initial; /* Nécessaire pour Lenis */
-}
-
 body {
     background-color: #050505;
     color: #fff;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Le fond avec lueur */
+/* Fond radial corrigé pour plus de lisibilité */
 .bg-overlay {
     position: fixed;
     inset: 0;
@@ -23,17 +22,15 @@ body {
     z-index: -1;
 }
 
-/* Effet de grain */
 .noise {
     position: fixed;
     inset: 0;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.05;
+    opacity: 0.04;
     z-index: 100;
     pointer-events: none;
 }
 
-/* Curseur custom */
 #custom-cursor {
     position: fixed;
     top: 0; left: 0;
@@ -43,7 +40,6 @@ body {
     pointer-events: none;
     z-index: 9999;
     mix-blend-difference: exclusion;
-    box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 /* Structure des sections pour le scroll */
@@ -53,27 +49,42 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 0;
+    padding: 10vh 0;
 }
 
 .inner {
     will-change: transform, opacity;
 }
 
+/* Amélioration de la lisibilité des cartes */
+.edu-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.edu-card h4 {
+    color: #fff; /* Blanc pur pour les titres */
+}
+
 .nav-link {
-    transition: color 0.3s ease, opacity 0.3s ease;
-    opacity: 0.6;
+    transition: opacity 0.3s;
+    opacity: 0.5;
+    color: white;
 }
 
 .nav-link:hover {
     opacity: 1;
-    color: #3b82f6;
 }
 
-/* Animation subtile pour les expériences */
-.experience-item {
-    transition: transform 0.5s ease;
+/* Pour le scroll fluide */
+html.lenis {
+    height: auto;
 }
-.experience-item:hover {
-    transform: translateX(10px);
+.lenis.lenis-smooth {
+    scroll-behavior: auto;
 }
+
+/* Style de la photo (pas besoin de CSS additionnel avec Tailwind) */
+/* .profile-pic est stylisé directement dans l'HTML */
