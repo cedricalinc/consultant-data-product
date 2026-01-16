@@ -1,24 +1,102 @@
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-body { font-family: 'Inter', sans-serif; background: #050505; color: white; scroll-behavior: smooth; }
+/* --- CONFIGURATION GÉNÉRALE --- */
+:root {
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --bg: #050505;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border: #111;
+}
 
-/* CURSEUR & PROGRESS */
-#progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: #3b82f6; width: 0%; z-index: 10001; }
-#custom-cursor { position: fixed; width: 6px; height: 6px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 10002; mix-blend-difference: exclusion; }
-#cursor-follower { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; pointer-events: none; z-index: 10001; transition: transform 0.2s, background 0.3s; }
-#cursor-follower.is-red { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); transform: scale(2.2); }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-/* ORBITE SATELLITES */
-.orbit-satellite { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
-.shape { position: absolute; opacity: 0.9; animation: satellite-move 12s linear infinite; }
+/* On ne cache le curseur système que sur les PC avec une souris */
+@media (hover: hover) and (pointer: fine) {
+    * { cursor: none !important; }
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg); 
+    color: white; 
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* --- CURSEUR PERSONNALISÉ & PROGRESS BAR --- */
+#progress-bar { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 2px; 
+    background: var(--primary); 
+    width: 0%; 
+    z-index: 10001; 
+}
+
+#custom-cursor { 
+    position: fixed; 
+    width: 6px; 
+    height: 6px; 
+    background: #fff; 
+    border-radius: 50%; 
+    pointer-events: none; 
+    z-index: 10002; 
+    mix-blend-difference: exclusion; 
+}
+
+#cursor-follower { 
+    position: fixed; 
+    width: 30px; 
+    height: 30px; 
+    border: 1px solid rgba(255,255,255,0.2); 
+    border-radius: 50%; 
+    pointer-events: none; 
+    z-index: 10001; 
+    transition: transform 0.2s, background 0.3s, border-color 0.3s; 
+}
+
+/* Effet du suiveur lors du survol d'éléments cliquables */
+#cursor-follower.is-red { 
+    border-color: #ef4444; 
+    background: rgba(239, 68, 68, 0.2); 
+    transform: scale(2.2); 
+}
+
+/* Masquage forcé du curseur sur mobile */
+@media (max-width: 768px) {
+    #custom-cursor, #cursor-follower { display: none !important; }
+}
+
+/* --- ANIMATION SATELLITES (HERO) --- */
+.orbit-satellite { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.shape { 
+    position: absolute; 
+    opacity: 0.9; 
+    animation: satellite-move 12s linear infinite; 
+}
+
 .circle { border-radius: 50%; width: 6px; height: 6px; }
 .square { width: 5px; height: 5px; }
 .line { width: 15px; height: 1px; }
+
 .blue { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
 .red { background: #ef4444; }
 .yellow { background: #fbbf24; }
 .green { background: #10b981; }
 .purple { background: #a855f7; }
 .white { background: #fff; }
+
 .p1 { animation-delay: 0s; }
 .p2 { animation-delay: -2s; }
 .p3 { animation-delay: -4s; }
@@ -31,16 +109,102 @@ body { font-family: 'Inter', sans-serif; background: #050505; color: white; scro
     to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
 }
 
-/* ACCORDÉON */
-.acc-item.active .acc-body { display: block; animation: slideIn 0.4s ease-out; }
-.acc-item.active i[data-lucide="plus"] { transform: rotate(45deg); }
-@keyframes slideIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+/* --- ACCORDÉONS (EXPÉRIENCES) --- */
+.acc-item.active .acc-body { 
+    display: block; 
+    animation: slideIn 0.4s ease-out; 
+}
 
-/* CARDS */
-.edu-card, .cert-card { background: rgba(255,255,255,0.02); border: 1px solid #111; padding: 2.5rem; border-radius: 12px; transition: 0.4s; position: relative; }
-.edu-card:hover, .cert-card:hover { border-color: #333; background: rgba(255,255,255,0.04); }
-.edu-card .tag { position: absolute; top: 1rem; right: 1rem; font-family: monospace; font-size: 9px; color: #444; }
+.acc-item.active i[data-lucide="plus"] { 
+    transform: rotate(45deg); 
+    color: var(--primary);
+}
 
-/* ETATS MODALES */
-#global-modal.active, #contact-modal.active { opacity: 1; pointer-events: auto; }
-#global-modal.active .modal-container, #contact-modal.active .modal-container { scale: 1; }
+@keyframes slideIn { 
+    from { opacity: 0; transform: translateY(-5px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* --- CARTES (FORMATION & CERTIFS) --- */
+.edu-card, .cert-card, .metric-card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    padding: 2.5rem; 
+    border-radius: 12px; 
+    transition: all 0.4s ease; 
+    position: relative; 
+}
+
+.edu-card .tag { 
+    position: absolute; 
+    top: 1rem; 
+    right: 1rem; 
+    font-family: monospace; 
+    font-size: 9px; 
+    color: #444; 
+}
+
+/* --- GESTION DU HOVER (PC UNIQUEMENT) --- */
+@media (hover: hover) {
+    .edu-card:hover, .cert-card:hover, .metric-card:hover { 
+        border-color: #333; 
+        background: rgba(255,255,255,0.04); 
+        transform: translateY(-5px);
+    }
+    
+    .metric-card:hover {
+        border-color: rgba(59, 130, 246, 0.5);
+    }
+}
+
+/* --- MODALES --- */
+#global-modal, #contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#global-modal.active { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.modal-container {
+    position: relative;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+#global-modal.active .modal-container { 
+    transform: scale(1); 
+}
+
+/* --- BOUTON CONTACT FLOTTANT --- */
+#open-contact {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (hover: hover) {
+    #open-contact:hover {
+        transform: scale(1.1);
+    }
+}
