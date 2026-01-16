@@ -1,5 +1,3 @@
-/* ... (le reste de ton CSS reste inchangé) ... */
-
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +10,9 @@ body {
     color: #fff;
     overflow-x: hidden;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Fond radial corrigé pour plus de lisibilité */
 .bg-overlay {
     position: fixed;
     inset: 0;
@@ -42,7 +40,6 @@ body {
     mix-blend-difference: exclusion;
 }
 
-/* Structure des sections pour le scroll */
 .panel {
     position: relative;
     width: 100%;
@@ -56,16 +53,36 @@ body {
     will-change: transform, opacity;
 }
 
-/* Amélioration de la lisibilité des cartes */
-.edu-card {
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
+/* STYLE DES CARTES FORMATION */
+.edu-card-modern {
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.4s ease;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.edu-card h4 {
-    color: #fff; /* Blanc pur pour les titres */
+.edu-card-modern:hover {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-5px);
+}
+
+.edu-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
 .nav-link {
@@ -77,14 +94,3 @@ body {
 .nav-link:hover {
     opacity: 1;
 }
-
-/* Pour le scroll fluide */
-html.lenis {
-    height: auto;
-}
-.lenis.lenis-smooth {
-    scroll-behavior: auto;
-}
-
-/* Style de la photo (pas besoin de CSS additionnel avec Tailwind) */
-/* .profile-pic est stylisé directement dans l'HTML */
