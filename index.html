@@ -1,52 +1,165 @@
-<section id="education" class="panel bg-zinc-950/30">
-    <div class="container mx-auto px-6">
-        <div class="inner">
-            <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Formation & Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2025</div>
-                    <h4 class="text-xl font-bold text-white mb-2">Data Analyst</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
-                    <p class="text-zinc-400 text-sm">Spécialisation Data : Modern Data Stack, SQL, BigQuery, dbt.</p>
-                </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cédric Alinc | Product Manager Data-Driven</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#050505] text-white">
 
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2022</div>
-                    <h4 class="text-xl font-bold text-white mb-2">Product Academy</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">Join Lion</p>
-                    <p class="text-zinc-400 text-sm">Méthodologie Scrum, Culture Produit et Agilité opérationnelle.</p>
-                </div>
+    <div id="custom-cursor"></div>
+    <div class="bg-overlay"></div>
+    <div class="noise"></div>
 
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2020</div>
-                    <h4 class="text-xl font-bold text-white mb-2">Chef de projet Web</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
-                    <p class="text-zinc-400 text-sm">Titre RNCP 6 (Bac+3/4) - Développement d'applications web et mobile.</p>
-                </div>
-
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2007</div>
-                    <h4 class="text-xl font-bold text-white mb-2">Licence Professionnelle</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">Université Paris V - René Descartes</p>
-                    <p class="text-zinc-400 text-sm">Spécialité Intervention Sociale.</p>
-                </div>
-
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2006</div>
-                    <h4 class="text-xl font-bold text-white mb-2">DEUG Droit</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">Université Paris II - Panthéon-Assas</p>
-                    <p class="text-zinc-400 text-sm">Diplôme d'Études Universitaires Générales en Droit.</p>
-                </div>
-
-                <div class="edu-card-modern">
-                    <div class="edu-tag">2019 - 2021</div>
-                    <h4 class="text-xl font-bold text-white mb-2">Développement Pro</h4>
-                    <p class="text-blue-400 font-mono text-xs mb-4">OpenClassrooms</p>
-                    <p class="text-zinc-400 text-sm">Formation continue en développement et méthodologies techniques.</p>
-                </div>
-
-            </div>
+    <nav class="fixed w-full p-6 md:p-10 flex justify-between items-center z-50 mix-blend-difference">
+        <span class="font-bold tracking-tighter text-xl">C.ALINC</span>
+        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em]">
+            <a href="#about" class="nav-link">Profil</a>
+            <a href="#experience" class="nav-link">Parcours</a>
+            <a href="#education" class="nav-link">Formation</a>
+            <a href="#volunteer" class="nav-link">Bénévolat</a>
         </div>
-    </div>
-</section>
+    </nav>
+
+    <main>
+        <section id="about" class="panel">
+            <div class="container mx-auto px-6">
+                <div class="inner max-w-5xl flex flex-col md:flex-row items-center md:items-start gap-12">
+                    <div class="md:w-3/4">
+                        <span class="text-blue-500 font-mono text-sm tracking-widest block mb-4 uppercase">// Product Manager & Data Analyst</span>
+                        <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
+                            Cédric Alinc<br>
+                            <span class="text-zinc-500 italic font-light">L'impact par la donnée</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-zinc-300 max-w-xl leading-relaxed">
+                            Ancien développeur Fullstack devenu Product Manager. J'allie culture technique et analyse de données pour transformer des problématiques complexes en solutions simples.
+                        </p>
+                    </div>
+                    <div class="md:w-1/4 flex justify-center md:justify-end mt-8 md:mt-0">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHvYI28JLvPrQ/profile-displayphoto-scale_400_400/B4EZuh5YaVL0Ag-/0/1767947733308?e=1770249600&v=beta&t=miAtTPlx7j6_tpLE4Ayey00jHYqREZm7oumV8pdCKGg" 
+                             alt="Cédric Alinc" 
+                             class="profile-pic w-48 h-48 rounded-full object-cover border-2 border-blue-500 shadow-xl"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="panel">
+            <div class="container mx-auto px-6">
+                <div class="inner w-full">
+                    <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Expériences Professionnelles</h2>
+                    <div class="space-y-24 border-l border-zinc-800 pl-8">
+                        
+                        <div class="exp-box">
+                            <span class="text-zinc-500 font-mono text-xs">2024 — 2025</span>
+                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">CFA numiA <span class="text-blue-500 not-italic text-xl">| PM & Direction Pilotage</span></h3>
+                            <p class="text-zinc-300 mt-4 leading-relaxed italic">Pilotage stratégique, structuration du backlog iziA et transition numérique via l'IA.</p>
+                        </div>
+
+                        <div class="exp-box">
+                            <span class="text-zinc-500 font-mono text-xs">2021 — 2022</span>
+                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">Iporta - Visiativ <span class="text-blue-500 not-italic text-xl">| Ingénieur Développement</span></h3>
+                            <p class="text-zinc-300 mt-4 leading-relaxed">Développement Java & JS de fonctionnalités spécifiques et création d'une plateforme de formation gamifiée.</p>
+                        </div>
+
+                        <div class="exp-box">
+                            <span class="text-zinc-500 font-mono text-xs">2013 — 2021</span>
+                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">Croix-Rouge française <span class="text-blue-500 not-italic text-xl">| Product Manager</span></h3>
+                            <p class="text-zinc-300 mt-4 leading-relaxed">Gestion des outils pour 60 000 bénévoles et automatisation des bilans d'activités.</p>
+                        </div>
+
+                        <div class="exp-box">
+                            <span class="text-zinc-500 font-mono text-xs">2007</span>
+                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">ESSEC Business School <span class="text-blue-500 not-italic text-xl">| Analyse Satisfaction</span></h3>
+                            <p class="text-zinc-300 mt-4 leading-relaxed">Analyse des enquêtes satisfaction managers pour la direction de l'ESSEC.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="panel bg-zinc-950/30">
+            <div class="container mx-auto px-6">
+                <div class="inner">
+                    <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Formation & Études</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2025</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Data Analyst</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
+                            <p class="text-zinc-400 text-sm">Modern Data Stack, SQL, BigQuery, dbt.</p>
+                        </div>
+
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2022</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Product Academy</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">Join Lion</p>
+                            <p class="text-zinc-400 text-sm">Méthodologie Scrum et Culture Produit.</p>
+                        </div>
+
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2020</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Chef de projet Web</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
+                            <p class="text-zinc-400 text-sm">Titre RNCP 6 (Bac+3/4).</p>
+                        </div>
+
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2007</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Licence Pro</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">Paris V - René Descartes</p>
+                            <p class="text-zinc-400 text-sm">Intervention Sociale.</p>
+                        </div>
+
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2006</div>
+                            <h4 class="text-xl font-bold text-white mb-2">DEUG Droit</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">Paris II - Panthéon-Assas</p>
+                            <p class="text-zinc-400 text-sm">Faculté de Droit.</p>
+                        </div>
+
+                        <div class="edu-card-modern">
+                            <div class="edu-tag">2019-21</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Dév. Pro</h4>
+                            <p class="text-blue-400 font-mono text-xs mb-4">OpenClassrooms</p>
+                            <p class="text-zinc-400 text-sm">Formations continues techniques.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="volunteer" class="panel">
+            <div class="container mx-auto px-6">
+                <div class="inner flex flex-col md:flex-row gap-20 items-center">
+                    <div class="md:w-1/2">
+                        <h2 class="text-blue-500 font-mono text-sm mb-8 uppercase">// Engagement</h2>
+                        <h3 class="text-4xl font-bold italic mb-6">Le sens avant les chiffres</h3>
+                        <p class="text-zinc-300 leading-relaxed text-lg">
+                            Accompagnement du <strong>Programme Malin</strong> sur la conception d'outils de pilotage (BUJO). Plus de 15 ans d'engagement humain.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 p-10 border border-zinc-800 rounded-2xl bg-blue-900/10">
+                        <h4 class="text-blue-500 font-mono text-xs uppercase mb-4">Impact Social</h4>
+                        <ul class="space-y-4 text-sm text-zinc-400">
+                            <li>• Leadership d'équipes pluridisciplinaires</li>
+                            <li>• Transmission de compétences techniques</li>
+                            <li>• Engagement long terme (Croix-Rouge)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
