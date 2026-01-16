@@ -3,163 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cédric Alinc | Product Manager Data-Driven</title>
+    <title>Cédric Alinc | Product & Data Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#050505] text-white">
+<body class="bg-[#050505] text-white overflow-x-hidden">
 
+    <div id="progress-bar"></div>
     <div id="custom-cursor"></div>
-    <div class="bg-overlay"></div>
-    <div class="noise"></div>
+    <div id="cursor-follower"></div>
 
-    <nav class="fixed w-full p-6 md:p-10 flex justify-between items-center z-50 mix-blend-difference">
-        <span class="font-bold tracking-tighter text-xl">C.ALINC</span>
-        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em]">
-            <a href="#about" class="nav-link">Profil</a>
-            <a href="#experience" class="nav-link">Parcours</a>
-            <a href="#education" class="nav-link">Formation</a>
-            <a href="#volunteer" class="nav-link">Bénévolat</a>
+    <nav class="fixed w-full p-6 md:p-10 flex justify-between items-start z-50 mix-blend-difference">
+        <span class="font-bold tracking-tighter text-xl text-white">C.ALINC</span>
+        <div class="flex flex-col items-end gap-1 font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500">
+            <a href="#experience" class="hover:text-blue-500 transition-colors">01. Expériences</a>
+            <a href="#education" class="hover:text-blue-500 transition-colors">02. Formations</a>
+            <a href="#certifications" class="hover:text-blue-500 transition-colors">03. Certifications</a>
+            <a href="#volunteering" class="hover:text-red-500 transition-colors">04. Engagement</a>
         </div>
     </nav>
 
     <main>
-        <section id="about" class="panel">
-            <div class="container mx-auto px-6">
-                <div class="inner max-w-5xl flex flex-col md:flex-row items-center md:items-start gap-12">
-                    <div class="md:w-3/4">
-                        <span class="text-blue-500 font-mono text-sm tracking-widest block mb-4 uppercase">// Product Manager & Data Analyst</span>
-                        <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
-                            Cédric Alinc<br>
-                            <span class="text-zinc-500 italic font-light">L'impact par la donnée</span>
-                        </h1>
-                        <p class="text-xl md:text-2xl text-zinc-300 max-w-xl leading-relaxed">
-                            Ancien développeur Fullstack devenu Product Manager. J'allie culture technique et analyse de données pour transformer des problématiques complexes en solutions simples.
-                        </p>
+        <section class="min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+                <div class="relative flex justify-center items-center md:w-1/3">
+                    <div class="orbit-satellite absolute pointer-events-none">
+                        <div class="shape circle blue p1"></div>
+                        <div class="shape square red p2"></div>
+                        <div class="shape line yellow p3"></div>
+                        <div class="shape circle green p4"></div>
+                        <div class="shape square purple p5"></div>
+                        <div class="shape line white p6"></div>
                     </div>
-                    <div class="md:w-1/4 flex justify-center md:justify-end mt-8 md:mt-0">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHvYI28JLvPrQ/profile-displayphoto-scale_400_400/B4EZuh5YaVL0Ag-/0/1767947733308?e=1770249600&v=beta&t=miAtTPlx7j6_tpLE4Ayey00jHYqREZm7oumV8pdCKGg" 
-                             alt="Cédric Alinc" 
-                             class="profile-pic w-48 h-48 rounded-full object-cover border-2 border-blue-500 shadow-xl"/>
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQHvYI28JLvPrQ/profile-displayphoto-scale_400_400/B4EZuh5YaVL0Ag-/0/1767947733308?e=1770249600&v=beta&t=miAtTPlx7j6_tpLE4Ayey00jHYqREZm7oumV8pdCKGg" 
+                         class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border border-zinc-800 relative z-10 shadow-2xl">
+                </div>
+                <div class="flex-1 md:ml-12">
+                    <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
+                        Cédric Alinc<br><span class="text-zinc-500 italic font-light">Product & Data</span>
+                    </h1>
+                    <p class="text-xl text-zinc-400 max-w-xl leading-relaxed border-l border-zinc-800 pl-6">
+                        Ancien développeur Fullstack reconverti en Product Manager & Data Analyst. Expert en pilotage de produits complexes et stratégie data.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-32 border-t border-zinc-900">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center gap-4 mb-16">
+                    <i data-lucide="briefcase" class="text-blue-500 w-6 h-6"></i>
+                    <h2 class="text-blue-500 font-mono text-xs uppercase tracking-[0.3em]">// 01. Expériences Professionnelles</h2>
+                </div>
+                
+                <div class="accordion-container">
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-blue-500 w-24 hidden md:block">2025</span>
+                            <div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center mr-6 border border-zinc-800">
+                                <i data-lucide="layout-template" class="text-blue-400 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold uppercase italic group-hover:text-blue-500 transition-colors">Programme Malin</h3>
+                                <p class="text-blue-400 text-sm font-medium"><span class="mr-2">|</span>Product Manager (Bénévolat de compétences)</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-400">
+                            <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Missions & Discovery</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li>Audit technique et fonctionnel complet de la plateforme.</li>
+                                        <li>Cadrage de la roadmap produit orientée impact social.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Impact</h4>
+                                    <p class="text-sm italic">Optimisation des ressources pour l'aide nutritionnelle aux familles.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-blue-500 w-24 hidden md:block">2023 — 2025</span>
+                            <div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center mr-6 border border-zinc-800">
+                                <i data-lucide="cpu" class="text-blue-400 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold uppercase italic group-hover:text-blue-500 transition-colors">CFA numiA</h3>
+                                <p class="text-blue-400 text-sm font-medium"><span class="mr-2">|</span>Product Manager & Responsable Pilotage Numérique</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-400">
+                            <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Product Delivery</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li>Pilotage ERP 'iziA' (Backlog, Sprints, Stakeholders).</li>
+                                        <li>Automatisation IA pour conformité Qualiopi.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Data Strategy</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li>Dashboards stratégiques PowerBI / Excel.</li>
+                                        <li>Gouvernance des données et conformité RGPD.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-blue-500 w-24 hidden md:block">2022 — 2023</span>
+                            <div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center mr-6 border border-zinc-800">
+                                <i data-lucide="layers" class="text-blue-400 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold uppercase italic group-hover:text-blue-500 transition-colors">Clémence Consulting</h3>
+                                <p class="text-blue-400 text-sm font-medium"><span class="mr-2">|</span>Consultant Product Owner Senior</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-400">
+                            <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Missions</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li><strong>Secteur Énergie :</strong> Priorisation et rédaction User Stories.</li>
+                                        <li><strong>Secteur Immobilier :</strong> Refonte SI Gestion Finance.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Méthodologie</h4>
+                                    <p class="text-sm">Transformation Agile (Scrum/Kanban) et ateliers Discovery.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-blue-500 w-24 hidden md:block">2021 — 2022</span>
+                            <div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center mr-6 border border-zinc-800">
+                                <i data-lucide="code-2" class="text-blue-400 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold uppercase italic group-hover:text-blue-500 transition-colors">Iporta (Visiativ)</h3>
+                                <p class="text-blue-400 text-sm font-medium"><span class="mr-2">|</span>Ingénieur Développement Fullstack</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-400">
+                            <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Tech Stack</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li>Développement Java / Angular (Modules RH & Immo).</li>
+                                        <li>Optimisation de bases de données SQL.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Expertise</h4>
+                                    <p class="text-sm">Architecture logicielle et maintenance de solutions SaaS.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-blue-500 w-24 hidden md:block">2013 — 2021</span>
+                            <div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center mr-6 border border-zinc-800">
+                                <i data-lucide="users" class="text-blue-400 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold uppercase italic group-hover:text-blue-500 transition-colors">Croix-Rouge française</h3>
+                                <p class="text-blue-400 text-sm font-medium"><span class="mr-2">|</span>PM Engagement & Chef de Projet SI Finance</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-400">
+                            <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Product & Ops</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm">
+                                        <li>Lancement plateforme nationale de gestion du bénévolat.</li>
+                                        <li>Déploiement ERP Qualiac (Périmètre national).</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-[10px] uppercase tracking-widest mb-3 text-blue-500/80">Finance</h4>
+                                    <p class="text-sm">Digitalisation des flux factures et pilotage des investissements.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item border-b border-zinc-900">
+                        <button class="acc-header py-8 flex items-center w-full group text-left">
+                            <span class="year font-mono text-zinc-500 w-24 hidden md:block">Historique</span>
+                            <div class="w-10 h-10 bg-zinc-900/50 rounded flex items-center justify-center mr-6 border border-zinc-900">
+                                <i data-lucide="history" class="text-zinc-500 w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold uppercase italic text-zinc-500 group-hover:text-white transition-colors">Parcours Industriel & Public</h3>
+                                <p class="text-zinc-600 text-sm font-medium"><span class="mr-2">|</span>Armée, Assurances, Banques, Bâtiment...</p>
+                            </div>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="acc-body hidden pb-8 md:pl-44 text-zinc-500">
+                            <div class="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-5xl text-sm leading-relaxed">
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2013 — Cedeo (Saint-Gobain)</h4>
+                                    <p>Gestionnaire de Projets Logistiques : Optimisation des flux et coordination des approvisionnements.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2011 — 2013 — Croix-Rouge</h4>
+                                    <p>Secouriste Professionnel / Chef d'intervention : Missions d'urgence et secours à personne.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2009 — 2010 — Plateforme du Bâtiment</h4>
+                                    <p>Contrôle de Gestion & SI : Analyse de performance et support aux outils de gestion.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2008 — Armée de l'Air</h4>
+                                    <p>Gestionnaire RH & Data : Développement d'outils de pilotage RH sous SQL et Access.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2007 — Prepar-Vie</h4>
+                                    <p>Gestion de dossiers Assurance & Qualité : Mise en conformité aux normes ISO 9001.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-zinc-400 font-bold uppercase text-[10px] mb-2 tracking-widest">2006 — ESSEC / BNP Paribas</h4>
+                                    <p>Analyse de données Achats : Reporting et optimisation des processus de sourcing.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="panel">
+        <section id="education" class="py-32 bg-zinc-950/20">
             <div class="container mx-auto px-6">
-                <div class="inner w-full">
-                    <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Expériences Professionnelles</h2>
-                    <div class="space-y-24 border-l border-zinc-800 pl-8">
-                        
-                        <div class="exp-box">
-                            <span class="text-zinc-500 font-mono text-xs">2024 — 2025</span>
-                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">CFA numiA <span class="text-blue-500 not-italic text-xl">| PM & Direction Pilotage</span></h3>
-                            <p class="text-zinc-300 mt-4 leading-relaxed italic">Pilotage stratégique, structuration du backlog iziA et transition numérique via l'IA.</p>
-                        </div>
-
-                        <div class="exp-box">
-                            <span class="text-zinc-500 font-mono text-xs">2021 — 2022</span>
-                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">Iporta - Visiativ <span class="text-blue-500 not-italic text-xl">| Ingénieur Développement</span></h3>
-                            <p class="text-zinc-300 mt-4 leading-relaxed">Développement Java & JS de fonctionnalités spécifiques et création d'une plateforme de formation gamifiée.</p>
-                        </div>
-
-                        <div class="exp-box">
-                            <span class="text-zinc-500 font-mono text-xs">2013 — 2021</span>
-                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">Croix-Rouge française <span class="text-blue-500 not-italic text-xl">| Product Manager</span></h3>
-                            <p class="text-zinc-300 mt-4 leading-relaxed">Gestion des outils pour 60 000 bénévoles et automatisation des bilans d'activités.</p>
-                        </div>
-
-                        <div class="exp-box">
-                            <span class="text-zinc-500 font-mono text-xs">2007</span>
-                            <h3 class="text-3xl font-bold mt-2 italic text-zinc-100">ESSEC Business School <span class="text-blue-500 not-italic text-xl">| Analyse Satisfaction</span></h3>
-                            <p class="text-zinc-300 mt-4 leading-relaxed">Analyse des enquêtes satisfaction managers pour la direction de l'ESSEC.</p>
-                        </div>
+                <div class="flex items-center gap-4 mb-16">
+                    <i data-lucide="graduation-cap" class="text-blue-500 w-6 h-6"></i>
+                    <h2 class="text-blue-500 font-mono text-xs uppercase tracking-[0.3em]">// 02. Formations</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="edu-card clickable-card" data-id="edu_data">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded flex items-center justify-center mb-6"><i data-lucide="database" class="text-blue-500 w-5 h-5"></i></div>
+                        <div class="tag">2025</div>
+                        <h4 class="font-bold">Data Analyst</h4><p class="text-zinc-500">La Capsule</p>
+                    </div>
+                    <div class="edu-card clickable-card" data-id="edu_lion">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded flex items-center justify-center mb-6"><i data-lucide="rocket" class="text-blue-500 w-5 h-5"></i></div>
+                        <div class="tag">2024</div>
+                        <h4 class="font-bold">Product Academy</h4><p class="text-zinc-500">Join Lion</p>
+                    </div>
+                    <div class="edu-card clickable-card" data-id="edu_web">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded flex items-center justify-center mb-6"><i data-lucide="globe" class="text-blue-500 w-5 h-5"></i></div>
+                        <div class="tag">2020</div>
+                        <h4 class="font-bold">Chef de Projet Web</h4><p class="text-zinc-500">La Capsule</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                    <div class="edu-card clickable-card" data-id="edu_m2">
+                        <div class="w-10 h-10 bg-zinc-800 rounded flex items-center justify-center mb-6"><i data-lucide="book-open" class="text-zinc-400 w-5 h-5"></i></div>
+                        <div class="tag">2010</div>
+                        <h4 class="font-bold">Master 2 Management</h4><p class="text-zinc-500 italic">Paris II Assas</p>
+                    </div>
+                    <div class="edu-card clickable-card" data-id="edu_msg">
+                        <div class="w-10 h-10 bg-zinc-800 rounded flex items-center justify-center mb-6"><i data-lucide="library" class="text-zinc-400 w-5 h-5"></i></div>
+                        <div class="tag">2009</div>
+                        <h4 class="font-bold">Maîtrise MSG</h4><p class="text-zinc-500 italic">Paris II Assas</p>
+                    </div>
+                    <div class="edu-card clickable-card" data-id="edu_dut">
+                        <div class="w-10 h-10 bg-zinc-800 rounded flex items-center justify-center mb-6"><i data-lucide="school" class="text-zinc-400 w-5 h-5"></i></div>
+                        <div class="tag">2007</div>
+                        <h4 class="font-bold">DUT GEA</h4><p class="text-zinc-500 italic">Paris V Cité</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="panel bg-zinc-950/30">
+        <section id="certifications" class="py-32 border-t border-zinc-900">
             <div class="container mx-auto px-6">
-                <div class="inner">
-                    <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Formation & Études</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2025</div>
-                            <h4 class="text-xl font-bold text-white mb-2">Data Analyst</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
-                            <p class="text-zinc-400 text-sm">Modern Data Stack, SQL, BigQuery, dbt.</p>
-                        </div>
-
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2022</div>
-                            <h4 class="text-xl font-bold text-white mb-2">Product Academy</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">Join Lion</p>
-                            <p class="text-zinc-400 text-sm">Méthodologie Scrum et Culture Produit.</p>
-                        </div>
-
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2020</div>
-                            <h4 class="text-xl font-bold text-white mb-2">Chef de projet Web</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">La Capsule</p>
-                            <p class="text-zinc-400 text-sm">Titre RNCP 6 (Bac+3/4).</p>
-                        </div>
-
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2007</div>
-                            <h4 class="text-xl font-bold text-white mb-2">Licence Pro</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">Paris V - René Descartes</p>
-                            <p class="text-zinc-400 text-sm">Intervention Sociale.</p>
-                        </div>
-
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2006</div>
-                            <h4 class="text-xl font-bold text-white mb-2">DEUG Droit</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">Paris II - Panthéon-Assas</p>
-                            <p class="text-zinc-400 text-sm">Faculté de Droit.</p>
-                        </div>
-
-                        <div class="edu-card-modern">
-                            <div class="edu-tag">2019-21</div>
-                            <h4 class="text-xl font-bold text-white mb-2">Dév. Pro</h4>
-                            <p class="text-blue-400 font-mono text-xs mb-4">OpenClassrooms</p>
-                            <p class="text-zinc-400 text-sm">Formations continues techniques.</p>
-                        </div>
-
+                <div class="flex items-center gap-4 mb-16">
+                    <i data-lucide="award" class="text-blue-500 w-6 h-6"></i>
+                    <h2 class="text-blue-500 font-mono text-xs uppercase tracking-[0.3em]">// 03. Certifications</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div class="cert-card clickable-card" data-id="cert_scrum">
+                        <i data-lucide="check-circle" class="text-blue-500 w-5 h-5 mb-4"></i>
+                        <h4>Scrum Master</h4><span class="text-[10px] text-zinc-500 uppercase mt-2 block">Udemy Agile</span>
+                    </div>
+                    <div class="cert-card clickable-card" data-id="cert_rgpd">
+                        <i data-lucide="shield-check" class="text-blue-500 w-5 h-5 mb-4"></i>
+                        <h4>Atelier RGPD</h4><span class="text-[10px] text-zinc-500 uppercase mt-2 block">CNIL</span>
+                    </div>
+                    <div class="cert-card clickable-card" data-id="cert_ortho">
+                        <i data-lucide="spell-check" class="text-blue-500 w-5 h-5 mb-4"></i>
+                        <h4>OrthoPass (950)</h4><span class="text-[10px] text-zinc-500 uppercase mt-2 block">Expertise</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="volunteer" class="panel">
+        <section id="volunteering" class="py-32 border-t border-zinc-900">
             <div class="container mx-auto px-6">
-                <div class="inner flex flex-col md:flex-row gap-20 items-center">
-                    <div class="md:w-1/2">
-                        <h2 class="text-blue-500 font-mono text-sm mb-8 uppercase">// Engagement</h2>
-                        <h3 class="text-4xl font-bold italic mb-6">Le sens avant les chiffres</h3>
-                        <p class="text-zinc-300 leading-relaxed text-lg">
-                            Accompagnement du <strong>Programme Malin</strong> sur la conception d'outils de pilotage (BUJO). Plus de 15 ans d'engagement humain.
-                        </p>
+                <div class="flex items-center gap-4 mb-16">
+                    <i data-lucide="heart" class="text-red-500 w-6 h-6"></i>
+                    <h2 class="text-red-500 font-mono text-xs uppercase tracking-[0.3em]">// 04. Engagement Bénévole</h2>
+                </div>
+                <div class="edu-card border-red-900/30 clickable-card" data-id="vol_crf">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-red-500/10 rounded-full flex items-center justify-center"><i data-lucide="cross" class="text-red-500 w-8 h-8"></i></div>
+                        <h3 class="text-3xl font-bold italic text-red-500 uppercase">Croix-Rouge française</h3>
                     </div>
-                    <div class="md:w-1/2 p-10 border border-zinc-800 rounded-2xl bg-blue-900/10">
-                        <h4 class="text-blue-500 font-mono text-xs uppercase mb-4">Impact Social</h4>
-                        <ul class="space-y-4 text-sm text-zinc-400">
-                            <li>• Leadership d'équipes pluridisciplinaires</li>
-                            <li>• Transmission de compétences techniques</li>
-                            <li>• Engagement long terme (Croix-Rouge)</li>
-                        </ul>
+                    <p class="text-lg text-zinc-300 italic mb-8">Engagement actif depuis 2010</p>
+                    <div class="grid md:grid-cols-2 gap-8 text-zinc-400">
+                        <div class="space-y-4">
+                            <h4 class="text-white font-bold uppercase text-[10px] tracking-widest">Terrain</h4>
+                            <p class="text-sm">Interventions de secours d'urgence et direction locale.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-white font-bold uppercase text-[10px] tracking-widest">Digital</h4>
+                            <p class="text-sm">Transformation numérique des processus de formation nationaux.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+<button id="open-contact" class="fixed bottom-8 right-8 z-40 bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center gap-2 group">
+    <i data-lucide="mail" class="w-6 h-6"></i>
+    <span id="contact-text" class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 font-bold uppercase text-[10px] tracking-widest px-0 group-hover:px-2">
+        Me contacter / Copier l'email
+    </span>
+</button>
+
+    <div id="global-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+        <div class="modal-overlay absolute inset-0 bg-black/95 backdrop-blur-md"></div>
+        <div class="modal-container bg-[#0a0a0a] border border-zinc-800 w-[90%] max-w-xl p-10 rounded-2xl relative z-10 scale-95 transition-all">
+            <button id="close-modal" class="absolute top-6 right-6 text-zinc-500 text-3xl hover:text-white">&times;</button>
+            <div id="modal-content" class="text-zinc-300 leading-relaxed"></div>
+        </div>
+    </div>
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
