@@ -3,61 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data x Product | Consultant</title>
+    <title>Cédric Alinc | Product Manager Data-Driven</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-black text-white antialiased">
+<body class="bg-[#050505] text-white">
 
     <div id="custom-cursor"></div>
     <div class="bg-overlay"></div>
-    <div class="noise-overlay"></div>
+    <div class="noise"></div>
 
-    <nav class="fixed w-full p-8 flex justify-between items-center z-50 mix-blend-difference">
-        <span class="font-bold text-xl tracking-tighter">DATA.PM</span>
-        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em]">
-            <a href="#about" class="nav-link">Intro</a>
-            <a href="#education" class="nav-link">Formations</a>
-            <a href="#experience" class="nav-link">Projets</a>
-            <a href="#volunteering" class="nav-link">Engagement</a>
+    <nav class="fixed w-full p-6 md:p-10 flex justify-between items-center z-50 mix-blend-difference">
+        <span class="font-bold tracking-tighter text-xl">C.ALINC</span>
+        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em]">
+            <a href="#about" class="nav-link">Profil</a>
+            <a href="#experience" class="nav-link">Parcours</a>
+            <a href="#education" class="nav-link">Expertise</a>
+            <a href="#volunteer" class="nav-link">Engagement</a>
         </div>
     </nav>
 
     <main>
         <section id="about" class="panel">
-            <div class="container mx-auto px-10">
-                <div class="inner max-w-4xl">
-                    <span class="text-blue-500 font-mono text-sm tracking-widest">// CONSULTANT INDÉPENDANT</span>
-                    <h1 class="text-6xl md:text-8xl font-bold uppercase mt-6 leading-[0.9]">
-                        Data <br><span class="italic font-light text-zinc-500">Driven</span> Product
+            <div class="container mx-auto px-6">
+                <div class="inner max-w-5xl">
+                    <span class="text-blue-500 font-mono text-sm tracking-widest block mb-4">// PARIS, FRANCE</span>
+                    <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
+                        Cédric Alinc<br>
+                        <span class="text-zinc-600 italic font-light">Product Manager</span>
                     </h1>
-                    <p class="mt-8 text-zinc-400 text-lg max-w-xl leading-relaxed">
-                        Je construis des ponts entre vos pipelines de données et vos objectifs produit pour maximiser l'impact utilisateur.
+                    <p class="text-xl md:text-2xl text-zinc-400 max-w-3xl leading-relaxed">
+                        Piloter le produit par la donnée. Concevoir pour l’utilisateur. 
+                        Expertise hybride alliant <span class="text-white">Engineering</span> et <span class="text-white">Data Analysis</span>.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="panel">
-            <div class="container mx-auto px-10">
-                <div class="inner w-full">
-                    <h2 class="text-blue-500 font-mono text-sm mb-12">// EXPERTISE</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="card">
-                            <span class="text-xs text-zinc-600 uppercase">2024</span>
-                            <h3 class="text-xl font-bold mt-2">AI Product Management</h3>
-                            <p class="text-zinc-500 mt-4 text-sm">Optimisation des workflows via Gen-AI.</p>
+        <section class="panel bg-zinc-950/30">
+            <div class="container mx-auto px-6">
+                <div class="inner grid md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-blue-500 font-mono text-sm mb-8">// RÉSUMÉ</h2>
+                        <p class="text-zinc-400 leading-relaxed text-lg">
+                            Ancien Fullstack Dev spécialisé en Data Analysis, je transforme des problématiques complexes en solutions simples. J'allie l'analyse Modern Data Stack (SQL, BigQuery, dbt) à l'UX Research.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-6 border border-zinc-800 bg-black/40">
+                            <h4 class="font-bold text-blue-400 mb-2 italic">Product</h4>
+                            <p class="text-xs text-zinc-500">Design Thinking, Scrum, Roadmapping.</p>
                         </div>
-                        <div class="card">
-                            <span class="text-xs text-zinc-600 uppercase">2023</span>
-                            <h3 class="text-xl font-bold mt-2">Data Architecture</h3>
-                            <p class="text-zinc-500 mt-4 text-sm">Modélisation de données pour scale-ups.</p>
-                        </div>
-                        <div class="card">
-                            <span class="text-xs text-zinc-600 uppercase">2022</span>
-                            <h3 class="text-xl font-bold mt-2">Product Strategy</h3>
-                            <p class="text-zinc-500 mt-4 text-sm">Frameworks de croissance et Discovery.</p>
+                        <div class="p-6 border border-zinc-800 bg-black/40">
+                            <h4 class="font-bold text-blue-400 mb-2 italic">Data</h4>
+                            <p class="text-xs text-zinc-500">BigQuery, dbt, ML, KPI Analysis.</p>
                         </div>
                     </div>
                 </div>
@@ -65,27 +65,38 @@
         </section>
 
         <section id="experience" class="panel">
-            <div class="container mx-auto px-10">
-                <div class="inner flex flex-col md:flex-row gap-20 items-center">
-                    <div class="md:w-1/2">
-                        <h2 class="text-blue-500 font-mono text-sm mb-6">// ÉTUDE DE CAS</h2>
-                        <h3 class="text-5xl font-bold italic mb-6">Projet Phoenix</h3>
-                        <p class="text-zinc-400 text-xl leading-relaxed">Réduction du churn de 15% grâce à une refonte de la segmentation data client.</p>
-                    </div>
-                    <div class="md:w-1/2 w-full aspect-video border border-zinc-800 rounded-2xl bg-zinc-900/30 overflow-hidden relative group">
-                        <div class="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-all duration-700"></div>
+            <div class="container mx-auto px-6">
+                <div class="inner w-full">
+                    <h2 class="text-blue-500 font-mono text-sm mb-16">// PARCOURS PROFESSIONNEL</h2>
+                    <div class="space-y-24">
+                        <div class="experience-item border-l border-zinc-800 pl-8">
+                            <span class="text-zinc-500 text-sm">2024 — 2025</span>
+                            <h3 class="text-3xl font-bold mt-2 italic">CFA numiA — Product Manager</h3>
+                            <p class="text-zinc-400 mt-4 max-w-2xl">Direction Pilotage et Systèmes Numériques. Définition de la roadmap iziA, coordination Agile et transformation numérique via l'IA.</p>
+                        </div>
+                        <div class="experience-item border-l border-zinc-800 pl-8">
+                            <span class="text-zinc-500 text-sm">2022 — 2023</span>
+                            <h3 class="text-3xl font-bold mt-2 italic">Clémence Consulting — Consultant PO</h3>
+                            <p class="text-zinc-400 mt-4 max-w-2xl">Accompagnement de grands comptes (Énergie, Immobilier) sur la structuration SI et la gestion de backlog.</p>
+                        </div>
+                        <div class="experience-item border-l border-zinc-800 pl-8">
+                            <span class="text-zinc-500 text-sm">2013 — 2021</span>
+                            <h3 class="text-3xl font-bold mt-2 italic">Croix-Rouge française — Product Manager / MOA</h3>
+                            <p class="text-zinc-400 mt-4 max-w-2xl">8 ans de transformation digitale. Gestion des outils pour 60 000 bénévoles et automatisation des bilans d'activités.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="volunteering" class="panel">
-            <div class="container mx-auto px-10">
-                <div class="inner text-center">
-                    <h2 class="text-blue-500 font-mono text-sm mb-8">// BÉNÉVOLAT</h2>
-                    <p class="text-4xl md:text-6xl font-light italic leading-tight text-zinc-300">
-                        "L'impact social par la <span class="text-white font-bold">rigueur technique."</span>
-                    </p>
+        <section id="volunteer" class="panel bg-blue-900/10">
+            <div class="container mx-auto px-6">
+                <div class="inner text-center max-w-4xl mx-auto">
+                    <h2 class="text-blue-500 font-mono text-sm mb-8">// ENGAGEMENT BÉNÉVOLE</h2>
+                    <h3 class="text-4xl md:text-5xl font-light italic leading-tight mb-8">
+                        "15 ans d'engagement pour transformer l'impact social par la <span class="text-white font-bold">rigueur technologique</span>."
+                    </h3>
+                    <p class="text-zinc-400 italic">— Programme Malin, Croix-Rouge française</p>
                 </div>
             </div>
         </section>
