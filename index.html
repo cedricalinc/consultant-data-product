@@ -3,83 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data x Product | Consultant</title>
+    <title>Consultant Data & Product | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-black text-white antialiased">
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-500 rounded-full pointer-events-none z-[9999] mix-blend-difference"></div>
-    <div id="progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50"></div>
 
-   <nav class="fixed w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
-    <span class="font-bold text-xl tracking-tighter cursor-pointer" onclick="lenis.scrollTo(0)">DATA.PROD</span>
-    
-    <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest font-medium">
-        <a href="#about" class="nav-link hover:text-blue-500 transition">Intro</a>
-        <a href="#education" class="nav-link hover:text-blue-500 transition">Formations</a>
-        <a href="#experience" class="nav-link hover:text-blue-500 transition">Projets</a>
-        <a href="#volunteering" class="nav-link hover:text-blue-500 transition">Bénévolat</a>
-    </div>
+    <div class="bg-overlay"></div>
+    <div id="custom-cursor"></div>
+    <div id="progress"></div>
 
-    <a href="mailto:ton@email.com" class="border border-white px-5 py-2 rounded-full text-xs uppercase hover:bg-white hover:text-black transition">Contact</a>
-</nav>
+    <nav class="fixed w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+        <span class="font-bold text-xl tracking-tighter cursor-pointer" onclick="lenis.scrollTo(0)">DATA.PROD</span>
+        <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest">
+            <a href="#about" class="nav-link">Intro</a>
+            <a href="#education" class="nav-link">Formations</a>
+            <a href="#experience" class="nav-link">Projets</a>
+            <a href="#volunteering" class="nav-link">Engagement</a>
+        </div>
+        <a href="mailto:hello@tonsite.com" class="border border-white px-5 py-2 rounded-full text-xs uppercase hover:bg-white hover:text-black transition">Contact</a>
+    </nav>
+
     <main id="wrapper">
-        <section id="about" class="min-h-screen flex items-center px-10 md:px-32">
-    <div class="max-w-4xl">
-        <h2 class="text-blue-500 font-mono mb-4">// 01. QUI JE SUIS</h2>
-        <p class="text-4xl md:text-6xl font-light leading-tight reveal-text">
-            Consultant Data & Product, j'aide les entreprises à transformer l'incertitude en <span class="text-white font-bold italic">décisions mesurables</span>.
-        </p>
-    </div>
-</section>
-
-<section id="education" class="min-h-screen bg-zinc-900 py-20 px-10">
-    <h2 class="text-blue-500 font-mono mb-20 text-center">// 02. FORMATIONS RÉCENTES</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="edu-card p-8 border border-zinc-700 rounded-lg hover:border-blue-500 transition">
-            <span class="text-sm text-zinc-500">2023 - 2024</span>
-            <h3 class="text-xl font-bold mt-2">Spécialisation IA Générative</h3>
-            <p class="text-zinc-400 mt-4">Optimisation des process product via LLM.</p>
-        </div>
-        </div>
-</section>
-
-<section id="experience" class="py-40 px-10">
-    <h2 class="text-blue-500 font-mono mb-20">// 03. EXPÉRIENCES & IMPACT</h2>
-    <div class="space-y-40">
-        <div class="project-row flex flex-col md:flex-row gap-10 items-center">
-            <div class="w-full md:w-1/2">
-                <h3 class="text-5xl font-bold mb-6 italic text-zinc-200">Projet Alpha</h3>
-                <p class="text-zinc-400 text-lg">Mise en place d'une architecture Data Mesh pour une marketplace à 1M+ d'utilisateurs.</p>
-                <ul class="flex gap-4 mt-6 font-mono text-sm text-blue-400">
-                    <li>#DataStrategy</li>
-                    <li>#ProductGrowth</li>
-                </ul>
-            </div>
-            <div class="w-full md:w-1/2 h-64 bg-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+        <section id="about" class="panel">
+            <div class="container mx-auto px-10">
+                <div class="max-w-4xl content-to-animate">
+                    <h2 class="text-blue-500 font-mono mb-4">// 01. QUI JE SUIS</h2>
+                    <h1 class="hero-title text-5xl md:text-7xl font-bold leading-tight uppercase">
+                        Transformer la donnée en <span class="text-blue-600 italic">levier produit.</span>
+                    </h1>
+                    <p class="hero-sub mt-8 text-zinc-400 text-xl max-w-2xl leading-relaxed">
+                        Consultant indépendant. J'aide les équipes produit à structurer leur stack data pour prendre des décisions basées sur l'impact, pas sur l'intuition.
+                    </p>
                 </div>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
 
-<section id="volunteering" class="min-h-screen flex items-center bg-blue-600 text-white px-10">
-    <div class="grid md:grid-cols-2 gap-20">
-        <div>
-            <h2 class="text-white/70 font-mono mb-4">// 04. ENGAGEMENT</h2>
-            <h3 class="text-5xl font-bold mb-6">Le bénévolat comme moteur.</h3>
-            <p class="text-xl text-blue-100">Plus qu'une aide, une école du terrain qui a forgé ma gestion de crise et mon leadership empathique.</p>
-        </div>
-        <div class="flex items-center justify-center">
-             <div class="p-10 border-2 border-white/30 rounded-full italic text-center">
-                "L'humain au centre de la data"
-             </div>
-        </div>
-    </div>
-</section>
+        <section id="education" class="panel">
+            <div class="container mx-auto px-10">
+                <h2 class="text-blue-500 font-mono mb-16 text-center">// 02. FORMATIONS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 content-to-animate">
+                    <div class="edu-card p-10 border border-zinc-800 rounded-2xl bg-zinc-900/50 backdrop-blur-sm">
+                        <span class="text-blue-500 font-bold">2024</span>
+                        <h3 class="text-2xl font-bold mt-4">AI Product Management</h3>
+                        <p class="text-zinc-400 mt-4 italic">Intégration des LLMs dans les cycles de Discovery.</p>
+                    </div>
+                    <div class="edu-card p-10 border border-zinc-800 rounded-2xl bg-zinc-900/50">
+                        <span class="text-blue-500 font-bold">2023</span>
+                        <h3 class="text-2xl font-bold mt-4">Advanced Analytics</h3>
+                        <p class="text-zinc-400 mt-4 italic">Maîtrise du tracking événementiel complexe.</p>
+                    </div>
+                    <div class="edu-card p-10 border border-zinc-800 rounded-2xl bg-zinc-900/50">
+                        <span class="text-blue-500 font-bold">2022</span>
+                        <h3 class="text-2xl font-bold mt-4">Master Product</h3>
+                        <p class="text-zinc-400 mt-4 italic">Stratégie de croissance et frameworks Agile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="experience" class="panel">
+            <div class="container mx-auto px-10">
+                <h2 class="text-blue-500 font-mono mb-16">// 03. EXPÉRIENCES & PROJETS</h2>
+                <div class="space-y-32 content-to-animate">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <div class="md:w-1/2">
+                            <h3 class="text-4xl font-bold mb-4 italic">Projet Scale-Up X</h3>
+                            <p class="text-zinc-400 text-lg">Mise en place d'une culture de l'expérimentation (A/B testing) ayant conduit à +18% de rétention.</p>
+                        </div>
+                        <div class="md:w-1/2 h-64 bg-blue-900/20 border border-blue-500/30 rounded-3xl flex items-center justify-center">
+                            <span class="text-blue-500">Visualisation Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        
+        <section id="volunteering" class="panel">
+            <div class="container mx-auto px-10">
+                <div class="grid md:grid-cols-2 gap-20 content-to-animate">
+                    <div>
+                        <h2 class="text-blue-500 font-mono mb-4">// 04. ENGAGEMENT</h2>
+                        <h3 class="text-5xl font-bold mb-6 italic">Le sens avant les chiffres.</h3>
+                        <p class="text-xl text-zinc-400 leading-relaxed">Mon expérience bénévole a forgé ma capacité à piloter des projets complexes avec des ressources limitées et un leadership humain.</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="w-72 h-72 border border-dashed border-zinc-700 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+                            <p class="text-center text-sm uppercase tracking-widest italic p-8">Leadership • Empathie • Impact Social</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
