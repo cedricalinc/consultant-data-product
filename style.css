@@ -5,9 +5,13 @@
     cursor: none !important;
 }
 
+html {
+    scroll-behavior: initial; /* Nécessaire pour Lenis */
+}
+
 body {
     background-color: #050505;
-    font-family: 'Inter', sans-serif;
+    color: #fff;
     overflow-x: hidden;
 }
 
@@ -19,7 +23,7 @@ body {
     z-index: -1;
 }
 
-/* Effet de grain Nasa Prospect */
+/* Effet de grain */
 .noise {
     position: fixed;
     inset: 0;
@@ -33,30 +37,43 @@ body {
 #custom-cursor {
     position: fixed;
     top: 0; left: 0;
-    width: 15px; height: 15px;
-    background: white;
+    width: 12px; height: 12px;
+    background: #fff;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     mix-blend-difference: exclusion;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 /* Structure des sections pour le scroll */
 .panel {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* Crucial pour le scroll */
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 100px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding: 120px 0;
 }
 
 .inner {
     will-change: transform, opacity;
 }
 
+.nav-link {
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+}
+
 .nav-link:hover {
+    opacity: 1;
     color: #3b82f6;
-    transition: 0.3s;
+}
+
+/* Animation subtile pour les expériences */
+.experience-item {
+    transition: transform 0.5s ease;
+}
+.experience-item:hover {
+    transform: translateX(10px);
 }
