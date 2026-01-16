@@ -1,6 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Smooth Scroll
+// 1. Initialisation de Lenis (Scroll Fluide)
 const lenis = new Lenis({
     duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
@@ -12,7 +12,7 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// 2. Cursor
+// 2. Curseur personnalisé
 const cursor = document.querySelector("#custom-cursor");
 window.addEventListener("mousemove", (e) => {
     gsap.to(cursor, {
@@ -23,7 +23,7 @@ window.addEventListener("mousemove", (e) => {
     });
 });
 
-// 3. Parallax Reveal (Effet de glissement entre blocs)
+// 3. Animation de PARALLAXE (L'effet de flottement)
 gsap.utils.toArray(".inner").forEach((inner) => {
     gsap.fromTo(inner, 
         { y: 100, opacity: 0 }, 
@@ -41,7 +41,16 @@ gsap.utils.toArray(".inner").forEach((inner) => {
     );
 });
 
-// 4. Smooth Anchor
+// 4. Animation spécifique de la photo de profil
+gsap.from(".profile-pic", {
+    y: 50,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power3.out",
+    delay: 0.8 // Apparaît après le titre
+});
+
+// 5. Scroll vers les ancres via Lenis
 document.querySelectorAll('.nav-link').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
