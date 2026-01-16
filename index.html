@@ -18,40 +18,61 @@
     </nav>
 
     <main id="wrapper">
-        <section class="h-screen flex flex-col justify-center items-center relative overflow-hidden">
-            <h1 class="hero-title text-[10vw] font-bold leading-none tracking-tighter text-center uppercase">
-                Data <br> <span class="text-blue-600">Product</span>
-            </h1>
-            <p class="hero-sub mt-4 text-gray-400 text-lg uppercase tracking-widest">Consultant Stratégique</p>
-            <div class="absolute bottom-10 animate-bounce">↓</div>
-        </section>
+        <section id="about" class="min-h-screen flex items-center px-10 md:px-32">
+    <div class="max-w-4xl">
+        <h2 class="text-blue-500 font-mono mb-4">// 01. QUI JE SUIS</h2>
+        <p class="text-4xl md:text-6xl font-light leading-tight reveal-text">
+            Consultant Data & Product, j'aide les entreprises à transformer l'incertitude en <span class="text-white font-bold italic">décisions mesurables</span>.
+        </p>
+    </div>
+</section>
 
-        <section class="h-screen flex items-center justify-center bg-zinc-900 overflow-hidden relative">
-            <div class="container mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
-                <div class="reveal-text">
-                    <h2 class="text-5xl font-bold mb-6">L'intelligence des données.</h2>
-                    <p class="text-gray-400 text-xl leading-relaxed">Je transforme vos flux de données brutes en roadmaps produit actionnables. Pas de "vanity metrics", uniquement de la croissance.</p>
-                </div>
-                <div class="relative flex justify-center items-center">
-                    <div class="data-circle w-64 h-64 border-2 border-blue-500 rounded-full flex items-center justify-center">
-                        <span class="text-blue-500 font-mono">INSIGHTS</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="education" class="min-h-screen bg-zinc-900 py-20 px-10">
+    <h2 class="text-blue-500 font-mono mb-20 text-center">// 02. FORMATIONS RÉCENTES</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="edu-card p-8 border border-zinc-700 rounded-lg hover:border-blue-500 transition">
+            <span class="text-sm text-zinc-500">2023 - 2024</span>
+            <h3 class="text-xl font-bold mt-2">Spécialisation IA Générative</h3>
+            <p class="text-zinc-400 mt-4">Optimisation des process product via LLM.</p>
+        </div>
+        </div>
+</section>
 
-        <section class="py-40 bg-black">
-            <div class="container mx-auto px-10">
-                <div class="service-item border-b border-zinc-800 py-20 flex justify-between items-center">
-                    <span class="text-4xl">01 / Audit Data</span>
-                    <p class="max-w-md text-gray-500">Analyse de votre stack tracking et identification des zones d'ombre.</p>
-                </div>
-                <div class="service-item border-b border-zinc-800 py-20 flex justify-between items-center">
-                    <span class="text-4xl">02 / Product Strategy</span>
-                    <p class="max-w-md text-gray-500">Priorisation via le framework RICE et alignement des stakeholders.</p>
-                </div>
+<section id="experience" class="py-40 px-10">
+    <h2 class="text-blue-500 font-mono mb-20">// 03. EXPÉRIENCES & IMPACT</h2>
+    <div class="space-y-40">
+        <div class="project-row flex flex-col md:flex-row gap-10 items-center">
+            <div class="w-full md:w-1/2">
+                <h3 class="text-5xl font-bold mb-6 italic text-zinc-200">Projet Alpha</h3>
+                <p class="text-zinc-400 text-lg">Mise en place d'une architecture Data Mesh pour une marketplace à 1M+ d'utilisateurs.</p>
+                <ul class="flex gap-4 mt-6 font-mono text-sm text-blue-400">
+                    <li>#DataStrategy</li>
+                    <li>#ProductGrowth</li>
+                </ul>
             </div>
-        </section>
+            <div class="w-full md:w-1/2 h-64 bg-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+                </div>
+        </div>
+    </div>
+</section>
+
+<section id="volunteering" class="min-h-screen flex items-center bg-blue-600 text-white px-10">
+    <div class="grid md:grid-cols-2 gap-20">
+        <div>
+            <h2 class="text-white/70 font-mono mb-4">// 04. ENGAGEMENT</h2>
+            <h3 class="text-5xl font-bold mb-6">Le bénévolat comme moteur.</h3>
+            <p class="text-xl text-blue-100">Plus qu'une aide, une école du terrain qui a forgé ma gestion de crise et mon leadership empathique.</p>
+        </div>
+        <div class="flex items-center justify-center">
+             <div class="p-10 border-2 border-white/30 rounded-full italic text-center">
+                "L'humain au centre de la data"
+             </div>
+        </div>
+    </div>
+</section>
+
+
+        
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
