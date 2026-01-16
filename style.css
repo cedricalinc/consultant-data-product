@@ -7,63 +7,56 @@
 
 body {
     background-color: #050505;
-    color: #fff;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
-/* Fond sombre avec lueur bleue */
+/* Le fond avec lueur */
 .bg-overlay {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, #0a0c1a 0%, #050505 100%);
+    background: radial-gradient(circle at 50% 50%, #0a0e22 0%, #050505 100%);
     z-index: -1;
 }
 
 /* Effet de grain Nasa Prospect */
-.noise-overlay {
+.noise {
     position: fixed;
     inset: 0;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     opacity: 0.05;
-    pointer-events: none;
     z-index: 100;
+    pointer-events: none;
 }
 
-/* Curseur Premium */
+/* Curseur custom */
 #custom-cursor {
     position: fixed;
     top: 0; left: 0;
     width: 15px; height: 15px;
-    background-color: #fff;
+    background: white;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     mix-blend-difference: exclusion;
 }
 
-/* Sections & Cartes */
+/* Structure des sections pour le scroll */
 .panel {
     position: relative;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh; /* Crucial pour le scroll */
     display: flex;
     align-items: center;
-}
-
-.card {
-    padding: 3rem;
-    background: rgba(15, 15, 15, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 1rem;
-    transition: all 0.5s ease;
-}
-
-.card:hover {
-    border-color: rgba(59, 130, 246, 0.5);
-    background: rgba(20, 20, 25, 0.8);
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .inner {
     will-change: transform, opacity;
 }
 
-.nav-link:hover { color: #3b82f6; transition: 0.3s; }
+.nav-link:hover {
+    color: #3b82f6;
+    transition: 0.3s;
+}
