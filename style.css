@@ -2,56 +2,44 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none !important; /* Supprime la croix partout sans exception */
+    cursor: none !important;
 }
 
 body {
     background-color: #000;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    width: 100%;
 }
 
-/* Le Curseur Premium */
 #custom-cursor {
     position: fixed;
     top: 0; left: 0;
-    width: 12px;
-    height: 12px;
+    width: 12px; height: 12px;
     background-color: #3b82f6;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
 }
 
-/* Fond Immersif */
 .bg-overlay {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, #0d0d1a 0%, #000 100%);
+    background: radial-gradient(circle at center, #0d0d1a 0%, #000 100%);
     z-index: -1;
 }
 
-/* Barre de progression */
-#progress {
-    position: fixed;
-    top: 0; left: 0; height: 2px;
-    background: #3b82f6;
-    z-index: 100;
-}
-
-/* Structure des sections (Style Stacking) */
+/* On définit des sections claires qui se suivent */
 .panel {
-    min-height: 100vh;
+    position: relative;
     width: 100%;
+    height: 100vh; /* Chaque section prend tout l'écran */
     display: flex;
     align-items: center;
-    position: relative;
-    padding: 10vh 0;
+    overflow: hidden;
 }
 
-.content-inner {
+.inner {
     will-change: transform, opacity;
 }
 
@@ -64,12 +52,4 @@ body::before {
     opacity: 0.05;
     pointer-events: none;
     z-index: 90;
-}
-
-/* Navigation */
-.nav-link {
-    transition: color 0.4s ease;
-}
-.nav-link:hover {
-    color: #3b82f6;
 }
