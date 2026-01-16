@@ -1,9 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Initialisation de Lenis (Scroll Fluide)
+// 1. Smooth Scroll
 const lenis = new Lenis({
-    lerp: 0.1, // Vitesse de lissage (0.1 = très fluide)
-    smoothWheel: true
+    duration: 1.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
 });
 
 function raf(time) {
@@ -12,45 +12,39 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// 2. Curseur personnalisé
+// 2. Cursor
 const cursor = document.querySelector("#custom-cursor");
 window.addEventListener("mousemove", (e) => {
     gsap.to(cursor, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.4,
-        ease: "power3.out"
+        duration: 0.3,
+        ease: "power2.out"
     });
 });
 
-// 3. Animation de PARALLAXE (L'effet de flottement)
-gsap.utils.toArray(".panel").forEach((panel) => {
-    const inner = panel.querySelector(".inner");
-    
+// 3. Parallax Reveal (Effet de glissement entre blocs)
+gsap.utils.toArray(".inner").forEach((inner) => {
     gsap.fromTo(inner, 
-        { y: 80, opacity: 0 }, 
+        { y: 100, opacity: 0 }, 
         {
-            y: -80,
+            y: -100,
             opacity: 1,
             ease: "none",
             scrollTrigger: {
-                trigger: panel,
+                trigger: inner,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1.2
+                scrub: 1
             }
         }
     );
 });
 
-// 4. Scroll vers les ancres via Lenis
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
+// 4. Smooth Anchor
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
-        lenis.scrollTo(targetId, {
-            offset: -50,
-            duration: 1.5
-        });
+        lenis.scrollTo(this.getAttribute('href'));
     });
 });
