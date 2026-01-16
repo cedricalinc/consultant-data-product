@@ -1,96 +1,46 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: none !important;
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+body { font-family: 'Inter', sans-serif; background: #050505; color: white; scroll-behavior: smooth; }
+
+/* CURSEUR & PROGRESS */
+#progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: #3b82f6; width: 0%; z-index: 10001; }
+#custom-cursor { position: fixed; width: 6px; height: 6px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 10002; mix-blend-difference: exclusion; }
+#cursor-follower { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; pointer-events: none; z-index: 10001; transition: transform 0.2s, background 0.3s; }
+#cursor-follower.is-red { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); transform: scale(2.2); }
+
+/* ORBITE SATELLITES */
+.orbit-satellite { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+.shape { position: absolute; opacity: 0.9; animation: satellite-move 12s linear infinite; }
+.circle { border-radius: 50%; width: 6px; height: 6px; }
+.square { width: 5px; height: 5px; }
+.line { width: 15px; height: 1px; }
+.blue { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
+.red { background: #ef4444; }
+.yellow { background: #fbbf24; }
+.green { background: #10b981; }
+.purple { background: #a855f7; }
+.white { background: #fff; }
+.p1 { animation-delay: 0s; }
+.p2 { animation-delay: -2s; }
+.p3 { animation-delay: -4s; }
+.p4 { animation-delay: -6s; }
+.p5 { animation-delay: -8s; }
+.p6 { animation-delay: -10s; }
+
+@keyframes satellite-move {
+    from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
 }
 
-body {
-    background-color: #050505;
-    color: #fff;
-    overflow-x: hidden;
-    line-height: 1.6;
-    font-family: 'Inter', sans-serif;
-}
+/* ACCORDÉON */
+.acc-item.active .acc-body { display: block; animation: slideIn 0.4s ease-out; }
+.acc-item.active i[data-lucide="plus"] { transform: rotate(45deg); }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-.bg-overlay {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, #0a0e22 0%, #050505 100%);
-    z-index: -1;
-}
+/* CARDS */
+.edu-card, .cert-card { background: rgba(255,255,255,0.02); border: 1px solid #111; padding: 2.5rem; border-radius: 12px; transition: 0.4s; position: relative; }
+.edu-card:hover, .cert-card:hover { border-color: #333; background: rgba(255,255,255,0.04); }
+.edu-card .tag { position: absolute; top: 1rem; right: 1rem; font-family: monospace; font-size: 9px; color: #444; }
 
-.noise {
-    position: fixed;
-    inset: 0;
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04;
-    z-index: 100;
-    pointer-events: none;
-}
-
-#custom-cursor {
-    position: fixed;
-    top: 0; left: 0;
-    width: 12px; height: 12px;
-    background: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-difference: exclusion;
-}
-
-.panel {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 10vh 0;
-}
-
-.inner {
-    will-change: transform, opacity;
-}
-
-/* STYLE DES CARTES FORMATION */
-.edu-card-modern {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 2.5rem;
-    border-radius: 16px;
-    position: relative;
-    transition: all 0.4s ease;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.edu-card-modern:hover {
-    background: rgba(59, 130, 246, 0.05);
-    border-color: rgba(59, 130, 246, 0.4);
-    transform: translateY(-5px);
-}
-
-.edu-tag {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-family: monospace;
-    font-size: 0.7rem;
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.1);
-    padding: 4px 10px;
-    border-radius: 4px;
-}
-
-.nav-link {
-    transition: opacity 0.3s;
-    opacity: 0.5;
-    color: white;
-}
-
-.nav-link:hover {
-    opacity: 1;
-}
+/* ETATS MODALES */
+#global-modal.active, #contact-modal.active { opacity: 1; pointer-events: auto; }
+#global-modal.active .modal-container, #contact-modal.active .modal-container { scale: 1; }
