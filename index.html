@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data x Product | Consultant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white antialiased">
+
+    <div id="progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50"></div>
+
+    <nav class="fixed w-full p-6 flex justify-between items-center z-40 mix-blend-difference">
+        <span class="font-bold text-xl tracking-tighter">DATA.PROD</span>
+        <a href="#contact" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Contact</a>
+    </nav>
+
+    <main id="wrapper">
+        <section class="h-screen flex flex-col justify-center items-center relative overflow-hidden">
+            <h1 class="hero-title text-[10vw] font-bold leading-none tracking-tighter text-center uppercase">
+                Data <br> <span class="text-blue-600">Product</span>
+            </h1>
+            <p class="hero-sub mt-4 text-gray-400 text-lg uppercase tracking-widest">Consultant Stratégique</p>
+            <div class="absolute bottom-10 animate-bounce">↓</div>
+        </section>
+
+        <section class="h-screen flex items-center justify-center bg-zinc-900 overflow-hidden relative">
+            <div class="container mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div class="reveal-text">
+                    <h2 class="text-5xl font-bold mb-6">L'intelligence des données.</h2>
+                    <p class="text-gray-400 text-xl leading-relaxed">Je transforme vos flux de données brutes en roadmaps produit actionnables. Pas de "vanity metrics", uniquement de la croissance.</p>
+                </div>
+                <div class="relative flex justify-center items-center">
+                    <div class="data-circle w-64 h-64 border-2 border-blue-500 rounded-full flex items-center justify-center">
+                        <span class="text-blue-500 font-mono">INSIGHTS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-40 bg-black">
+            <div class="container mx-auto px-10">
+                <div class="service-item border-b border-zinc-800 py-20 flex justify-between items-center">
+                    <span class="text-4xl">01 / Audit Data</span>
+                    <p class="max-w-md text-gray-500">Analyse de votre stack tracking et identification des zones d'ombre.</p>
+                </div>
+                <div class="service-item border-b border-zinc-800 py-20 flex justify-between items-center">
+                    <span class="text-4xl">02 / Product Strategy</span>
+                    <p class="max-w-md text-gray-500">Priorisation via le framework RICE et alignement des stakeholders.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
