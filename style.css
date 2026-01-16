@@ -1,61 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important; /* Force la disparition de la croix partout */
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    cursor: none; /* Cache le vrai curseur */
     background-color: #000;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-/* Background dégradé fixe */
-.bg-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #000000 100%);
-    z-index: -1;
-    transition: background 1s ease;
-}
-
-/* Curseur personnalisé Premium */
 #custom-cursor {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 20px;
     height: 20px;
-    background: white;
+    background-color: #3b82f6;
     border-radius: 50%;
-    pointer-events: none;
+    pointer-events: none; /* Très important pour pouvoir cliquer sur les boutons */
     z-index: 9999;
-    mix-blend-difference: exclusion;
+    transition: transform 0.1s ease-out;
 }
 
-/* Sections fluides */
-section {
-    position: relative;
-    min-height: 100vh;
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0a0a1a 0%, #000 100%);
+    z-index: -1;
+}
+
+/* ANTI-BLOC : Les sections sont empilées */
+.panel {
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
-    overflow: hidden;
-}
-
-/* Barre de progression discrète */
-#progress {
-    position: fixed;
-    top: 0; left: 0; width: 0%; height: 2px;
-    background: #3b82f6;
-    z-index: 100;
-}
-
-/* Grain de fond (Nasa Prospect Style) */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04;
-    pointer-events: none;
-    z-index: 90;
-}
-
-.nav-link {
     position: relative;
-    transition: opacity 0.3s ease;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.nav-link:hover { opacity: 0.6; }
+.content-inner {
+    will-change: transform, opacity;
+}
