@@ -2,46 +2,74 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none !important; /* Force la disparition de la croix partout */
+    cursor: none !important; /* Supprime la croix partout sans exception */
 }
 
 body {
     background-color: #000;
+    color: #fff;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
+/* Le Curseur Premium */
 #custom-cursor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
+    top: 0; left: 0;
+    width: 12px;
+    height: 12px;
     background-color: #3b82f6;
     border-radius: 50%;
-    pointer-events: none; /* Très important pour pouvoir cliquer sur les boutons */
+    pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s ease-out;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
+/* Fond Immersif */
 .bg-overlay {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at center, #0a0a1a 0%, #000 100%);
+    background: radial-gradient(circle at 50% 50%, #0d0d1a 0%, #000 100%);
     z-index: -1;
 }
 
-/* ANTI-BLOC : Les sections sont empilées */
+/* Barre de progression */
+#progress {
+    position: fixed;
+    top: 0; left: 0; height: 2px;
+    background: #3b82f6;
+    z-index: 100;
+}
+
+/* Structure des sections (Style Stacking) */
 .panel {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 10vh 0;
 }
 
 .content-inner {
     will-change: transform, opacity;
+}
+
+/* Effet de grain */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 90;
+}
+
+/* Navigation */
+.nav-link {
+    transition: color 0.4s ease;
+}
+.nav-link:hover {
+    color: #3b82f6;
 }
