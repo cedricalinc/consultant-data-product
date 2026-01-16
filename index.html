@@ -12,11 +12,18 @@
 
     <div id="progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50"></div>
 
-    <nav class="fixed w-full p-6 flex justify-between items-center z-40 mix-blend-difference">
-        <span class="font-bold text-xl tracking-tighter">DATA.PROD</span>
-        <a href="#contact" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Contact</a>
-    </nav>
+   <nav class="fixed w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+    <span class="font-bold text-xl tracking-tighter cursor-pointer" onclick="lenis.scrollTo(0)">DATA.PROD</span>
+    
+    <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest font-medium">
+        <a href="#about" class="nav-link hover:text-blue-500 transition">Intro</a>
+        <a href="#education" class="nav-link hover:text-blue-500 transition">Formations</a>
+        <a href="#experience" class="nav-link hover:text-blue-500 transition">Projets</a>
+        <a href="#volunteering" class="nav-link hover:text-blue-500 transition">Bénévolat</a>
+    </div>
 
+    <a href="mailto:ton@email.com" class="border border-white px-5 py-2 rounded-full text-xs uppercase hover:bg-white hover:text-black transition">Contact</a>
+</nav>
     <main id="wrapper">
         <section id="about" class="min-h-screen flex items-center px-10 md:px-32">
     <div class="max-w-4xl">
