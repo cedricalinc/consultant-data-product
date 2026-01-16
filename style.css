@@ -1,0 +1,28 @@
+body {
+    font-family: 'Inter', sans-serif;
+    cursor: crosshair; /* Rappel du côté technique Data */
+}
+
+/* On cache les éléments avant l'animation GSAP */
+.hero-title, .hero-sub, .reveal-text {
+    opacity: 0;
+}
+
+.data-circle {
+    transition: transform 0.1s ease-out;
+}
+
+section {
+    position: relative;
+}
+
+/* Effet de grain pour le côté "Nasa Prospect" */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 100;
+}
