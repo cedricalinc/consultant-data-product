@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultant Data & Product</title>
+    <title>Data x Product | Consultant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-black text-white antialiased">
 
     <div id="custom-cursor"></div>
     <div class="bg-overlay"></div>
+    <div class="noise-overlay"></div>
 
     <nav class="fixed w-full p-8 flex justify-between items-center z-50 mix-blend-difference">
-        <span class="font-bold text-xl tracking-tighter text-white">DATA.PM</span>
-        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] text-white">
+        <span class="font-bold text-xl tracking-tighter">DATA.PM</span>
+        <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em]">
             <a href="#about" class="nav-link">Intro</a>
             <a href="#education" class="nav-link">Formations</a>
             <a href="#experience" class="nav-link">Projets</a>
@@ -23,31 +24,40 @@
         </div>
     </nav>
 
-    <main id="main-container">
+    <main>
         <section id="about" class="panel">
             <div class="container mx-auto px-10">
-                <div class="inner">
-                    <span class="text-blue-500 font-mono text-sm tracking-widest">// STRATÉGIE</span>
-                    <h1 class="text-6xl md:text-8xl font-bold uppercase mt-6 leading-none text-white">
-                        Data <br><span class="italic font-light">Product</span>
+                <div class="inner max-w-4xl">
+                    <span class="text-blue-500 font-mono text-sm tracking-widest">// CONSULTANT INDÉPENDANT</span>
+                    <h1 class="text-6xl md:text-8xl font-bold uppercase mt-6 leading-[0.9]">
+                        Data <br><span class="italic font-light text-zinc-500">Driven</span> Product
                     </h1>
+                    <p class="mt-8 text-zinc-400 text-lg max-w-xl leading-relaxed">
+                        Je construis des ponts entre vos pipelines de données et vos objectifs produit pour maximiser l'impact utilisateur.
+                    </p>
                 </div>
             </div>
         </section>
 
         <section id="education" class="panel">
             <div class="container mx-auto px-10">
-                <div class="inner">
-                    <h2 class="text-zinc-500 font-mono text-sm mb-12">// FORMATIONS</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="p-10 border border-zinc-800 bg-zinc-900/50">
-                            <h3 class="text-xl font-bold text-blue-400">AI Product</h3>
+                <div class="inner w-full">
+                    <h2 class="text-blue-500 font-mono text-sm mb-12">// EXPERTISE</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="card">
+                            <span class="text-xs text-zinc-600 uppercase">2024</span>
+                            <h3 class="text-xl font-bold mt-2">AI Product Management</h3>
+                            <p class="text-zinc-500 mt-4 text-sm">Optimisation des workflows via Gen-AI.</p>
                         </div>
-                        <div class="p-10 border border-zinc-800 bg-zinc-900/50">
-                            <h3 class="text-xl font-bold text-white">Data Architect</h3>
+                        <div class="card">
+                            <span class="text-xs text-zinc-600 uppercase">2023</span>
+                            <h3 class="text-xl font-bold mt-2">Data Architecture</h3>
+                            <p class="text-zinc-500 mt-4 text-sm">Modélisation de données pour scale-ups.</p>
                         </div>
-                        <div class="p-10 border border-zinc-800 bg-zinc-900/50">
-                            <h3 class="text-xl font-bold text-white">Agile Leader</h3>
+                        <div class="card">
+                            <span class="text-xs text-zinc-600 uppercase">2022</span>
+                            <h3 class="text-xl font-bold mt-2">Product Strategy</h3>
+                            <p class="text-zinc-500 mt-4 text-sm">Frameworks de croissance et Discovery.</p>
                         </div>
                     </div>
                 </div>
@@ -56,11 +66,14 @@
 
         <section id="experience" class="panel">
             <div class="container mx-auto px-10">
-                <div class="inner">
-                    <h2 class="text-zinc-500 font-mono text-sm mb-12">// PROJETS</h2>
-                    <div class="max-w-3xl">
-                        <h3 class="text-4xl md:text-6xl font-bold italic text-blue-600 mb-6">Projet Phoenix</h3>
-                        <p class="text-zinc-400 text-xl">Optimisation du funnel d'onboarding : +22% de conversion via l'analyse de données comportementales.</p>
+                <div class="inner flex flex-col md:flex-row gap-20 items-center">
+                    <div class="md:w-1/2">
+                        <h2 class="text-blue-500 font-mono text-sm mb-6">// ÉTUDE DE CAS</h2>
+                        <h3 class="text-5xl font-bold italic mb-6">Projet Phoenix</h3>
+                        <p class="text-zinc-400 text-xl leading-relaxed">Réduction du churn de 15% grâce à une refonte de la segmentation data client.</p>
+                    </div>
+                    <div class="md:w-1/2 w-full aspect-video border border-zinc-800 rounded-2xl bg-zinc-900/30 overflow-hidden relative group">
+                        <div class="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-all duration-700"></div>
                     </div>
                 </div>
             </div>
@@ -69,9 +82,9 @@
         <section id="volunteering" class="panel">
             <div class="container mx-auto px-10">
                 <div class="inner text-center">
-                    <h2 class="text-zinc-500 font-mono text-sm mb-8">// ENGAGEMENT</h2>
-                    <p class="text-3xl md:text-5xl font-light italic text-white">
-                        "Résoudre des problèmes humains grâce à la data."
+                    <h2 class="text-blue-500 font-mono text-sm mb-8">// BÉNÉVOLAT</h2>
+                    <p class="text-4xl md:text-6xl font-light italic leading-tight text-zinc-300">
+                        "L'impact social par la <span class="text-white font-bold">rigueur technique."</span>
                     </p>
                 </div>
             </div>
