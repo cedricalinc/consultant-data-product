@@ -27,15 +27,22 @@
     <main>
         <section id="about" class="panel">
             <div class="container mx-auto px-6">
-                <div class="inner max-w-5xl">
-                    <span class="text-blue-500 font-mono text-sm tracking-widest block mb-4 uppercase">// Product Manager & Data Analyst</span>
-                    <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
-                        Cédric Alinc<br>
-                        <span class="text-zinc-500 italic font-light">L'impact par la donnée</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-zinc-300 max-w-3xl leading-relaxed">
-                        Ancien développeur Fullstack devenu Product Manager. J'allie culture technique et analyse de données pour transformer des problématiques complexes en solutions simples.
-                    </p>
+                <div class="inner max-w-5xl flex flex-col md:flex-row items-center md:items-start gap-12">
+                    <div class="md:w-3/4">
+                        <span class="text-blue-500 font-mono text-sm tracking-widest block mb-4 uppercase">// Product Manager & Data Analyst</span>
+                        <h1 class="text-6xl md:text-8xl font-bold uppercase leading-[0.85] mb-8">
+                            Cédric Alinc<br>
+                            <span class="text-zinc-500 italic font-light">L'impact par la donnée</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-zinc-300 max-w-xl leading-relaxed">
+                            Ancien développeur Fullstack devenu Product Manager. J'allie culture technique et analyse de données pour transformer des problématiques complexes en solutions simples.
+                        </p>
+                    </div>
+                    <div class="md:w-1/4 flex justify-center md:justify-end mt-8 md:mt-0">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHvYI28JLvPrQ/profile-displayphoto-scale_400_400/B4EZuh5YaVL0Ag-/0/1767947733308?e=1770249600&v=beta&t=miAtTPlx7j6_tpLE4Ayey00jHYqREZm7oumV8pdCKGg" 
+                             alt="Cédric Alinc Profile Picture" 
+                             class="profile-pic w-48 h-48 rounded-full object-cover border-2 border-blue-500 shadow-lg"/>
+                    </div>
                 </div>
             </div>
         </section>
@@ -78,22 +85,26 @@
             <div class="container mx-auto px-6">
                 <div class="inner">
                     <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Formation & Expertise</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="edu-card">
-                            <h4 class="text-xl font-bold">Data Analyst</h4>
-                            <p class="text-zinc-400 mt-2">La Capsule (2025) — Modern Data Stack, SQL, BigQuery, dbt.</p>
+                            <span class="text-blue-500 text-xs font-bold">2025</span>
+                            <h4 class="font-bold mt-2 text-zinc-200">Data Analyst</h4>
+                            <p class="text-xs text-zinc-500 mt-1">La Capsule</p>
                         </div>
                         <div class="edu-card">
-                            <h4 class="text-xl font-bold">Product Academy</h4>
-                            <p class="text-zinc-400 mt-2">Join Lion (2022) — Méthodologie Scrum, Projet Agile.</p>
+                            <span class="text-blue-500 text-xs font-bold">2022</span>
+                            <h4 class="font-bold mt-2 text-zinc-200">Product Lion</h4>
+                            <p class="text-xs text-zinc-500 mt-1">Join Lion (Scrum/Agile)</p>
                         </div>
                         <div class="edu-card">
-                            <h4 class="text-xl font-bold">Développement Web</h4>
-                            <p class="text-zinc-400 mt-2">La Capsule (2020) — Titre RNCP 6, Fullstack JS.</p>
+                            <span class="text-blue-500 text-xs font-bold">2020</span>
+                            <h4 class="font-bold mt-2 text-zinc-200">Chef de Projet Web</h4>
+                            <p class="text-xs text-zinc-500 mt-1">La Capsule (Titre RNCP 6)</p>
                         </div>
                         <div class="edu-card">
-                            <h4 class="text-xl font-bold">Management & Satisfaction</h4>
-                            <p class="text-zinc-400 mt-2">ESSEC Business School (2007) — Analyse d'enquêtes satisfaction.</p>
+                            <span class="text-blue-500 text-xs font-bold">2007</span>
+                            <h4 class="font-bold mt-2 text-zinc-200">Gestion Satisfaction</h4>
+                            <p class="text-xs text-zinc-500 mt-1">ESSEC Business School</p>
                         </div>
                     </div>
                 </div>
@@ -102,23 +113,22 @@
 
         <section id="volunteer" class="panel">
             <div class="container mx-auto px-6">
-                <div class="inner">
-                    <h2 class="text-blue-500 font-mono text-sm mb-16 uppercase">// Engagement & Leadership</h2>
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div class="space-y-6">
-                            <h3 class="text-4xl font-bold italic">Le sens avant les chiffres</h3>
-                            <p class="text-zinc-300 leading-relaxed">
-                                Plus de 15 ans d'engagement. Récemment, j'ai accompagné le <strong class="text-white">Programme Malin</strong> sur la conception d'outils de pilotage de projets (BUJO) pour optimiser l'organisation des Business Units.
-                            </p>
-                        </div>
-                        <div class="p-10 border border-zinc-800 rounded-2xl bg-blue-900/10">
-                            <h4 class="text-blue-500 font-mono text-xs uppercase mb-4">Focus Bénévolat</h4>
-                            <ul class="space-y-4 text-sm text-zinc-400">
-                                <li>• Formation & Transmission de compétences</li>
-                                <li>• Leadership d'équipes pluridisciplinaires</li>
-                                <li>• Accompagnement stratégique associatif</li>
-                            </ul>
-                        </div>
+                <div class="inner flex flex-col md:flex-row gap-20 items-center">
+                    <div class="md:w-1/2">
+                        <h2 class="text-blue-500 font-mono text-sm mb-8 uppercase">// Engagement & Leadership</h2>
+                        <h3 class="text-4xl font-bold italic mb-6">Le sens avant les chiffres</h3>
+                        <p class="text-zinc-300 leading-relaxed">
+                            Plus de 15 ans d'engagement. Récemment, j'ai accompagné le <strong class="text-white">Programme Malin</strong> sur la conception d'outils de pilotage de projets (BUJO) pour optimiser l'organisation des Business Units.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 p-10 border border-zinc-800 rounded-2xl bg-blue-900/10">
+                        <h4 class="text-blue-500 font-mono text-xs uppercase mb-4">Focus Bénévolat</h4>
+                        <ul class="space-y-4 text-sm text-zinc-400">
+                            <li>• Formation & Transmission de compétences</li>
+                            <li>• Leadership d'équipes pluridisciplinaires</li>
+                            <li>• Accompagnement stratégique associatif</li>
+                            <li>• Croix-Rouge française (2013-2021)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
