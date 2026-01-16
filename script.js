@@ -43,3 +43,18 @@ gsap.to("#progress", {
     ease: "none",
     scrollTrigger: { scrub: 0.3 }
 });
+
+// Animation pour chaque ligne de projet
+gsap.utils.toArray(".project-row").forEach(row => {
+    gsap.from(row, {
+        scrollTrigger: {
+            trigger: row,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: true
+        },
+        opacity: 0,
+        y: 100,
+        filter: "blur(10px)"
+    });
+});
