@@ -3,10 +3,88 @@
 body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
 /* NAVBAR */
-.navbar { position: fixed; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #1a1a1a; }
-.nav-links { display: flex; gap: 20px; list-style: none; }
-.nav-links a { color: var(--white); text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+/* --- Navbar --- */
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 10px 5%;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    flex-wrap: wrap; /* Permet le passage à la ligne */
+    align-items: center;
+    justify-content: space-between;
+}
 
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+/* --- Ajustements Mobile (2 Lignes) --- */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: center; /* Centre tout sur mobile */
+        gap: 8px;
+        padding: 12px 5%;
+    }
+
+    .nav-brand {
+        flex: 0 0 100%; /* Force le logo à prendre toute la largeur */
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
+    .nav-menu {
+        flex: 0 0 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 12px; /* Réduit l'espace pour que tout rentre sur une ligne */
+    }
+
+    .nav-links a {
+        font-size: 0.65rem; /* Taille optimisée pour petits écrans */
+    }
+}
+
+/* --- Ajustements Desktop (1 Ligne) --- */
+@media (min-width: 769px) {
+    .navbar {
+        flex-wrap: nowrap;
+        height: 70px;
+    }
+}
 /* HERO */
 .hero { padding: 150px 5% 80px; display: flex; justify-content: center; }
 .hero-container { display: flex; align-items: center; gap: 40px; max-width: 1100px; flex-wrap: wrap; }
