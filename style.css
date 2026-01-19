@@ -33,9 +33,58 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakar
     border-bottom: 1px solid var(--border); 
     display: flex; align-items: center; justify-content: space-between;
 }
-.nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-.nav-links a { text-decoration: none; color: var(--text); font-size: 0.75rem; transition: 0.3s; }
-.nav-links a:hover, .highlight { color: var(--blue); }
+.nav-links { 
+    display: flex; 
+    gap: 20px; 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    align-items: center;
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-size: 0.9rem; /* Taille augmentée pour Desktop (0.75 était très petit) */
+    transition: 0.3s; 
+    font-weight: 500;
+    white-space: nowrap; /* Empêche le texte de revenir à la ligne bizarrement */
+}
+
+.nav-links a:hover, .highlight { 
+    color: var(--blue); 
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .nav-links { 
+        gap: 10px; /* Réduit l'espace entre les liens pour gagner de la place */
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap; /* Permet aux liens de passer à la ligne si l'écran est trop étroit */
+    }
+
+    .nav-links a { 
+        font-size: 0.8rem; /* Un peu plus petit sur mobile pour tout faire tenir */
+        padding: 5px 2px;
+    }
+}
+
+/* Cas des écrans très petits (iPhone SE, etc.) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+    
+    .nav-links {
+        gap: 8px;
+    }
+    
+    .nav-links a {
+        font-size: 0.7rem;
+        letter-spacing: -0.2px; /* Resserre légèrement les lettres pour éviter le débordement */
+    }
+}
 
 .theme-btn {
     background: none; border: 1px solid var(--border); color: var(--white);
@@ -67,12 +116,25 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakar
 }
 
 /* --- UNIVERS MÉTIER & TOOLBOX --- */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
 .card-item { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
 .card-item:hover { border-color: var(--blue); transform: translateY(-5px); }
 
-.toolbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.toolbox-category { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); }
+.toolbox-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; /* C'est cette ligne qui centre les colonnes du bas */
+    gap: 30px; 
+}
+
+.toolbox-category { 
+    flex: 1 1 300px; /* Equivalent du minmax(300px, 1fr) */
+    max-width: 400px; /* Optionnel : pour éviter que les cartes ne deviennent trop larges */
+    background: var(--card); 
+    padding: 30px; 
+    border-radius: 20px; 
+    border: 1px solid var(--border); 
+}
 .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; justify-content: center;}
 .tag { background: var(--tag-bg); color: var(--text); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; border: 1px solid var(--border); }
 
@@ -91,8 +153,49 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakar
 .reco-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
 .reco-track { display: flex; gap: 20px; overflow-x: auto; scroll-behavior: smooth; padding: 20px 0; scrollbar-width: none; width: 100%; }
 .reco-track::-webkit-scrollbar { display: none; }
-.reco-card { flex: 0 0 320px; background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); }
-.arrow-btn { background: var(--blue); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10; position: absolute; display: flex; align-items: center; justify-content: center; }
+/* --- TÉMOIGNAGES (CORRECTION LISIBILITÉ) --- */
+.reco-card { 
+    flex: 0 0 320px; 
+    background: var(--card); 
+    padding: 30px; 
+    border-radius: 20px; 
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Le texte du témoignage */
+.reco-text { 
+    color: var(--text); 
+    font-style: italic; 
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Le nom de la personne (on force l'utilisation de var(--white) qui devient noir en light) */
+.reco-author { 
+    display: block;
+    color: var(--white); 
+    font-weight: 800; 
+    font-size: 1rem;
+    margin-top: auto; /* Pousse le nom en bas de la carte */
+}
+
+/* Le poste / l'entreprise */
+.reco-job { 
+    display: block;
+    color: var(--blue); 
+    font-size: 0.75rem; 
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* Correction spécifique pour le mode Light si nécessaire */
+[data-theme="light"] .reco-card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}.arrow-btn { background: var(--blue); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10; position: absolute; display: flex; align-items: center; justify-content: center; }
 .prev { left: -20px; } .next { right: -20px; }
 
 @media (max-width: 768px) {
@@ -130,6 +233,7 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakar
     border: 1px solid var(--blue); 
     max-width: 600px; width: 100%; max-height: 85vh; 
     overflow-y: auto; position: relative;
+    scroll-behavior: auto !important; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     color: var(--text); /* Assure que le texte suit le thème */
 }
