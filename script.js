@@ -14,25 +14,28 @@ const recs = [
 
 const track = document.getElementById('recoTrack');
 if(track) {
-    recs.forEach(r => {
-        track.innerHTML += `
-            <div class="reco-card">
-                <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
-                    <img src="${r.img}" style="width:45px;border-radius:50%">
-                    <div><h4 style="color:#fff;font-size:0.9rem">${r.n}</h4><p style="font-size:0.65rem;color:#3b82f6">${r.r}</p></div>
+    track.innerHTML = recs.map(r => `
+        <div class="reco-card">
+            <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
+                <img src="${r.img}" style="width:45px;border-radius:50%;border: 1px solid var(--border)">
+                <div>
+                    <h4 style="color:var(--white);font-size:0.9rem;margin:0">${r.n}</h4>
+                    <p style="font-size:0.65rem;color:var(--blue);font-weight:700;margin:0;text-transform:uppercase">${r.r}</p>
                 </div>
-                <p style="font-size:0.85rem;font-style:italic;color:#ccc">"${r.t}"</p>
-                <a href="#" style="display:block;margin-top:10px;font-size:0.6rem;color:#555;text-decoration:none">Profil LinkedIn ↗</a>
             </div>
-        `;
-    });
+            <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
+            <a href="#" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
+        </div>
+    `).join('');
 }
 
 function scrollR(d) {
-    const cardWidth = track.querySelector('.reco-card').offsetWidth + 20;
-    track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
+    const card = track.querySelector('.reco-card');
+    if(card) {
+        const cardWidth = card.offsetWidth + 20;
+        track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
+    }
 }
-
 // DESCRIPTIONS STRUCTURÉES
 const exps = {
     'malin': {
@@ -167,3 +170,42 @@ themeToggle.addEventListener('click', () => {
     // Indispensable pour mettre à jour l'icône Lucide
     lucide.createIcons();
 });
+
+// Fonction pour ouvrir la modale
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    const modalContent = modal.querySelector('.modal-content');
+
+    // 1. On affiche la modale
+    modal.style.display = 'flex';
+
+    // 2. LA LIGNE MAGIQUE : On remonte tout en haut du contenu
+    if (modalContent) {
+        modalContent.scrollTop = 0;
+    }
+
+    // 3. On empêche le scroll du site en arrière-plan
+    document.body.style.overflow = 'hidden';
+}
+
+// Fonction pour fermer la modale
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    // 1. On cache la modale
+    modal.style.display = 'none';
+
+    // 2. On réactive le scroll du site
+    document.body.style.overflow = 'auto';
+}
+
+// Optionnel : Fermer la modale si on clique sur l'overlay (le fond sombre)
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
