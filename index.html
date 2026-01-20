@@ -12,7 +12,7 @@
 
 <nav class="navbar">
     <div class="nav-brand">
-        <div class="logo">Cédric ALINC</div>
+        <a href="#" class="logo" style="text-decoration: none; color: inherit;">Cédric ALINC</a>
     </div>
     <div class="nav-menu">
         <ul class="nav-links">
@@ -34,8 +34,13 @@
         
         <div class="title-group">
             <div class="hero-image-wrapper">
-                <img style="margin: 20px 0 0 0;" src="https://media.licdn.com/dms/image/v2/D4E03AQEknWlAtfHEAA/profile-displayphoto-scale_200_200/B4EZvTUvkzKgAc-/0/1768776990823?e=1770249600&v=beta&t=m3Is1Q9dTOhJ3hd5XJ6M6BqQ7asfrbNW8R5utvaMCo8" alt="Cédric Alinc" class="profile-img">
-            </div>
+    <div class="pulse-container" style="width: 150px; height: 150px; margin: 20px auto;">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEknWlAtfHEAA/profile-displayphoto-scale_200_200/B4EZvTUvkzKgAc-/0/1768776990823?e=1770249600&v=beta&t=m3Is1Q9dTOhJ3hd5XJ6M6BqQ7asfrbNW8R5utvaMCo8" 
+             alt="Cédric Alinc" 
+             class="profile-img pulse-img" 
+             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </div>
+</div>
             <h1 class="hero-title">
                 Concevoir pour l’<span class="highlight">utilisateur</span> ;<br>
                 Piloter par la <span class="highlight">donnée.</span>
@@ -76,7 +81,7 @@
         <div class="methodo-step">
             <div class="step-icon">01</div>
             <h4>Discovery</h4>
-            <p>Analyse Data, Audit, Interviews, User Research, Etude des processus, Identification des besoins, paint points et opportunités.</p>
+            <p>Analyse Data, Audit, Interviews, User Research, Étude des processus, Identification des besoins, paint points et opportunités.</p>
         </div>
         <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
         <div class="methodo-step">
@@ -155,7 +160,7 @@
 </section>
 
 <section id="temoignages" class="section bg-alt">
-    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>émoignages</h2>
+    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>émoignages <span id="reco-count" class="badge-count">0</span></h2>
     <div class="reco-wrapper">
         <button class="arrow-btn prev" onclick="scrollR(-1)"><i data-lucide="chevron-left"></i></button>
         <div class="reco-track" id="recoTrack"></div>
@@ -199,80 +204,96 @@
     </div>
 
     <div class="dual-layout">
-        <div class="info-block-container">
-            <h2 class="section-heading"><strong><span class="highlight">F</span></strong>ormations</h2>
-            <div class="info-block">
-                <div class="list-item">
-                    <span class="item-year">2025</span>
-                    <div class="item-content">
-                        <div class="item-title">Data Engineer / Analyst</div>
-                        <div class="item-org">La Capsule</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2020</span>
-                    <div class="item-content">
-                        <div class="item-title">Développeur Fullstack JS - RNCP 6</div>
-                        <div class="item-org">La Capsule</div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="list-item">
-                    <span class="item-year">2021</span>
-                    <div class="item-content">
-                        <div class="item-title">Expertise Full Stack & Ingénierie pédagogique (~42h)</div>
-                        <div class="item-org">Openclassrooms</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2019</span>
-                    <div class="item-content">
-                        <div class="item-title">Fondamentaux Tech & Business (~41h)</div>
-                        <div class="item-org">Openclassrooms</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2018</span>
-                    <div class="item-content">
-                        <div class="item-title">Design Thinking, UX & Agilité (~45h)</div>
-                        <div class="item-org">Openclassrooms</div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="list-item">
-                    <span class="item-year">2010</span>
-                    <div class="item-content">
-                        <div class="item-title">M2 Management Stratégique et Entrepreneuriat</div>
-                        <div class="item-org">Paris II Panthéon-Assas</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2009</span>
-                    <div class="item-content">
-                        <div class="item-title">M1 Maîtrise des Sciences de Gestion</div>
-                        <div class="item-org">Paris II Panthéon-Assas</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2007</span>
-                    <div class="item-content">
-                        <div class="item-title">DUT Gestion des Entreprises et Administrations</div>
-                        <div class="item-org">Paris V Paris Cité</div>
-                    </div>
-                </div>
+<div class="info-block-container">
+    <h2 class="section-heading" style="text-align:left;"><strong><span class="highlight">F</span></strong>ormations</h2>
+    <div class="info-block formation-timeline">
+        
+        <div class="formation-category">
+            <i data-lucide="graduation-cap"></i> <span>Bootcamps & Stratégie</span>
+        </div>
+        
+        <div class="list-item">
+            <span class="item-year">2025</span>
+            <div class="item-content">
+                <div class="item-title">Data Engineer / Analyst</div>
+                <div class="item-org">La Capsule</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2022</span>
+            <div class="item-content">
+                <div class="item-title">Product Strategy</div>
+                <div class="item-org">Join Lion</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2020</span>
+            <div class="item-content">
+                <div class="item-title">Développeur Fullstack JS - RNCP 6</div>
+                <div class="item-org">La Capsule</div>
             </div>
         </div>
 
+        <div class="formation-category">
+            <i data-lucide="monitor-play"></i> <span>Expertises en ligne</span>
+        </div>
+
+        <div class="list-item">
+            <span class="item-year">2021</span>
+            <div class="item-content">
+                <div class="item-title">Full Stack & Ingénierie pédagogique (~42h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2019</span>
+            <div class="item-content">
+                <div class="item-title">Fondamentaux Tech & Business (~41h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2018</span>
+            <div class="item-content">
+                <div class="item-title">Design Thinking, UX & Agilité (~45h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+
+        <div class="formation-category">
+            <i data-lucide="book-open"></i> <span>Université</span>
+        </div>
+
+        <div class="list-item">
+            <span class="item-year">2010</span>
+            <div class="item-content">
+                <div class="item-title">M2 Management Stratégique et Entrepreneuriat</div>
+                <div class="item-org">Paris II Panthéon-Assas</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2009</span>
+            <div class="item-content">
+                <div class="item-title">M1 Maîtrise des Sciences de Gestion</div>
+                <div class="item-org">Paris II Panthéon-Assas</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2007</span>
+            <div class="item-content">
+                <div class="item-title">DUT Gestion des Entreprises et Administrations</div>
+                <div class="item-org">Paris V Paris Cité</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <div class="info-block-container">
             <h2 class="section-heading"><strong><span class="highlight">C</span></strong>ertifications</h2>
-            <div class="info-block">
-                <div class="list-item">
-                    <span class="item-year">2022</span>
-                    <div class="item-content">
-                        <div class="item-title">Product Strategy</div>
-                        <div class="item-org">Join Lion</div>
-                    </div>
-                </div>
+            <div class="info-block formation-timeline">
+        
+                   
                 <div class="list-item">
                     <span class="item-year">2021</span>
                     <div class="item-content">
@@ -304,17 +325,19 @@
             </div>
 
 <div class="info-block-container">
-            <h2 class="section-heading"><strong><span class="highlight">B</span></strong>énévolat (15 ans)</h2>
-            <div class="info-block" style="padding: 4px 30px">
-		<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        	<i data-lucide="cross" style="color:red"></i>
-        	<span>Croix-Rouge française</span>
-    	</h3>
+            <h2 class="section-heading"><strong><span class="highlight">B</span></strong>énévolat</h2>
+              <div class="info-block formation-timeline">
+        
+        <div class="formation-category">
+            <i data-lucide="cross" style="color:red"></i>
+        	<span>Croix-Rouge française <span class="badge-count">15 ans</span></span>
+
+        </div>
 
                 <div class="list-item">
                     <span class="item-year">2016</span>
                     <div class="item-content">
-                        <div class="item-title">Elu et Responsable local</div>
+                        <div class="item-title">Élu et Responsable local</div>
                         <div class="item-org">5 ans</div>
                     </div>
                 </div>
@@ -413,6 +436,6 @@
 </div>
 
 <script src="script.js"></script>
-<script>lucide.createIcons();</script>
+
 </body>
 </html>
