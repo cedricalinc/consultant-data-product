@@ -25,6 +25,11 @@
 html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
 body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.3s; line-height: 1.6; }
 
+
+
+html {
+    scroll-behavior: smooth;
+}
 /* --- NAVBAR FIXE --- */
 .navbar { 
     position: fixed; top: 0; left: 0; width: 100%; 
@@ -449,4 +454,130 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakar
 }
 [data-theme="light"] .modal-list li:hover {
     color: var(--blue);
+}
+
+.badge-count {
+    background: var(--blue); /* Utilise ta couleur bleue */
+    color: white;
+    font-size: 0.9rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-weight: bold;
+    display: inline-block;
+    opacity: 0.8;
+}
+
+/* Conteneur pour l'effet onde */
+.pulse-container {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* L'onde (la vibration) */
+.pulse-container::before {
+    content: '';
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background: rgba(0, 119, 181, 0.4); /* Bleu LinkedIn translucide */
+    animation: wave-vibration 2s infinite;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* L'image de profil */
+.pulse-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2; /* L'image passe devant l'onde */
+    border: 2px solid var(--bg); /* Un contour pour séparer l'image de l'onde */
+    position: relative;
+}
+
+/* Animation de l'onde */
+@keyframes wave-vibration {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+/* IMPORTANT : On autorise le débordement sur la carte pour voir l'onde */
+.reco-card {
+    position: relative;
+    overflow: visible !important; 
+}
+
+
+
+
+
+/* On enlève la bordure par défaut de TOUS les info-blocks si elle y est */
+.info-block {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* On applique la timeline UNIQUEMENT à la colonne de gauche */
+.formation-timeline {
+    border-left: 2px solid var(--border) !important;
+    border-radius: 0 20px 20px 0; /* Arrondi seulement à droite pour l'esthétique */
+    padding-left: 30px;
+    margin-left: 10px;
+}
+
+.formation-category {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 15px -40px; /* On le fait ressortir à gauche sur la ligne */
+    color: var(--blue);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    background: var(--bg); /* Pour masquer la ligne derrière le titre de catégorie */
+    width: fit-content;
+    padding: 2px 10px;
+}
+
+.formation-timeline .list-item {
+    position: relative;
+    margin-bottom: 25px;
+    display: block; /* On repasse en block pour empiler année et titre */
+}
+
+/* Le point sur la ligne pour chaque formation */
+.formation-timeline .list-item::before {
+    content: '';
+    position: absolute;
+    left: -41px; /* Ajusté pour tomber pile sur la border-left */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--blue);
+    border-radius: 50%;
+    border: 3px solid var(--card);
+    z-index: 2;
+}
+
+.formation-timeline .item-year {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.formation-timeline .item-title {
+    font-size: 1rem;
+    line-height: 1.3;
 }
