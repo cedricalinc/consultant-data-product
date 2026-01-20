@@ -1,42 +1,32 @@
-// 10 RECOMMANDATIONS DÉTAILLÉES
+/* ==========================================================================
+   1. DONNÉES (RECOMMANDATIONS & EXPÉRIENCES)
+   ========================================================================== */
+
 const recs = [
-    { n: "Julie D.", r: "Head of Product @ Tech", t: "Cédric a transformé notre approche de la donnée. Un PM brillant.", img: "https://i.pravatar.cc/100?u=1" },
-    { n: "Marc A.", r: "CTO @ Startup", t: "Profil hybride rare, expert SQL et Vision Produit.", img: "https://i.pravatar.cc/100?u=2" },
-    { n: "Sophie L.", r: "Directrice ESS", t: "Rigueur et engagement exceptionnels sur nos projets SI.", img: "https://i.pravatar.cc/100?u=3" },
-    { n: "Thomas B.", r: "Lead Data Engineer", t: "Ses architectures dbt sont propres, scalables et bien documentées.", img: "https://i.pravatar.cc/100?u=4" },
-    { n: "Inès R.", r: "CEO @ GreenTech", t: "Efficacité redoutable sur l'automatisation No-code.", img: "https://i.pravatar.cc/100?u=5" },
-    { n: "Kevin L.", r: "Senior PO", t: "Sait parfaitement traduire le business en specs techniques.", img: "https://i.pravatar.cc/100?u=6" },
-    { n: "Amélie K.", r: "Consultante RH", t: "La gamification de nos outils a boosté l'onboarding.", img: "https://i.pravatar.cc/100?u=7" },
-    { n: "Paul W.", r: "Product Manager", t: "Un expert de l'Agilité Scrum et de la roadmap valeur.", img: "https://i.pravatar.cc/100?u=8" },
-    { n: "Claire G.", r: "Operations Manager", t: "Gain de temps de 30% grâce à ses automatisations Make.", img: "https://i.pravatar.cc/100?u=9" },
-    { n: "Jean-Luc M.", r: "DF", t: "Maîtrise parfaite des flux SI complexes et critiques.", img: "https://i.pravatar.cc/100?u=10" }
+    { 
+        n: "Mahé BANDEIRA DE VIVAR", 
+        r: "Chef de projet - iPorta", 
+        t: "Cédric est quelqu'un de très organisé, très réactif et vif d'esprit. J'ai apprécié sa qualité de travail.", 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQF-qGvOqZCa6Q/profile-displayphoto-shrink_100_100/B4EZb80nHNHIAU-/0/1747998373569?e=1770249600&v=beta&t=x1E33hJYt9bW8ZleLlg669bMmXwwsKRA7oOVoPIhq78", 
+        lien: "https://www.linkedin.com/in/mahe-de-vivar/" 
+    },
+    { 
+        n: "Damya BOUKHEMAL", 
+        r: "Product Owner - CFA Numia", 
+        t: `J’ai beaucoup apprécié travailler avec Cédric. Son expérience et sa vision ont apporté une réelle plus value à notre équipe. Au-delà de ses solides compétences professionnelles, c’est un manager qui sait les mettre en œuvre avec efficacité et surtout les partager avec son équipe. J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. Son sens du collectif, sa capacité à accompagner et à faire monter les autres en compétences font de lui un professionnel fiable et engagé.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQGSetwnwBe-9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686747440629?e=1770249600&v=beta&t=emrdqqW3z5ceMDb-_t8eCcywMYJuZQZppFUs67SBb7U", 
+        lien: "https://www.linkedin.com/in/damya-boukhemal/" 
+    },
+    { n: "Sophie L.", r: "Directrice ESS", t: "Rigueur et engagement exceptionnels sur nos projets SI.", img: "https://i.pravatar.cc/100?u=3", lien: "#" },
+    { n: "Thomas B.", r: "Lead Data Engineer", t: "Ses architectures dbt sont propres, scalables et bien documentées.", img: "https://i.pravatar.cc/100?u=4", lien: "#" },
+    { n: "Inès R.", r: "CEO @ GreenTech", t: "Efficacité redoutable sur l'automatisation No-code.", img: "https://i.pravatar.cc/100?u=5", lien: "#" },
+    { n: "Kevin L.", r: "Senior PO", t: "Sait parfaitement traduire le business en specs techniques.", img: "https://i.pravatar.cc/100?u=6", lien: "#" },
+    { n: "Amélie K.", r: "Consultante RH", t: "La gamification de nos outils a boosté l'onboarding.", img: "https://i.pravatar.cc/100?u=7", lien: "#" },
+    { n: "Paul W.", r: "Product Manager", t: "Un expert de l'Agilité Scrum et de la roadmap valeur.", img: "https://i.pravatar.cc/100?u=8", lien: "#" },
+    { n: "Claire G.", r: "Operations Manager", t: "Gain de temps de 30% grâce à ses automatisations Make.", img: "https://i.pravatar.cc/100?u=9", lien: "#" },
+    { n: "Jean-Luc M.", r: "DF", t: "Maîtrise parfaite des flux SI complexes et critiques.", img: "https://i.pravatar.cc/100?u=10", lien: "#" }
 ];
 
-const track = document.getElementById('recoTrack');
-if(track) {
-    track.innerHTML = recs.map(r => `
-        <div class="reco-card">
-            <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
-                <img src="${r.img}" style="width:45px;border-radius:50%;border: 1px solid var(--border)">
-                <div>
-                    <h4 style="color:var(--white);font-size:0.9rem;margin:0">${r.n}</h4>
-                    <p style="font-size:0.65rem;color:var(--blue);font-weight:700;margin:0;text-transform:uppercase">${r.r}</p>
-                </div>
-            </div>
-            <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
-            <a href="#" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
-        </div>
-    `).join('');
-}
-
-function scrollR(d) {
-    const card = track.querySelector('.reco-card');
-    if(card) {
-        const cardWidth = card.offsetWidth + 20;
-        track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
-    }
-}
-// DESCRIPTIONS STRUCTURÉES
 const exps = {
     'malin': {
         h: "Programme Malin",
@@ -56,14 +46,12 @@ const exps = {
         missions: ["Optimisation de processus financiers","Rédaction spécifications SI", "Pilotage des développements","Pilotage d'outils SI"],
         impacts: ["Fiabilisation des flux critiques", "Accélération des cycles de facturation","Pilotage sécurisé de millions d'€uros de budget Immo"]
     },
-
     'visiativ': {
         h: "Iporta - Visiativ",
         t: "Ingénieur Développement",
         missions: ["Développement de fonctionnalités spécifiques", "Création d'un parcours gamifié pour les nouveaux employés"],
-        impacts: ["Fonctionnalités sur-mesures pour les clients", "Sentiment d'accueil positif supérieur de 50%"]
+        impacts: ["Fonctionnalités sur-mesure pour les clients", "Sentiment d'accueil positif supérieur de 50%"]
     },
-
     'crf': {
         h: "Croix-Rouge française",
         t: "Product Manager/Chef de projet SI",
@@ -74,20 +62,63 @@ const exps = {
         h: "Historique",
         t: "Parcours 2006 - 2013",
         missions: [
-		"2006 : BNP - CDD </br>Episodique Procurement",
-		"2007 : Edu-Performance Canada </br>Stage Comptabilité",
-		"2007 : ESSEC - CDD </br>Formation Intra",
-		"2007 : Assurances BRED - CDD </br>Gestionnaire",
-		"2008 : Armée de l'Air - Stage </br>Ressources Humaines",
-		"2009-2010 : Plateforme du Bâtiment (Saint-Gobain) - Alternance </br>Contrôleur de Gestion",
-		"2011 - 2013 : Croix-Rouge - CDD </br>Secouriste professionnel",
-		"2013 : Cedeo (Saint-Gobain) - CDI </br>Gestionnaire Stock et Offre"],
+            "2006 : BNP - CDD <br>Episodique Procurement",
+            "2007 : Edu-Performance Canada <br>Stage Comptabilité",
+            "2007 : ESSEC - CDD <br>Formation Intra",
+            "2007 : Assurances BRED - CDD <br>Gestionnaire",
+            "2008 : Armée de l'Air - Stage <br>Ressources Humaines",
+            "2009-2010 : Plateforme du Bâtiment (Saint-Gobain) - Alternance <br>Contrôleur de Gestion",
+            "2011 - 2013 : Croix-Rouge - CDD <br>Secouriste professionnel",
+            "2013 : Cedeo (Saint-Gobain) - CDI <br>Gestionnaire Stock et Offre"],
         impacts: ["Parcours formateur multi-directions en back et front office"]
     }
 };
+// Mise à jour du compteur
+const countElement = document.getElementById('reco-count');
+if(countElement) {
+    countElement.innerText = recs.length;
+}
+
+/* ==========================================================================
+   2. INJECTION & CAROUSEL RECOMMANDATIONS
+   ========================================================================== */
+
+const track = document.getElementById('recoTrack');
+if(track) {
+    track.innerHTML = recs.map(r => `
+        <div class="reco-card">
+            <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
+                <div class="pulse-container">
+                    <img src="${r.img}" class="pulse-img" style="width:45px; height:45px; border-radius:50%; border: 1px solid var(--border); object-fit: cover;">
+                </div>
+                <div>
+                    <h4 style="color:var(--white);font-size:0.9rem;margin:0">${r.n}</h4>
+                    <p style="font-size:0.65rem;color:var(--blue);font-weight:700;margin:0;text-transform:uppercase">${r.r}</p>
+                </div>
+            </div>
+            <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
+            <a href="${r.lien}" target="_blank" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
+        </div>
+    `).join('');
+}
+
+function scrollR(d) {
+    if(!track) return;
+    const card = track.querySelector('.reco-card');
+    if(card) {
+        const cardWidth = card.offsetWidth + 20;
+        track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
+    }
+}
+
+/* ==========================================================================
+   3. GESTION DES MODALES (EXPÉRIENCES & LÉGAL)
+   ========================================================================== */
 
 function openM(id) {
     const data = exps[id];
+    if(!data) return;
+
     const missionsHTML = data.missions.map(m => `<li>${m}</li>`).join('');
     const impactsHTML = data.impacts ? `
         <div class="modal-section impact-box">
@@ -107,24 +138,42 @@ function openM(id) {
         ${impactsHTML}
         <button onclick="closeM()" class="modal-close-btn">Fermer</button>
     `;
-    document.getElementById('modal').style.display = 'flex';
+    
+    const modal = document.getElementById('modal');
+    modal.style.display = 'flex';
+    const content = modal.querySelector('.modal-content');
+    if(content) content.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
     lucide.createIcons();
 }
 
-function closeM() { document.getElementById('modal').style.display = 'none'; }
-lucide.createIcons();
+function closeM() { 
+    document.getElementById('modal').style.display = 'none'; 
+    document.body.style.overflow = 'auto';
+}
 
+function openLegal() { document.getElementById('modal-legal').style.display = 'flex'; }
+function closeLegal() { document.getElementById('modal-legal').style.display = 'none'; }
 
+// Fermeture au clic sur le fond (overlay)
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+        e.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+/* ==========================================================================
+   4. ACTIONS UTILISATEURS (MAIL & THEME)
+   ========================================================================== */
 
 function handleMailClick(event, email) {
     navigator.clipboard.writeText(email).then(() => {
         const btn = document.getElementById('emailBtn');
         const originalContent = btn.innerHTML;
-
         btn.innerHTML = '<i data-lucide="check"></i> <span>Mail copié !</span>';
         btn.style.background = "#059669";
         lucide.createIcons();
-
         setTimeout(() => {
             btn.innerHTML = originalContent;
             btn.style.background = "";
@@ -133,79 +182,31 @@ function handleMailClick(event, email) {
     });
 }
 
-function openLegal() {
-    document.getElementById('modal-legal').style.display = 'flex';
-}
-
-function closeLegal() {
-    document.getElementById('modal-legal').style.display = 'none';
-}
-
-
+// --- GESTION DU THÈME (VERSION CORRIGÉE) ---
 const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
 
-// Vérifier si l'utilisateur a déjà une préférence enregistrée
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'light') {
-        themeIcon.setAttribute('data-lucide', 'moon');
-    }
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // On change l'icône à l'intérieur du bouton
+    const newIconName = (theme === 'light') ? 'moon' : 'sun';
+    
+    // On force la réécriture du HTML interne pour être sûr que Lucide le voit
+    themeToggle.innerHTML = `<i data-lucide="${newIconName}"></i>`;
+    
+    // On demande à Lucide de transformer le <i> en icône
+    lucide.createIcons();
 }
+
+// Initialisation au chargement
+const savedTheme = localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
 
 themeToggle.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    
-    if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeIcon.setAttribute('data-lucide', 'sun');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        themeIcon.setAttribute('data-lucide', 'moon');
-    }
-    
-    // Indispensable pour mettre à jour l'icône Lucide
-    lucide.createIcons();
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'light' ? 'dark' : 'light');
 });
 
-// Fonction pour ouvrir la modale
-function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
-
-    const modalContent = modal.querySelector('.modal-content');
-
-    // 1. On affiche la modale
-    modal.style.display = 'flex';
-
-    // 2. LA LIGNE MAGIQUE : On remonte tout en haut du contenu
-    if (modalContent) {
-        modalContent.scrollTop = 0;
-    }
-
-    // 3. On empêche le scroll du site en arrière-plan
-    document.body.style.overflow = 'hidden';
-}
-
-// Fonction pour fermer la modale
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
-
-    // 1. On cache la modale
-    modal.style.display = 'none';
-
-    // 2. On réactive le scroll du site
-    document.body.style.overflow = 'auto';
-}
-
-// Optionnel : Fermer la modale si on clique sur l'overlay (le fond sombre)
-window.onclick = function(event) {
-    if (event.target.classList.contains('modal-overlay')) {
-        event.target.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
+// Lancement final des icônes pour le reste de la page
+lucide.createIcons();
