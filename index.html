@@ -1,244 +1,448 @@
-/* ==========================================================================
-   1. DONNÉES (RECOMMANDATIONS & EXPÉRIENCES)
-   ========================================================================== */
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cédric Alinc | Product Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
 
-const recs = [
-    { 
-        n: "Mahé BANDEIRA DE VIVAR", 
-        r: "Chef de projet - iPorta", 
-        t: "Cédric est quelqu'un de très organisé, très réactif et vif d'esprit. J'ai apprécié sa qualité de travail.", 
-        img: "https://media.licdn.com/dms/image/v2/D4E03AQF-qGvOqZCa6Q/profile-displayphoto-shrink_100_100/B4EZb80nHNHIAU-/0/1747998373569?e=1770249600&v=beta&t=x1E33hJYt9bW8ZleLlg669bMmXwwsKRA7oOVoPIhq78", 
-        lien: "https://www.linkedin.com/in/mahe-de-vivar/",
- 	tags: ["Product", "Organisation"]
-    },
-    { 
-        n: "Damya BOUKHEMAL", 
-        r: "Product Owner - CFA Numia", 
-        t: `J’ai beaucoup apprécié travailler avec Cédric. Son expérience et sa vision ont apporté une réelle plus value à notre équipe. Au-delà de ses solides compétences professionnelles, c’est un manager qui sait les mettre en œuvre avec efficacité et surtout les partager avec son équipe. J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. Son sens du collectif, sa capacité à accompagner et à faire monter les autres en compétences font de lui un professionnel fiable et engagé.`, 
-        img: "https://media.licdn.com/dms/image/v2/D4E03AQGSetwnwBe-9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686747440629?e=1770249600&v=beta&t=emrdqqW3z5ceMDb-_t8eCcywMYJuZQZppFUs67SBb7U", 
-        lien: "https://www.linkedin.com/in/damya-boukhemal/",
-	tags: ["Management", "Product", "Agilité"] 
-    },
-    { 	n: "Ludovic LEVY", 
-	r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
-	t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une personne sur qui l’on peut compter en toutes circonstances. Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la solidité de ses engagements et sa loyauté exemplaire. Cédric est un collaborateur toujours jovial, qui apporte une énergie positive au sein d'une équipe. Je le recommande vivement pour son professionnalisme et ses qualités humaines rares.`, 
-	img: "https://media.licdn.com/dms/image/v2/D4E03AQHpM0Tmo9W20A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700547120552?e=1770249600&v=beta&t=bOkdL8GlSc9TsFHkSQTguflZACma6f8c9LhnoR5x2Vk", 
-	lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
-	tags: ["Equipe", "Product", "SoftSkills"] 
-    }
-];
+<nav class="navbar">
+    <div class="nav-brand">
+        <a href="#" class="logo" style="text-decoration: none; color: inherit;">Cédric ALINC</a>
+    </div>
+    <div class="nav-menu">
+        <ul class="nav-links">
+            <li><a href="#sectors"><strong><span class="highlight">U</span></strong>nivers</a></li>
+            <li><a href="#methodo"><strong><span class="highlight">M</span></strong>éthode</a></li>
+            <li><a href="#temoignages"><strong><span class="highlight">T</span></strong>émoignages</a></li>
+            <li><a href="#experience"><strong><span class="highlight">P</span></strong>arcours</a></li>
+            <li><a href="#contact"><strong><span class="highlight">C</span></strong>ontact</a></li>
+        </ul>
+    </div>
+    <button id="theme-toggle" class="theme-btn" aria-label="Changer le mode">
+        <i data-lucide="sun" id="theme-icon"></i>
+    </button>
+</nav>
 
-const exps = {
-    'malin': {
-        h: "Programme Malin",
-        t: "Accompagnement stratégique et technologique",
-        missions: ["Interviews métiers", "Création d'un Intranet", "SI pour le suivi projet et BUJO"],
-        impacts: ["Amélioration du pilotage des projets", "Optimisation du pilotage des Business Units"]
-    },
-    'numia': {
-        h: "CFA numiA",
-        t: "Product Manager, Directeur",
-        missions: ["Transformation numérique", "Optimisation des processus", "Pilotage de direction"],
-        impacts: ["Gain de productivité de 50% sur l'administratif alternance", "Simplification d'usage et de pilotage pour 15K users","Tableaux de bords interactifs"]
-    },
-    'clemence': {
-        h: "Clémence Consulting",
-        t: "Consultant Product Owner",
-        missions: ["Optimisation de processus financiers","Rédaction spécifications SI", "Pilotage des développements","Pilotage d'outils SI"],
-        impacts: ["Fiabilisation des flux critiques", "Accélération des cycles de facturation","Pilotage sécurisé de millions d'€uros de budget Immo"]
-    },
-    'visiativ': {
-        h: "Iporta - Visiativ",
-        t: "Ingénieur Développement",
-        missions: ["Développement de fonctionnalités spécifiques", "Création d'un parcours gamifié pour les nouveaux employés"],
-        impacts: ["Fonctionnalités sur-mesure pour les clients", "Sentiment d'accueil positif supérieur de 50%"]
-    },
-    'crf': {
-        h: "Croix-Rouge française",
-        t: "Product Manager/Chef de projet SI",
-        missions: ["Pilotage SI pour 60 000 utilisateurs","Mise en place de tableaux de bords", "Dématérialisation factures fournisseurs"],
-        impacts: ["Des millions d'heures de bénévolat actives", "Tableaux de bords remplis par le terrain directement", "Délai de traitement des factures réduit de 70%"]
-    },
-    'histo': {
-        h: "Historique",
-        t: "Parcours 2006 - 2013",
-        missions: [
-            "2006 : BNP - CDD <br>Episodique Procurement",
-            "2007 : Edu-Performance Canada <br>Stage Comptabilité",
-            "2007 : ESSEC - CDD <br>Formation Intra",
-            "2007 : Assurances BRED - CDD <br>Gestionnaire",
-            "2008 : Armée de l'Air - Stage <br>Ressources Humaines",
-            "2009-2010 : Plateforme du Bâtiment (Saint-Gobain) - Alternance <br>Contrôleur de Gestion",
-            "2011 - 2013 : Croix-Rouge - CDD <br>Secouriste professionnel",
-            "2013 : Cedeo (Saint-Gobain) - CDI <br>Gestionnaire Stock et Offre"],
-        impacts: ["Parcours formateur multi-directions en back et front office"]
-    }
-};
-// Mise à jour du compteur
-const countElement = document.getElementById('reco-count');
-if(countElement) {
-    countElement.innerText = recs.length;
-}
+<header class="hero">
+    <div class="hero-container" style="text-align: center;">
+        <span class="badge" >PROFIL HYBRIDE PRODUCT & DATA</span>
+        
+        <div class="title-group">
+            <div class="hero-image-wrapper">
+    <div class="pulse-container" style="width: 150px; height: 150px; margin: 20px auto;">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEknWlAtfHEAA/profile-displayphoto-scale_200_200/B4EZvTUvkzKgAc-/0/1768776990823?e=1770249600&v=beta&t=m3Is1Q9dTOhJ3hd5XJ6M6BqQ7asfrbNW8R5utvaMCo8" 
+             alt="Cédric Alinc" 
+             class="profile-img pulse-img" 
+             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </div>
+</div>
+            <h1 class="hero-title">
+                Concevoir pour l’<span class="highlight">utilisateur</span> ;<br>
+                Piloter par la <span class="highlight">donnée.</span>
+            </h1>
+        </div>
 
-/* ==========================================================================
-   2. INJECTION & CAROUSEL RECOMMANDATIONS (AVEC FILTRES)
-   ========================================================================== */
+        <div class="hero-content">
+            <p class="philosophy" style="text-align:left">
+                <strong>Product Manager</strong> avec un socle technique de <strong>Développeur Fullstack</strong> et de <strong>Modern Data Stack</strong>. <br><br>
+                J'allie les données à une écoute active des utilisateurs pour transformer des problématiques complexes en solutions simples, scalables et impactantes.<br><br>
+                Je peux vous accompagner dans la réflexion, les interviews, la création des process, le pilotage de projet ou la formation des utilisateurs.
+            </p>
+            
+            <div class="hero-stats" style="text-align: center;">
+                <div class="stat"><strong>>75K</strong><span>Users SI</span></div>
+                <div class="stat"><strong>20</strong><span>Années d'action</br>(bénévole & pro)</span></div>
+                <div class="stat"><strong>>1000</strong><span>Formés</span></div>
+                <div class="stat"><strong>>10</strong><span>Années d'encadrement </br>(bénévole & pro)</span></div>
+                <div class="stat"><strong>95%</strong><span>Test</br>OrthoPass</span></div>
+            </div>
+        </div>
+    </div>
+</header>
 
-function renderRecs(filter = 'Tous') {
-    const track = document.getElementById('recoTrack');
-    if(!track) return;
+<section id="sectors" class="section bg-alt">
+    <h2 class="section-heading"><strong><span class="highlight">U</span></strong>nivers métiers</h2>
+    <div class="grid-layout">
+        <div class="card-item"><i data-lucide="heart-pulse" style="color:red"></i><h3>Humanitaire & ESS</h3></div>
+        <div class="card-item"><i data-lucide="graduation-cap" style="color:coral"></i><h3>Formation et Education</h3></div>
+        <div class="card-item"><i data-lucide="landmark" style="color:gold"></i><h3>Banque et Assurance</h3></div>
+        <div class="card-item"><i data-lucide="home" style="color:indianred"></i><h3>Immobilier & Logistique</h3></div>
+    </div>
+</section>
 
-    // 1. Filtrage des données selon le tag
-    const filtered = filter === 'Tous' 
-        ? recs 
-        : recs.filter(r => r.tags && r.tags.includes(filter));
+<section id="methodo" class="section">
+    <h2 class="section-heading"><strong><span class="highlight">M</span></strong>éthode</h2>
+    <div class="methodo-flow">
+        <div class="methodo-step">
+            <div class="step-icon">01</div>
+            <h4>Discovery</h4>
+            <p>Analyse Data, Audit, Interviews, User Research, Étude des processus, Identification des besoins, paint points et opportunités.</p>
+        </div>
+        <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
+        <div class="methodo-step">
+            <div class="step-icon">02</div>
+            <h4>Strategy</h4>
+            <p>Rédaction des processus, Priorisation (RICE, MOSCOW), Roadmap, Alignement des architectures SI.</p>
+        </div>
+        <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
+        <div class="methodo-step">
+            <div class="step-icon">03</div>
+            <h4>Delivery</h4>
+            <p>Pilotage Agile Scrum, Rédaction de User stories, Automatisations, Data Monitoring.</p>
+        </div>
+    </div>
+</section>
 
-    // 2. Injection du HTML
-    track.innerHTML = filtered.map(r => `
-        <div class="reco-card fade-in">
-            <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
-                <div class="pulse-container">
-                    <img src="${r.img}" class="pulse-img" style="width:45px; height:45px; border-radius:50%; border: 1px solid var(--border); object-fit: cover;">
+<section id="skills" class="section">
+    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>oolbox <strong><span class="highlight">T</span></strong>echnique</h2>
+    <div class="toolbox-grid">
+        <div class="toolbox-category">
+	<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        	<i data-lucide="layers" style="color:DarkCyan"></i>
+        	<span>Data Stack</span>
+    	</h3>
+            <div class="tag-container">
+                <span class="tag">SQL</span>
+		<span class="tag">Python</span>
+		<span class="tag">Airbyte</span>
+		<span class="tag">Fivetran</span>
+		<span class="tag">Apache Kafka</span>
+		<span class="tag">Airflow</span>
+		<span class="tag">dbt</span>
+		<span class="tag">BigQuery</span>
+		<span class="tag">Tableau</span>
+		<span class="tag">Power BI</span>
+            </div>
+        </div>
+
+        <div class="toolbox-category">
+	<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        	<i data-lucide="layers" style="color:OrangeRed"></i>
+        	<span>Product</span>
+    	</h3>            
+	<div class="tag-container">
+                <span class="tag">Scrum</span>
+		<span class="tag">UX Research</span>
+		<span class="tag">Jira</span>
+		<span class="tag">Trello</span>
+		<span class="tag">Notion</span>
+		<span class="tag">Whimsical</span>
+		<span class="tag">Figma</span>
+		<span class="tag">RICE</span>
+		<span class="tag">MOSCOW</span>
+
+            </div>
+        </div>
+        <div class="toolbox-category">
+		<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        		<i data-lucide="layers" style="color:Gold"></i>
+        		<span>Tech & No-Code</span>
+    		</h3>
+            <div class="tag-container">
+                <span class="tag">Node.js</span>
+		<span class="tag">React</span>	
+		<span class="tag">React Native</span>	
+		<span class="tag">Reduce</span>	
+		<span class="tag">HTML</span>	
+		<span class="tag">CSS</span>	
+		<span class="tag">Javascript</span>	
+		<span class="tag">Java</span>	
+		<span class="tag">Make</span>
+		<span class="tag">n8n</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="temoignages" class="section bg-alt">
+    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>émoignages <span id="reco-count" class="badge-count">0</span></h2>
+    <div class="filter-container">
+    <button class="filter-btn active" onclick="filterRecs('Tous')">Tous</button>
+    <button class="filter-btn" onclick="filterRecs('Product')">Product</button>
+    <button class="filter-btn" onclick="filterRecs('Organisation')">Organisation</button>
+    <button class="filter-btn" onclick="filterRecs('SoftSkills')">SoftSkills</button>
+<button class="filter-btn" onclick="filterRecs('Management')">Management</button>
+    </div>
+    <div class="reco-wrapper">
+        <button class="arrow-btn prev" onclick="scrollR(-1)"><i data-lucide="chevron-left"></i></button>
+        <div class="reco-track" id="recoTrack"></div>
+        <button class="arrow-btn next" onclick="scrollR(1)"><i data-lucide="chevron-right"></i></button>
+    </div>
+</section>
+
+<section id="experience" class="section bg-alt">
+    <h2 class="section-heading"><strong><span class="highlight">P</span></strong>arcours <strong><span class="highlight">P</span></strong>rofessionnel</h2>
+    <div class="experience-list">
+        <div class="exp-card" onclick="openM('malin')">
+            <div class="exp-header"><span class="exp-year">2025</span><h3>Programme Malin</h3></div>
+            <p><strong style="color:LightSeaGreen">Bénévolat de compétence</strong><br>Accompagnement et création d'outils sur mesure (Projets et BUJO)</p>
+            <span class="exp-more">Détails de la mission →</span>
+        </div>
+        <div class="exp-card" onclick="openM('numia')">
+            <div class="exp-header"><span class="exp-year">2023<br>2025</span><h3>CFA numiA</h3></div>
+            <p><strong style="color:LightSeaGreen">Product Manager</strong><br>Création et pilotage d'outils, prestataires et direction (15K Users)</p>
+            <span class="exp-more">Détails de la mission →</span>
+        </div>
+        <div class="exp-card" onclick="openM('clemence')">
+            <div class="exp-header"><span class="exp-year">2022<br>2023</span><h3>Clémence Consulting</h3></div>
+            <p><strong style="color:LightSeaGreen">Consultant Product Owner</strong><br>Missions en Énergie et Immobilier</p>
+            <span class="exp-more">Détails de la mission →</span>
+        </div>
+        <div class="exp-card" onclick="openM('visiativ')">
+            <div class="exp-header"><span class="exp-year">2021<br>2022</span><h3>Visiativ</h3></div>
+            <p><strong style="color:LightSeaGreen">Ingénieur Développeur </strong><br>Création de fonctionnalités sur mesure - Gamification RH</p>
+            <span class="exp-more">Détails de la mission →</span>
+        </div>
+        <div class="exp-card" onclick="openM('crf')">
+            <div class="exp-header"><span class="exp-year">2013<br>2021</span><h3>Croix-Rouge française</h3></div>
+            <p><strong style="color:LightSeaGreen">Product Manager / Chef de projet</strong><br>SI bénévole & Dématérialisation des factures (60K Users)</p>
+            <span class="exp-more">Détails de la mission →</span>
+        </div>
+        <div class="exp-card" onclick="openM('histo')">
+            <div class="exp-header"><span class="exp-year">2006<br>2013</span><h3>Historique</h3></div>
+            <p><strong style="color:LightSeaGreen">1ers postes</strong><br>Premières expériences professionnelles</p>
+            <span class="exp-more">Détails des expériences →</span>
+        </div>
+    </div>
+
+    <div class="dual-layout">
+<div class="info-block-container">
+    <h2 class="section-heading" style="text-align:left;"><strong><span class="highlight">F</span></strong>ormations</h2>
+    <div class="info-block formation-timeline">
+        
+        <div class="formation-category">
+            <i data-lucide="graduation-cap"></i> <span>Bootcamps & Stratégie</span>
+        </div>
+        
+        <div class="list-item">
+            <span class="item-year">2025</span>
+            <div class="item-content">
+                <div class="item-title">Data Engineer / Analyst</div>
+                <div class="item-org">La Capsule</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2022</span>
+            <div class="item-content">
+                <div class="item-title">Product Strategy</div>
+                <div class="item-org">Join Lion</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2020</span>
+            <div class="item-content">
+                <div class="item-title">Développeur Fullstack JS - RNCP 6</div>
+                <div class="item-org">La Capsule</div>
+            </div>
+        </div>
+
+        <div class="formation-category">
+            <i data-lucide="monitor-play"></i> <span>Expertises en ligne</span>
+        </div>
+
+        <div class="list-item">
+            <span class="item-year">2021</span>
+            <div class="item-content">
+                <div class="item-title">Full Stack & Ingénierie pédagogique (~42h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2019</span>
+            <div class="item-content">
+                <div class="item-title">Fondamentaux Tech & Business (~41h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2018</span>
+            <div class="item-content">
+                <div class="item-title">Design Thinking, UX & Agilité (~45h)</div>
+                <div class="item-org">Openclassrooms</div>
+            </div>
+        </div>
+
+        <div class="formation-category">
+            <i data-lucide="book-open"></i> <span>Université</span>
+        </div>
+
+        <div class="list-item">
+            <span class="item-year">2010</span>
+            <div class="item-content">
+                <div class="item-title">M2 Management Stratégique et Entrepreneuriat</div>
+                <div class="item-org">Paris II Panthéon-Assas</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2009</span>
+            <div class="item-content">
+                <div class="item-title">M1 Maîtrise des Sciences de Gestion</div>
+                <div class="item-org">Paris II Panthéon-Assas</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="item-year">2007</span>
+            <div class="item-content">
+                <div class="item-title">DUT Gestion des Entreprises et Administrations</div>
+                <div class="item-org">Paris V Paris Cité</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div class="info-block-container">
+            <h2 class="section-heading"><strong><span class="highlight">C</span></strong>ertifications</h2>
+            <div class="info-block formation-timeline">
+        
+                   
+                <div class="list-item">
+                    <span class="item-year">2021</span>
+                    <div class="item-content">
+                        <div class="item-title">Méthode Scrum</div>
+                        <div class="item-org">Udemy</div>
+                    </div>
                 </div>
-                <div>
-                    <h4 style="color:var(--white);font-size:0.9rem;margin:0">${r.n}</h4>
-                    <p style="font-size:0.65rem;color:var(--blue);font-weight:700;margin:0;text-transform:uppercase">${r.r}</p>
+                <div class="list-item">
+                    <span class="item-year">2021</span>
+                    <div class="item-content">
+                        <div class="item-title">Score 950 / 1000</div>
+                        <div class="item-org">OrthoPass</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="item-year">2021</span>
+                    <div class="item-content">
+                        <div class="item-title">Atelier RGPD</div>
+                        <div class="item-org">CNIL</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="item-year">2018</span>
+                    <div class="item-content">
+                        <div class="item-title">Chef de Projet</div>
+                        <div class="item-org">Demos</div>
+                    </div>
                 </div>
             </div>
-            <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
-            <div class="card-tags" style="margin-top:auto; display:flex; gap:5px; flex-wrap:wrap;">
-                ${r.tags ? r.tags.map(tag => `<span style="font-size:0.6rem; color:var(--blue); font-weight:bold; opacity:0.7;">#${tag}</span>`).join('') : ''}
+
+<div class="info-block-container">
+            <h2 class="section-heading"><strong><span class="highlight">B</span></strong>énévolat</h2>
+              <div class="info-block formation-timeline">
+        
+        <div class="formation-category">
+            <i data-lucide="cross" style="color:red"></i>
+        	<span>Croix-Rouge française <span class="badge-count">15 ans</span></span>
+
+        </div>
+
+                <div class="list-item">
+                    <span class="item-year">2016</span>
+                    <div class="item-content">
+                        <div class="item-title">Élu et Responsable local</div>
+                        <div class="item-org">5 ans</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="item-year">2013</span>
+                    <div class="item-content">
+                        <div class="item-title">Chef d'intervention</div>
+                        <div class="item-org">8 ans</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="item-year">2009</span>
+                    <div class="item-content">
+                        <div class="item-title">Formateur</div>
+                        <div class="item-org">12 ans</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <span class="item-year">2007</span>
+                    <div class="item-content">
+                        <div class="item-title">Secouriste</div>
+                        <div class="item-org">14 ans</div>
+                    </div>
+                </div>
+
             </div>
-            <a href="${r.lien}" target="_blank" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
+
+
+
+   
+            </div>
         </div>
-    `).join('');
 
-    // 3. Mise à jour du compteur dynamique
-    const countElement = document.getElementById('reco-count');
-    if(countElement) countElement.innerText = filtered.length;
-    
-    lucide.createIcons();
-}
-
-// Fonction appelée par les boutons de filtre
-function filterRecs(tag) {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText === tag);
-    });
-    renderRecs(tag);
-}
-
-// Lancement initial
-renderRecs();
-
-function scrollR(d) {
-    const track = document.getElementById('recoTrack');
-    if(!track) return;
-    const card = track.querySelector('.reco-card');
-    if(card) {
-        const cardWidth = card.offsetWidth + 20;
-        track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
-    }
-}
+            </div>
+</section>
 
 
-
-/* ==========================================================================
-   3. GESTION DES MODALES (EXPÉRIENCES & LÉGAL)
-   ========================================================================== */
-
-function openM(id) {
-    const data = exps[id];
-    if(!data) return;
-
-    const missionsHTML = data.missions.map(m => `<li>${m}</li>`).join('');
-    const impactsHTML = data.impacts ? `
-        <div class="modal-section impact-box">
-            <h4><i data-lucide="trending-up" class="modal-icon"></i> Impacts</h4>
-            <ul class="modal-list">${data.impacts.map(i => `<li><strong>${i}</strong></li>`).join('')}</ul>
-        </div>` : '';
-
-    document.getElementById('m-body').innerHTML = `
-        <div class="modal-header">
-            <h2 class="highlight">${data.h}</h2>
-            <h3>${data.t}</h3>
+<footer id="contact" class="section">
+    <div class="contact-container">
+        <h2 class="section-heading"><strong><span class="highlight">C</span></strong>ontact</h2>
+        <div class="contact-card">
+            <div class="contact-header">
+                <h2>Prêt à donner vie à vos projets ?</h2>
+                <p>Que ce soit pour du Product Management, de la Data ou de l'automatisation, discutons de vos enjeux.</p>
+            </div>
+            <div class="contact-actions-box">
+                <a href="mailto:cedric.alinc.pro@gmail.com" 
+                   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
+                   class="btn-main" 
+                   id="emailBtn">
+                    <i data-lucide="mail"></i>
+                    <span>Me contacter</span>
+                </a>
+                <a href="https://www.linkedin.com/in/cedric-alinc/" 
+                   class="btn-alt" 
+                   target="_blank">
+                    <i data-lucide="linkedin" style="color:CornflowerBlue"></i>
+                    <span>Profil LinkedIn</span>
+                </a>
+            </div>
+            <p class="contact-footer-note">L'adresse mail est automatiquement copiée dans votre presse-papier.</p>
         </div>
-        <div class="modal-section">
-            <h4><i data-lucide="target" class="modal-icon"></i> Missions</h4>
-            <ul class="modal-list">${missionsHTML}</ul>
+    </div>
+</footer>
+
+<footer class="legal-footer">
+    <div class="legal-container">
+        <div class="legal-top">
+            <p>&copy; 2026 Cédric ALINC — Tous droits réservés.</p>
+            <p>Conçu et développé avec passion.</p>
         </div>
-        ${impactsHTML}
-        <button onclick="closeM()" class="modal-close-btn">Fermer</button>
-    `;
-    
-    const modal = document.getElementById('modal');
-    modal.style.display = 'flex';
-    const content = modal.querySelector('.modal-content');
-    if(content) content.scrollTop = 0;
-    document.body.style.overflow = 'hidden';
-    lucide.createIcons();
-}
+        <div class="legal-bottom">
+            <a href="#" onclick="openLegal()">Mentions légales</a>
+            <span class="separator">|</span>
+            <span>Hébergé par GitHub Pages</span>
+        </div>
+    </div>
+</footer>
 
-function closeM() { 
-    document.getElementById('modal').style.display = 'none'; 
-    document.body.style.overflow = 'auto';
-}
+<div id="modal-legal" class="modal-overlay">
+    <div class="modal-content legal-modal">
+        <h2 class="highlight">Mentions Légales</h2>
+        <div class="legal-text">
+            <p><strong>Propriétaire :</strong> Cédric ALINC</p>
+            <p><strong>Hébergement :</strong> GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, États-Unis.</p>
+            <p><strong>Propriété intellectuelle :</strong> L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.</p>
+            <p><strong>Données personnelles :</strong> Ce site ne collecte aucune donnée via des cookies tiers. Seul le clic sur le bouton de contact déclenche votre logiciel de messagerie.</p>
+        </div>
+        <button onclick="closeLegal()" class="modal-close-btn">Fermer</button>
+    </div>
+</div>
 
-function openLegal() { document.getElementById('modal-legal').style.display = 'flex'; }
-function closeLegal() { document.getElementById('modal-legal').style.display = 'none'; }
+<div id="modal" class="modal-overlay" onclick="closeM()">
+    <div class="modal-content" onclick="event.stopPropagation()" id="m-body"></div>
+</div>
 
-// Fermeture au clic sur le fond (overlay)
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-        e.target.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-});
+<script src="script.js"></script>
 
-/* ==========================================================================
-   4. ACTIONS UTILISATEURS (MAIL & THEME)
-   ========================================================================== */
-
-function handleMailClick(event, email) {
-    navigator.clipboard.writeText(email).then(() => {
-        const btn = document.getElementById('emailBtn');
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<i data-lucide="check"></i> <span>Mail copié !</span>';
-        btn.style.background = "#059669";
-        lucide.createIcons();
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-            btn.style.background = "";
-            lucide.createIcons();
-        }, 2500);
-    });
-}
-
-// --- GESTION DU THÈME (VERSION CORRIGÉE) ---
-const themeToggle = document.getElementById('theme-toggle');
-
-function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
-    // On change l'icône à l'intérieur du bouton
-    const newIconName = (theme === 'light') ? 'moon' : 'sun';
-    
-    // On force la réécriture du HTML interne pour être sûr que Lucide le voit
-    themeToggle.innerHTML = `<i data-lucide="${newIconName}"></i>`;
-    
-    // On demande à Lucide de transformer le <i> en icône
-    lucide.createIcons();
-}
-
-// Initialisation au chargement
-const savedTheme = localStorage.getItem('theme') || 'dark';
-applyTheme(savedTheme);
-
-themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'light' ? 'dark' : 'light');
-});
-
-// Lancement final des icônes pour le reste de la page
-lucide.createIcons();
+</body>
+</html>
