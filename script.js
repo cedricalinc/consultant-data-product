@@ -8,23 +8,24 @@ const recs = [
         r: "Chef de projet - iPorta", 
         t: "Cédric est quelqu'un de très organisé, très réactif et vif d'esprit. J'ai apprécié sa qualité de travail.", 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQF-qGvOqZCa6Q/profile-displayphoto-shrink_100_100/B4EZb80nHNHIAU-/0/1747998373569?e=1770249600&v=beta&t=x1E33hJYt9bW8ZleLlg669bMmXwwsKRA7oOVoPIhq78", 
-        lien: "https://www.linkedin.com/in/mahe-de-vivar/" 
+        lien: "https://www.linkedin.com/in/mahe-de-vivar/",
+ 	tags: ["Product", "Organisation"]
     },
     { 
         n: "Damya BOUKHEMAL", 
         r: "Product Owner - CFA Numia", 
         t: `J’ai beaucoup apprécié travailler avec Cédric. Son expérience et sa vision ont apporté une réelle plus value à notre équipe. Au-delà de ses solides compétences professionnelles, c’est un manager qui sait les mettre en œuvre avec efficacité et surtout les partager avec son équipe. J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. Son sens du collectif, sa capacité à accompagner et à faire monter les autres en compétences font de lui un professionnel fiable et engagé.`, 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQGSetwnwBe-9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686747440629?e=1770249600&v=beta&t=emrdqqW3z5ceMDb-_t8eCcywMYJuZQZppFUs67SBb7U", 
-        lien: "https://www.linkedin.com/in/damya-boukhemal/" 
+        lien: "https://www.linkedin.com/in/damya-boukhemal/",
+	tags: ["Management", "Product", "Agilité"] 
     },
-    { n: "Sophie L.", r: "Directrice ESS", t: "Rigueur et engagement exceptionnels sur nos projets SI.", img: "https://i.pravatar.cc/100?u=3", lien: "#" },
-    { n: "Thomas B.", r: "Lead Data Engineer", t: "Ses architectures dbt sont propres, scalables et bien documentées.", img: "https://i.pravatar.cc/100?u=4", lien: "#" },
-    { n: "Inès R.", r: "CEO @ GreenTech", t: "Efficacité redoutable sur l'automatisation No-code.", img: "https://i.pravatar.cc/100?u=5", lien: "#" },
-    { n: "Kevin L.", r: "Senior PO", t: "Sait parfaitement traduire le business en specs techniques.", img: "https://i.pravatar.cc/100?u=6", lien: "#" },
-    { n: "Amélie K.", r: "Consultante RH", t: "La gamification de nos outils a boosté l'onboarding.", img: "https://i.pravatar.cc/100?u=7", lien: "#" },
-    { n: "Paul W.", r: "Product Manager", t: "Un expert de l'Agilité Scrum et de la roadmap valeur.", img: "https://i.pravatar.cc/100?u=8", lien: "#" },
-    { n: "Claire G.", r: "Operations Manager", t: "Gain de temps de 30% grâce à ses automatisations Make.", img: "https://i.pravatar.cc/100?u=9", lien: "#" },
-    { n: "Jean-Luc M.", r: "DF", t: "Maîtrise parfaite des flux SI complexes et critiques.", img: "https://i.pravatar.cc/100?u=10", lien: "#" }
+    { 	n: "Ludovic LEVY", 
+	r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
+	t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une personne sur qui l’on peut compter en toutes circonstances. Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la solidité de ses engagements et sa loyauté exemplaire. Cédric est un collaborateur toujours jovial, qui apporte une énergie positive au sein d'une équipe. Je le recommande vivement pour son professionnalisme et ses qualités humaines rares.`, 
+	img: "https://media.licdn.com/dms/image/v2/D4E03AQHpM0Tmo9W20A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700547120552?e=1770249600&v=beta&t=bOkdL8GlSc9TsFHkSQTguflZACma6f8c9LhnoR5x2Vk", 
+	lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
+	tags: ["Equipe", "Product", "SoftSkills"] 
+    }
 ];
 
 const exps = {
@@ -80,13 +81,21 @@ if(countElement) {
 }
 
 /* ==========================================================================
-   2. INJECTION & CAROUSEL RECOMMANDATIONS
+   2. INJECTION & CAROUSEL RECOMMANDATIONS (AVEC FILTRES)
    ========================================================================== */
 
-const track = document.getElementById('recoTrack');
-if(track) {
-    track.innerHTML = recs.map(r => `
-        <div class="reco-card">
+function renderRecs(filter = 'Tous') {
+    const track = document.getElementById('recoTrack');
+    if(!track) return;
+
+    // 1. Filtrage des données selon le tag
+    const filtered = filter === 'Tous' 
+        ? recs 
+        : recs.filter(r => r.tags && r.tags.includes(filter));
+
+    // 2. Injection du HTML
+    track.innerHTML = filtered.map(r => `
+        <div class="reco-card fade-in">
             <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
                 <div class="pulse-container">
                     <img src="${r.img}" class="pulse-img" style="width:45px; height:45px; border-radius:50%; border: 1px solid var(--border); object-fit: cover;">
@@ -97,12 +106,33 @@ if(track) {
                 </div>
             </div>
             <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
+            <div class="card-tags" style="margin-top:auto; display:flex; gap:5px; flex-wrap:wrap;">
+                ${r.tags ? r.tags.map(tag => `<span style="font-size:0.6rem; color:var(--blue); font-weight:bold; opacity:0.7;">#${tag}</span>`).join('') : ''}
+            </div>
             <a href="${r.lien}" target="_blank" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
         </div>
     `).join('');
+
+    // 3. Mise à jour du compteur dynamique
+    const countElement = document.getElementById('reco-count');
+    if(countElement) countElement.innerText = filtered.length;
+    
+    lucide.createIcons();
 }
 
+// Fonction appelée par les boutons de filtre
+function filterRecs(tag) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText === tag);
+    });
+    renderRecs(tag);
+}
+
+// Lancement initial
+renderRecs();
+
 function scrollR(d) {
+    const track = document.getElementById('recoTrack');
     if(!track) return;
     const card = track.querySelector('.reco-card');
     if(card) {
@@ -110,6 +140,8 @@ function scrollR(d) {
         track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
     }
 }
+
+
 
 /* ==========================================================================
    3. GESTION DES MODALES (EXPÉRIENCES & LÉGAL)
