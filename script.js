@@ -3,29 +3,58 @@
    ========================================================================== */
 
 const recs = [
+    { 	
+	n: "Florent VALLÉE", 
+	r: "Directeur de l'urgence et des opérations - CRf", 
+	t: `Cedric est un Chef de projet engagé, à l'<strong>écoute des besoins</strong> des utilisateurs finaux.<br><br> Son <strong>dynamisme</strong>, sa <strong>créativité </strong>et son <strong>engagement </strong>font sa difference`, 
+	img: "https://media.licdn.com/dms/image/v2/C4D03AQHkBheE0s6K2g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1568715661165?e=1770854400&v=beta&t=ZcyExSNEKq8U2FwhyWn22YjUUN8Y_UoE6SLzhax6hGo", 
+	lien: "https://www.linkedin.com/in/florent-vall%C3%A9e-b13a8b116",
+	tags: ["Product", "User-Centric", "SoftSkills"]
+    },
+    { 	n: "Emma HEDEF", 
+	r: "Directrice Digital et Marketing - Programme Malin", 
+	t: `Je tiens à partager un retour très positif sur l’accompagnement de Cédric en tant que Product Manager auprès de notre association Programme Malin. 
+
+<br><br>Il nous a aidés à concevoir un espace de travail centralisé sur Notion, inspiré de la méthode Bullet Journal, pour mieux <strong>aligner la vision</strong>, <strong>clarifier </strong>les rôles, <strong>prioriser </strong>efficacement et <strong>fluidifier</strong> la collaboration entre plusieurs intervenants. 
+
+<br><br>Au-delà des outils, j’ai particulièrement apprécié sa <strong>pédagogie</strong>, sa <strong>patience</strong> et la <strong>pertinence de ses recommandations</strong>.
+
+<br><br> Il a su <strong>structurer des besoins complexes sans les alourdir</strong>, et <strong>accompagner les équipes</strong> vers plus de clarté et d’autonomie dès les premières semaines. <br><br>Un <strong>accompagnement à la fois structurant, pragmatique et humain</strong>, que je recommande sans hésiter.`, 
+	img: "https://media.licdn.com/dms/image/v2/D4E03AQEjc-q-46qK6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1696520482442?e=1770854400&v=beta&t=Vw5KoSj0Us7Vdib9SlNeoJNFurM3UDkVj_CVIkcdR0A", 
+	lien: "https://www.linkedin.com/in/emma-hedef",
+	tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
+    },
     { 
         n: "Mahé BANDEIRA DE VIVAR", 
         r: "Chef de projet - iPorta", 
-        t: "Cédric est quelqu'un de très organisé, très réactif et vif d'esprit. J'ai apprécié sa qualité de travail.", 
+        t: "Cédric est quelqu'un de très <strong>organisé</strong>, très <strong>réactif </strong>et <strong>vif d'esprit</strong>. <br><br>J'ai apprécié sa <strong>qualité de travail</strong>.", 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQF-qGvOqZCa6Q/profile-displayphoto-shrink_100_100/B4EZb80nHNHIAU-/0/1747998373569?e=1770249600&v=beta&t=x1E33hJYt9bW8ZleLlg669bMmXwwsKRA7oOVoPIhq78", 
         lien: "https://www.linkedin.com/in/mahe-de-vivar/",
- 	tags: ["Product", "Organisation"]
+ 	tags: ["Organisation", "Réactivité", "Product"]
     },
     { 
         n: "Damya BOUKHEMAL", 
         r: "Product Owner - CFA Numia", 
-        t: `J’ai beaucoup apprécié travailler avec Cédric. Son expérience et sa vision ont apporté une réelle plus value à notre équipe. Au-delà de ses solides compétences professionnelles, c’est un manager qui sait les mettre en œuvre avec efficacité et surtout les partager avec son équipe. J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. Son sens du collectif, sa capacité à accompagner et à faire monter les autres en compétences font de lui un professionnel fiable et engagé.`, 
+        t: `J’ai beaucoup apprécié travailler avec Cédric.<br> <br>Son <strong>expérience </strong>et sa <strong>vision </strong>ont apporté une réelle plus value à notre équipe.<br> <br>Au-delà de ses <strong>solides compétences professionnelles</strong>, c’est un manager qui sait les mettre en œuvre avec <strong>efficacité </strong>et surtout les <strong>partager avec son équipe</strong>. <br>J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. <br><br>Son <strong>sens du collectif</strong>, sa capacité à <strong>accompagner</strong> et à <strong>faire monter les autres en compétences</strong> font de lui un <strong>professionnel fiable et engagé</strong>.`, 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQGSetwnwBe-9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686747440629?e=1770249600&v=beta&t=emrdqqW3z5ceMDb-_t8eCcywMYJuZQZppFUs67SBb7U", 
         lien: "https://www.linkedin.com/in/damya-boukhemal/",
-	tags: ["Management", "Product", "Agilité"] 
+	tags: ["Management", "Mentoring", "Product"] 
     },
     { 	n: "Ludovic LEVY", 
 	r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
-	t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une personne sur qui l’on peut compter en toutes circonstances. Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la solidité de ses engagements et sa loyauté exemplaire. Cédric est un collaborateur toujours jovial, qui apporte une énergie positive au sein d'une équipe. Je le recommande vivement pour son professionnalisme et ses qualités humaines rares.`, 
+	t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une <strong>personne sur qui l’on peut compter</strong> en toutes circonstances. <br><br>Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la <strong>solidité de ses engagements</strong> et sa <strong>loyauté</strong> exemplaire.<br><br> Cédric est un collaborateur toujours <strong>jovial</strong>, qui apporte une <strong>énergie positive</strong> au sein d'une équipe. <br><br>Je le recommande vivement pour son <strong>professionnalisme </strong>et ses <strong>qualités humaines rares</strong>.`, 
 	img: "https://media.licdn.com/dms/image/v2/D4E03AQHpM0Tmo9W20A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700547120552?e=1770249600&v=beta&t=bOkdL8GlSc9TsFHkSQTguflZACma6f8c9LhnoR5x2Vk", 
 	lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
-	tags: ["Equipe", "Product", "SoftSkills"] 
+	tags: ["Product", "SoftSkills", "Relationnel"]
+    },
+    { 	n: "Marlène BIARD", 
+	r: "#Slasheuse : Communication engagée | Coaching professionnel | Bilans de compétences | Animation de conférences | Evénementiel | Formation soft skills", 
+	t: `J’ai eu le plaisir de travailler avec Cédric à la Croix-Rouge, où il occupait le rôle de chef de projet en maîtrise d’ouvrage informatique. <br><br>J’ai particulièrement apprécié sa grande <strong>réactivité</strong> et sa capacité à apporter des <strong>réponses concrètes et pragmatiques</strong> aux problématiques rencontrées.<br><br> <strong>Toujours à l’écoute des besoins</strong> des utilisateurs et des parties prenantes, Cédric sait <strong>transformer des enjeux</strong> parfois complexes en <strong>solutions simples et efficaces</strong>, avec un objectif constant : <strong>améliorer et fluidifier l’expérience client</strong>. <br><br>Son <strong>sens du service, sa rigueur et son engagement </strong>ont été de réels atouts pour la réussite des projets menés ensemble.`, 
+	img: "https://media.licdn.com/dms/image/v2/D4E03AQEA5toIIcQxvg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1732107701825?e=1770854400&v=beta&t=ciIw_cRqMDi_K1hRox2TRdbx352Db1hmygRBlT7w2kU", 
+	lien: "https://www.linkedin.com/in/marlene-biard-53860742",
+	tags: ["Organisation", "UX Strategy", "SoftSkills"]
     }
+
 ];
 
 const exps = {
@@ -88,10 +117,18 @@ function renderRecs(filter = 'Tous') {
     const track = document.getElementById('recoTrack');
     if(!track) return;
 
-    // 1. Filtrage des données selon le tag
+    // 1. Filtrage des données selon le tag (Simple ou Tableau)
     const filtered = filter === 'Tous' 
         ? recs 
-        : recs.filter(r => r.tags && r.tags.includes(filter));
+        : recs.filter(r => {
+            if (!r.tags) return false;
+            // Si le filtre est un tableau (ex: ['Product', 'Workflow']), on vérifie si un des tags match
+            if (Array.isArray(filter)) {
+                return r.tags.some(tag => filter.includes(tag));
+            }
+            // Sinon (mot simple), on vérifie classiquement
+            return r.tags.includes(filter);
+        });
 
     // 2. Injection du HTML
     track.innerHTML = filtered.map(r => `
@@ -117,15 +154,26 @@ function renderRecs(filter = 'Tous') {
     const countElement = document.getElementById('reco-count');
     if(countElement) countElement.innerText = filtered.length;
     
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 }
 
-// Fonction appelée par les boutons de filtre
-function filterRecs(tag) {
+/**
+ * Fonction appelée par les boutons de filtre
+ * Supporte filterInput = 'Tous', 'Product' ou ['Tag1', 'Tag2']
+ */
+function filterRecs(filterInput) {
+    // On gère l'état 'active' des boutons
     document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText === tag);
+        // Le bouton devient actif s'il a été cliqué (comparaison simplifiée)
+        btn.classList.remove('active');
     });
-    renderRecs(tag);
+    
+    // On ajoute 'active' au bouton qui a déclenché l'événement
+    if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+    }
+
+    renderRecs(filterInput);
 }
 
 // Lancement initial
@@ -140,8 +188,6 @@ function scrollR(d) {
         track.scrollBy({ left: d * cardWidth, behavior: 'smooth' });
     }
 }
-
-
 
 /* ==========================================================================
    3. GESTION DES MODALES (EXPÉRIENCES & LÉGAL)
