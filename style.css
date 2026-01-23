@@ -22,7 +22,7 @@
 }
 /* --- RESET & STRUCTURE --- */
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden;  }
 body { background-color: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.3s; line-height: 1.6; }
 
 
@@ -121,7 +121,7 @@ html {
 }
 
 /* --- UNIVERS MÉTIER & TOOLBOX --- */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));; gap: 25px; }
 .card-item { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
 .card-item:hover { border-color: var(--blue); transform: translateY(-5px); }
 
