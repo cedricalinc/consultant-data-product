@@ -54,13 +54,13 @@
                 Je peux vous accompagner dans la réflexion, les interviews, la création des process, le pilotage de projet ou la formation des utilisateurs.
             </p>
             
-            <div class="hero-stats" style="text-align: center;justify-content: center;">
+            <div class="hero-stats" style="text-align: center;justify-content: center;" >
                 <div class="stat"><strong>20</strong><span>Ans d'action</br>(bénévole & pro)</span></div>
-				<div class="stat"><strong>>75K</strong><span>Users SI</span></div>
+		<div class="stat"><strong>>75K</strong><span>Users SI</span></div>
                 <div class="stat"><strong>95%</strong><span>Test</br>OrthoPass</span></div>
                 <div class="stat"><strong>>10</strong><span>Ans d'encadrement </br>(bénévole & pro)</span></div>
                 <div class="stat"><strong>>1200</strong><span>Formés</span></div>
-				<div class="stat"><strong>>2500</strong><span>H. formation</span></div> 
+		<div class="stat"><strong>>2500</strong><span>H. formation</span></div>                
             </div>
         </div>
     </div>
@@ -68,7 +68,7 @@
 
 <section id="sectors" class="section bg-alt">
     <h2 class="section-heading"><strong><span class="highlight">U</span></strong>nivers métiers</h2>
-    <div class="grid-layout">
+    <div class="grid-layout" >
         <div class="card-item"><i data-lucide="heart-pulse" style="color:red"></i><h3>Humanitaire & ESS</h3></div>
         <div class="card-item"><i data-lucide="graduation-cap" style="color:coral"></i><h3>Formation et Education</h3></div>
         <div class="card-item"><i data-lucide="landmark" style="color:gold"></i><h3>Banque et Assurance</h3></div>
@@ -164,10 +164,11 @@
     <h2 class="section-heading"><strong><span class="highlight">T</span></strong>émoignages <span id="reco-count" class="badge-count">0</span></h2>
     <div class="filter-container">
     <button class="filter-btn active" onclick="filterRecs('Tous')">Tous</button>
-    <button class="filter-btn" onclick="filterRecs('Product')">Product</button>
-    <button class="filter-btn" onclick="filterRecs('Organisation')">Organisation</button>
-    <button class="filter-btn" onclick="filterRecs('SoftSkills')">SoftSkills</button>
-<button class="filter-btn" onclick="filterRecs('Management')">Management</button>
+    <button class="filter-btn" onclick="filterRecs(['Product', 'Product Ops', 'Vision Produit'])">Product</button>
+    <button class="filter-btn" onclick="filterRecs(['User-Centric', 'UX Strategy'])">Utilisateurs</button>
+    <button class="filter-btn" onclick="filterRecs(['Organisation','Workflow','Réactivité'])">Organisation</button>
+    <button class="filter-btn" onclick="filterRecs(['SoftSkills','Relationnel'])">SoftSkills</button>
+<button class="filter-btn" onclick="filterRecs(['Management','Pédagogie','Mentoring'])">Accompagnement</button>
     </div>
     <div class="reco-wrapper">
         <button class="arrow-btn prev" onclick="scrollR(-1)"><i data-lucide="chevron-left"></i></button>
