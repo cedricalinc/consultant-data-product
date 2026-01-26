@@ -316,7 +316,7 @@ html {
     border-radius: 20px; border: 1px solid var(--border); gap: 15px; flex-wrap: wrap; justify-content: center; 
 }
 .btn-main, .btn-alt { padding: 14px 28px; border-radius: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-.btn-main { background: var(--blue); color: #fff; border: none; }
+.btn-main { background: var(--blue); color: #fff; border: none; transition: background-color 0.4s ease, transform 0.3s ease !important;}
 .btn-alt { background: transparent; color: var(--white); border: 1px solid var(--border); }
 
 @media (max-width: 600px) {
@@ -658,3 +658,92 @@ html {
     font-style: italic;
 }
 
+/* Le conteneur qui devient "creusé" dans le fond */
+.hero-cta-wrapper .contact-actions-box {
+    background: var(--bg) !important; /* Doit être la même couleur que le fond pour l'effet */
+    padding: 10px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03); /* Bordure très subtile */
+    display: inline-flex;
+    gap: 12px;
+    margin-top: 25px;
+    
+    /* Ombre interne (creusée) */
+    box-shadow: 
+        inset 6px 6px 12px rgba(0, 0, 0, 0.4), 
+        inset -2px -2px 8px rgba(255, 255, 255, 0.02);
+}
+
+/* On stylise le bouton principal pour qu'il soit "plein" et ressorte */
+.hero-cta-wrapper .btn-main {
+    background: var(--blue);
+    color: white !important;
+    border-radius: 16px;
+    padding: 12px 22px;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); /* Ombre portée pour ressortir de la crevasse */
+    border: none;
+}
+
+/* Le bouton LinkedIn (btn-alt) */
+.hero-cta-wrapper .btn-alt {
+    border-radius: 16px;
+    padding: 12px 22px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+/* Unification du comportement au survol pour les deux boutons */
+.contact-actions-box .btn-main, 
+.contact-actions-box .btn-alt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer;
+}
+
+.contact-actions-box .btn-main:hover, 
+.contact-actions-box .btn-alt:hover {
+    transform: translateY(-4px); /* Les deux se soulèvent de la même façon */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Ombre plus marquée au survol */
+    filter: brightness(1.1); /* Légère illumination pour les deux */
+}
+
+/* On s'assure que le bouton mail reste vert s'il est cliqué, même au hover */
+.contact-actions-box .btn-main[style*="background: rgb(5, 150, 105)"]:hover {
+    background: #047857 !important; /* Un vert un peu plus foncé au survol lors du succès */
+}
+
+.contact-actions-box .btn-main:active, 
+.contact-actions-box .btn-alt:active {
+    transform: translateY(-1px) scale(0.97); /* Effet d'enfoncement au clic */
+    transition: 0.1s;
+}
+
+/* Mobile : on empile proprement */
+@media (max-width: 600px) {
+    .hero-cta-wrapper .contact-actions-box {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+.btn-linkedin-custom {
+    background-color: #001a3d !important; /* Un bleu très foncé plus élégant que le pur Navy */
+    border-color: #002b66 !important;
+}
+
+.btn-linkedin-custom i {
+    color: #6495ED !important; /* CornflowerBlue */
+}
+
+.btn-linkedin-custom span {
+    color: white !important;
+}
+
+.btn-linkedin-custom:hover {
+    background-color: #002b66 !important;
+    transform: translateY(-2px);
+}
