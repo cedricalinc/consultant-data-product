@@ -20,7 +20,7 @@ const recs = [
 <br><br>Au-delà des outils, j’ai particulièrement apprécié sa <strong>pédagogie</strong>, sa <strong>patience</strong> et la <strong>pertinence de ses recommandations</strong>.
 
 <br><br> Il a su <strong>structurer des besoins complexes sans les alourdir</strong>, et <strong>accompagner les équipes</strong> vers plus de clarté et d’autonomie dès les premières semaines. <br><br>Un <strong>accompagnement à la fois structurant, pragmatique et humain</strong>, que je recommande sans hésiter.`, 
-	img: "https://media.licdn.com/dms/image/v2/D4E03AQEjc-q-46qK6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1696520482442?e=1770854400&v=beta&t=Vw5KoSj0Us7Vdib9SlNeoJNFurM3UDkVj_CVIkcdR0A", 
+	img: "https://media.licdn.com/dms/image/v2/D4E03AQEKgOUv8RsPew/profile-displayphoto-scale_400_400/B4EZv6AUrIGcAg-/0/1769425949036?e=1770854400&v=beta&t=G3xFOP_6MQ3Kv35Td2IykMHZVyVqlezuFlnIn3qQl5w", 
 	lien: "https://www.linkedin.com/in/emma-hedef",
 	tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
     },
