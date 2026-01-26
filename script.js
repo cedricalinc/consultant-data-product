@@ -77,7 +77,7 @@ const exps = {
         impacts: ["Fiabilisation des flux critiques", "Accélération des cycles de facturation","Pilotage sécurisé de millions d'€uros de budget Immo"]
     },
     'visiativ': {
-        h: "Iporta - Visiativ",
+        h: "iPorta - Visiativ",
         t: "Ingénieur Développement",
         missions: ["Développement de fonctionnalités spécifiques", "Création d'un parcours gamifié pour les nouveaux employés"],
         impacts: ["Fonctionnalités sur-mesure pour les clients", "Sentiment d'accueil positif supérieur de 50%"]
@@ -246,17 +246,44 @@ window.addEventListener('click', (e) => {
    ========================================================================== */
 
 function handleMailClick(event, email) {
+    // Empêche l'ouverture immédiate du lien pour laisser le temps à la copie
+    event.preventDefault();
+
+    // 1. Copie dans le presse-papier
     navigator.clipboard.writeText(email).then(() => {
-        const btn = document.getElementById('emailBtn');
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<i data-lucide="check"></i> <span>Mail copié !</span>';
-        btn.style.background = "#059669";
-        lucide.createIcons();
+        // 2. On récupère TOUS les boutons qui affichent le mail (haut et bas)
+        const emailButtons = document.querySelectorAll('#emailBtn, .contact-actions-box .btn-main');
+
+        emailButtons.forEach(btn => {
+            const span = btn.querySelector('span');
+            const icon = btn.querySelector('i');
+            const originalText = "Discutons de votre projet";
+            
+            // Changement d'état visuel
+            btn.style.background = "#059669"; // Vert succès
+            if (span) span.innerText = "Mail copié !";
+            
+            // Optionnel : changer l'icône si tu utilises Lucide
+            if (icon) {
+                icon.setAttribute('data-lucide', 'check');
+                lucide.createIcons();
+            }
+
+            // 3. Retour à l'état initial après 2.5 secondes
+            setTimeout(() => {
+                btn.style.background = ""; // Reprend le CSS (bleu)
+                if (span) span.innerText = originalText;
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'mail');
+                    lucide.createIcons();
+                }
+            }, 2500);
+        });
+
+        // 4. Ouvre le client mail après une courte pause pour l'UX
         setTimeout(() => {
-            btn.innerHTML = originalContent;
-            btn.style.background = "";
-            lucide.createIcons();
-        }, 2500);
+            window.location.href = "mailto:" + email;
+        }, 300);
     });
 }
 
