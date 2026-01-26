@@ -18,7 +18,7 @@
         <ul class="nav-links">
             <li><a href="#sectors"><strong><span class="highlight">U</span></strong>nivers</a></li>
             <li><a href="#methodo"><strong><span class="highlight">M</span></strong>éthode</a></li>
-            <li><a href="#temoignages"><strong><span class="highlight">T</span></strong>émoignages</a></li>
+            <li><a href="#references"><strong><span class="highlight">R</span></strong>éférences</a></li>
             <li><a href="#experience"><strong><span class="highlight">P</span></strong>arcours</a></li>
             <li><a href="#contact"><strong><span class="highlight">C</span></strong>ontact</a></li>
         </ul>
@@ -55,24 +55,42 @@
             </p>
             
             <div class="hero-stats" style="text-align: center;justify-content: center;" >
-                <div class="stat"><strong>20</strong><span>Ans d'action</br>(bénévole & pro)</span></div>
+                <div class="stat"><strong>20</strong><span>Ans d'action</br>(pro & bénévole)</span></div>
 		<div class="stat"><strong>>75K</strong><span>Users SI</span></div>
                 <div class="stat"><strong>95%</strong><span>Test</br>OrthoPass</span></div>
-                <div class="stat"><strong>>10</strong><span>Ans d'encadrement </br>(bénévole & pro)</span></div>
+                <div class="stat"><strong>>10</strong><span>Ans d'encadrement </br>(pro & bénévole)</span></div>
                 <div class="stat"><strong>>1200</strong><span>Formés</span></div>
-		<div class="stat"><strong>>2500</strong><span>H. formation</span></div>                
+		<div class="stat"><strong>>2500</strong><span>Heures de formation</span></div>                
             </div>
-        </div>
+
+<div class="hero-cta-wrapper">
+    <div class="contact-actions-box">
+<a href="mailto:cedric.alinc.pro@gmail.com" 
+   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
+   class="btn-main" 
+   id="emailBtn">
+    <i data-lucide="mail"></i>
+    <span>Discutons de votre projet</span>
+</a>
+
+        <a href="https://www.linkedin.com/in/cedric-alinc/" 
+           class="btn-alt btn-linkedin-custom" 
+           target="_blank">
+            <i data-lucide="linkedin" style="color:#00BFFF"></i>
+            <span>Profil LinkedIn</span>
+        </a>
     </div>
+</div>    
+</div>
 </header>
 
 <section id="sectors" class="section bg-alt">
     <h2 class="section-heading"><strong><span class="highlight">U</span></strong>nivers métiers</h2>
     <div class="grid-layout" >
-        <div class="card-item"><i data-lucide="heart-pulse" style="color:red"></i><h3>Humanitaire & ESS</h3></div>
         <div class="card-item"><i data-lucide="graduation-cap" style="color:coral"></i><h3>Formation et Education</h3></div>
         <div class="card-item"><i data-lucide="landmark" style="color:gold"></i><h3>Banque et Assurance</h3></div>
         <div class="card-item"><i data-lucide="home" style="color:indianred"></i><h3>Immobilier & Logistique</h3></div>
+        <div class="card-item"><i data-lucide="heart-pulse" style="color:red"></i><h3>Humanitaire & ESS</h3></div>
     </div>
 </section>
 
@@ -160,8 +178,8 @@
     </div>
 </section>
 
-<section id="temoignages" class="section bg-alt">
-    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>émoignages <span id="reco-count" class="badge-count">0</span></h2>
+<section id="references" class="section bg-alt">
+    <h2 class="section-heading"><strong><span class="highlight">R</span></strong>éférences<span id="reco-count" class="badge-count">0</span></h2>
     <div class="filter-container">
     <button class="filter-btn active" onclick="filterRecs('Tous')">Tous</button>
     <button class="filter-btn" onclick="filterRecs(['Product', 'Product Ops', 'Vision Produit'])">Product</button>
@@ -196,7 +214,7 @@
             <span class="exp-more">Détails de la mission →</span>
         </div>
         <div class="exp-card" onclick="openM('visiativ')">
-            <div class="exp-header"><span class="exp-year">2021<br>2022</span><h3>Visiativ</h3></div>
+            <div class="exp-header"><span class="exp-year">2021<br>2022</span><h3>iPorta - Visiativ</h3></div>
             <p><strong style="color:LightSeaGreen">Ingénieur Développeur </strong><br>Création de fonctionnalités sur mesure - Gamification RH</p>
             <span class="exp-more">Détails de la mission →</span>
         </div>
@@ -339,7 +357,7 @@
         
         <div class="formation-category">
             <i data-lucide="cross" style="color:red"></i>
-        	<span>Croix-Rouge française <span class="badge-count">15 ans</span></span>
+        	<span>Croix-Rouge française <span class="badge-count" style="font-size: 100%;">15 ans</span></span>
 
         </div>
 
@@ -393,21 +411,25 @@
                 <h2>Prêt à donner vie à vos projets ?</h2>
                 <p>Que ce soit pour du Product Management, de la Data ou de l'automatisation, discutons de vos enjeux.</p>
             </div>
-            <div class="contact-actions-box">
-                <a href="mailto:cedric.alinc.pro@gmail.com" 
-                   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
-                   class="btn-main" 
-                   id="emailBtn">
-                    <i data-lucide="mail"></i>
-                    <span>Me contacter</span>
-                </a>
-                <a href="https://www.linkedin.com/in/cedric-alinc/" 
-                   class="btn-alt" 
-                   target="_blank">
-                    <i data-lucide="linkedin" style="color:CornflowerBlue"></i>
-                    <span>Profil LinkedIn</span>
-                </a>
-            </div>
+            <div class="hero-cta-wrapper">
+    <div class="contact-actions-box">
+        <a href="mailto:cedric.alinc.pro@gmail.com" 
+   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
+   class="btn-main" 
+   id="emailBtn">
+    <i data-lucide="mail"></i>
+    <span>Discutons de votre projet</span>
+</a>
+
+        <a href="https://www.linkedin.com/in/cedric-alinc/" 
+           class="btn-alt btn-linkedin-custom" 
+           target="_blank">
+            <i data-lucide="linkedin" style="color:#00BFFF"></i>
+            <span>Profil LinkedIn</span>
+        </a>
+    </div>
+</div>    
+
             <p class="contact-footer-note">L'adresse mail est automatiquement copiée dans votre presse-papier.</p>
         </div>
     </div>
