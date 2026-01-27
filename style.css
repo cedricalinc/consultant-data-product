@@ -115,7 +115,12 @@ body {
 }
 
 /* --- UNIVERS MÉTIER & TOOLBOX --- */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); gap: 25px; }
+.grid-layout { display: grid; 
+    /* Si l'écran fait 300px, il prend 100%. S'il fait 1000px, il s'arrête à 450px */
+    grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr)); 
+    gap: 25px; 
+    width: 100%; }
+
 .card-item { background: var(--card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
 .card-item:hover { border-color: var(--blue); transform: translateY(-5px); }
 
