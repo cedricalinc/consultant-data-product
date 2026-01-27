@@ -1,28 +1,22 @@
 /* ==========================================================================
    1. DONNÉES (RECOMMANDATIONS & EXPÉRIENCES)
    ========================================================================== */
-
 const recs = [
     { 	
-	n: "Florent VALLÉE", 
-	r: "Directeur de l'urgence et des opérations - CRf", 
-	t: `Cedric est un Chef de projet engagé, à l'<strong>écoute des besoins</strong> des utilisateurs finaux.<br><br> Son <strong>dynamisme</strong>, sa <strong>créativité </strong>et son <strong>engagement </strong>font sa difference`, 
-	img: "https://media.licdn.com/dms/image/v2/C4D03AQHkBheE0s6K2g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1568715661165?e=1770854400&v=beta&t=ZcyExSNEKq8U2FwhyWn22YjUUN8Y_UoE6SLzhax6hGo", 
-	lien: "https://www.linkedin.com/in/florent-vall%C3%A9e-b13a8b116",
-	tags: ["Product", "User-Centric", "SoftSkills"]
+        n: "Florent VALLÉE", 
+        r: "Directeur de l'urgence et des opérations - CRf", 
+        t: `Cedric est un Chef de projet engagé, à l'<strong>écoute des besoins</strong> des utilisateurs finaux.<br><br> Son <strong>dynamisme</strong>, sa <strong>créativité </strong>et son <strong>engagement </strong>font sa difference`, 
+        img: "https://media.licdn.com/dms/image/v2/C4D03AQHkBheE0s6K2g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1568715661165?e=1770854400&v=beta&t=ZcyExSNEKq8U2FwhyWn22YjUUN8Y_UoE6SLzhax6hGo", 
+        lien: "https://www.linkedin.com/in/florent-vall%C3%A9e-b13a8b116",
+        tags: ["Product", "User-Centric", "SoftSkills"]
     },
-    { 	n: "Emma HEDEF", 
-	r: "Directrice Digital et Marketing - Programme Malin", 
-	t: `Je tiens à partager un retour très positif sur l’accompagnement de Cédric en tant que Product Manager auprès de notre association Programme Malin. 
-
-<br><br>Il nous a aidés à concevoir un espace de travail centralisé sur Notion, inspiré de la méthode Bullet Journal, pour mieux <strong>aligner la vision</strong>, <strong>clarifier </strong>les rôles, <strong>prioriser </strong>efficacement et <strong>fluidifier</strong> la collaboration entre plusieurs intervenants. 
-
-<br><br>Au-delà des outils, j’ai particulièrement apprécié sa <strong>pédagogie</strong>, sa <strong>patience</strong> et la <strong>pertinence de ses recommandations</strong>.
-
-<br><br> Il a su <strong>structurer des besoins complexes sans les alourdir</strong>, et <strong>accompagner les équipes</strong> vers plus de clarté et d’autonomie dès les premières semaines. <br><br>Un <strong>accompagnement à la fois structurant, pragmatique et humain</strong>, que je recommande sans hésiter.`, 
-	img: "https://media.licdn.com/dms/image/v2/D4E03AQEKgOUv8RsPew/profile-displayphoto-scale_400_400/B4EZv6AUrIGcAg-/0/1769425949036?e=1770854400&v=beta&t=G3xFOP_6MQ3Kv35Td2IykMHZVyVqlezuFlnIn3qQl5w", 
-	lien: "https://www.linkedin.com/in/emma-hedef",
-	tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
+    { 	
+        n: "Emma HEDEF", 
+        r: "Directrice Digital et Marketing - Programme Malin", 
+        t: `Je tiens à partager un retour très positif sur l’accompagnement de Cédric en tant que Product Manager auprès de notre association Programme Malin. <br><br>Il nous a aidés à concevoir un espace de travail centralisé sur Notion, inspiré de la méthode Bullet Journal, pour mieux <strong>aligner la vision</strong>, <strong>clarifier </strong>les rôles, <strong>prioriser </strong>efficacement et <strong>fluidifier</strong> la collaboration entre plusieurs intervenants. <br><br>Au-delà des outils, j’ai particulièrement apprécié sa <strong>pédagogie</strong>, sa <strong>patience</strong> et la <strong>pertinence de ses recommandations</strong>.<br><br> Il a su <strong>structurer des besoins complexes sans les alourdir</strong>, et <strong>accompagner les équipes</strong> vers plus de clarté et d’autonomie dès les premières semaines. <br><br>Un <strong>accompagnement à la fois structurant, pragmatique et humain</strong>, que je recommande sans hésiter.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQEKgOUv8RsPew/profile-displayphoto-scale_400_400/B4EZv6AUrIGcAg-/0/1769425949036?e=1770854400&v=beta&t=G3xFOP_6MQ3Kv35Td2IykMHZVyVqlezuFlnIn3qQl5w", 
+        lien: "https://www.linkedin.com/in/emma-hedef",
+        tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
     },
     { 
         n: "Mahé BANDEIRA DE VIVAR", 
@@ -30,7 +24,7 @@ const recs = [
         t: "Cédric est quelqu'un de très <strong>organisé</strong>, très <strong>réactif </strong>et <strong>vif d'esprit</strong>. <br><br>J'ai apprécié sa <strong>qualité de travail</strong>.", 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQF-qGvOqZCa6Q/profile-displayphoto-shrink_100_100/B4EZb80nHNHIAU-/0/1747998373569?e=1770249600&v=beta&t=x1E33hJYt9bW8ZleLlg669bMmXwwsKRA7oOVoPIhq78", 
         lien: "https://www.linkedin.com/in/mahe-de-vivar/",
- 	tags: ["Organisation", "Réactivité", "Product"]
+        tags: ["Organisation", "Réactivité", "Product"]
     },
     { 
         n: "Damya BOUKHEMAL", 
@@ -38,23 +32,24 @@ const recs = [
         t: `J’ai beaucoup apprécié travailler avec Cédric.<br> <br>Son <strong>expérience </strong>et sa <strong>vision </strong>ont apporté une réelle plus value à notre équipe.<br> <br>Au-delà de ses <strong>solides compétences professionnelles</strong>, c’est un manager qui sait les mettre en œuvre avec <strong>efficacité </strong>et surtout les <strong>partager avec son équipe</strong>. <br>J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. <br><br>Son <strong>sens du collectif</strong>, sa capacité à <strong>accompagner</strong> et à <strong>faire monter les autres en compétences</strong> font de lui un <strong>professionnel fiable et engagé</strong>.`, 
         img: "https://media.licdn.com/dms/image/v2/D4E03AQGSetwnwBe-9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686747440629?e=1770249600&v=beta&t=emrdqqW3z5ceMDb-_t8eCcywMYJuZQZppFUs67SBb7U", 
         lien: "https://www.linkedin.com/in/damya-boukhemal/",
-	tags: ["Management", "Mentoring", "Product"] 
+        tags: ["Management", "Mentoring", "Product"] 
     },
-    { 	n: "Ludovic LEVY", 
-	r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
-	t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une <strong>personne sur qui l’on peut compter</strong> en toutes circonstances. <br><br>Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la <strong>solidité de ses engagements</strong> et sa <strong>loyauté</strong> exemplaire.<br><br> Cédric est un collaborateur toujours <strong>jovial</strong>, qui apporte une <strong>énergie positive</strong> au sein d'une équipe. <br><br>Je le recommande vivement pour son <strong>professionnalisme </strong>et ses <strong>qualités humaines rares</strong>.`, 
-	img: "https://media.licdn.com/dms/image/v2/D4E03AQHpM0Tmo9W20A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700547120552?e=1770249600&v=beta&t=bOkdL8GlSc9TsFHkSQTguflZACma6f8c9LhnoR5x2Vk", 
-	lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
-	tags: ["Product", "SoftSkills", "Relationnel"]
+    { 	
+        n: "Ludovic LEVY", 
+        r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
+        t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une <strong>personne sur qui l’on peut compter</strong> en toutes circonstances. <br><br>Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la <strong>solidité de ses engagements</strong> et sa <strong>loyauté</strong> exemplaire.<br><br> Cédric est un collaborateur toujours <strong>jovial</strong>, qui apporte une <strong>énergie positive</strong> au sein d'une équipe. <br><br>Je le recommande vivement pour son <strong>professionnalisme </strong>et ses <strong>qualités humaines rares</strong>.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQHpM0Tmo9W20A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700547120552?e=1770249600&v=beta&t=bOkdL8GlSc9TsFHkSQTguflZACma6f8c9LhnoR5x2Vk", 
+        lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
+        tags: ["Product", "SoftSkills", "Relationnel"]
     },
-    { 	n: "Marlène BIARD", 
-	r: "#Slasheuse : Communication engagée | Coaching professionnel | Bilans de compétences | Animation de conférences | Evénementiel | Formation soft skills", 
-	t: `J’ai eu le plaisir de travailler avec Cédric à la Croix-Rouge, où il occupait le rôle de chef de projet en maîtrise d’ouvrage informatique. <br><br>J’ai particulièrement apprécié sa grande <strong>réactivité</strong> et sa capacité à apporter des <strong>réponses concrètes et pragmatiques</strong> aux problématiques rencontrées.<br><br> <strong>Toujours à l’écoute des besoins</strong> des utilisateurs et des parties prenantes, Cédric sait <strong>transformer des enjeux</strong> parfois complexes en <strong>solutions simples et efficaces</strong>, avec un objectif constant : <strong>améliorer et fluidifier l’expérience client</strong>. <br><br>Son <strong>sens du service, sa rigueur et son engagement </strong>ont été de réels atouts pour la réussite des projets menés ensemble.`, 
-	img: "https://media.licdn.com/dms/image/v2/D4E03AQEA5toIIcQxvg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1732107701825?e=1770854400&v=beta&t=ciIw_cRqMDi_K1hRox2TRdbx352Db1hmygRBlT7w2kU", 
-	lien: "https://www.linkedin.com/in/marlene-biard-53860742",
-	tags: ["Organisation", "UX Strategy", "SoftSkills"]
+    { 	
+        n: "Marlène BIARD", 
+        r: "#Slasheuse : Communication engagée | Coaching professionnel | Bilans de compétences | Animation de conférences | Evénementiel | Formation soft skills", 
+        t: `J’ai eu le plaisir de travailler avec Cédric à la Croix-Rouge, où il occupait le rôle de chef de projet en maîtrise d’ouvrage informatique. <br><br>J’ai particulièrement apprécié sa grande <strong>réactivité</strong> et sa capacité à apporter des <strong>réponses concrètes et pragmatiques</strong> aux problématiques rencontrées.<br><br> <strong>Toujours à l’écoute des besoins</strong> des utilisateurs et des parties prenantes, Cédric sait <strong>transformer des enjeux</strong> parfois complexes en <strong>solutions simples et efficaces</strong>, avec un objectif constant : <strong>améliorer et fluidifier l’expérience client</strong>. <br><br>Son <strong>sens du service, sa rigueur et son engagement </strong>ont été de réels atouts pour la réussite des projets menés ensemble.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQEA5toIIcQxvg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1732107701825?e=1770854400&v=beta&t=ciIw_cRqMDi_K1hRox2TRdbx352Db1hmygRBlT7w2kU", 
+        lien: "https://www.linkedin.com/in/marlene-biard-53860742",
+        tags: ["Organisation", "UX Strategy", "SoftSkills"]
     }
-
 ];
 
 const exps = {
@@ -92,92 +87,61 @@ const exps = {
         h: "Historique",
         t: "Parcours 2006 - 2013",
         missions: [
-            "2006 : BNP - CDD <br>Episodique Procurement",
-            "2007 : Edu-Performance Canada <br>Stage Comptabilité",
-            "2007 : ESSEC - CDD <br>Formation Intra",
-            "2007 : Assurances BRED - CDD <br>Gestionnaire",
-            "2008 : Armée de l'Air - Stage <br>Ressources Humaines",
-            "2009-2010 : Plateforme du Bâtiment (Saint-Gobain) - Alternance <br>Contrôleur de Gestion",
-            "2011 - 2013 : Croix-Rouge - CDD <br>Secouriste professionnel",
-            "2013 : Cedeo (Saint-Gobain) - CDI <br>Gestionnaire Stock et Offre"],
+            "2006 : BNP - CDD Procurement",
+            "2007 : Edu-Performance Canada - Stage Comptabilité",
+            "2007 : ESSEC - CDD Formation Intra",
+            "2007 : Assurances BRED - CDD Gestionnaire",
+            "2008 : Armée de l'Air - Stage RH",
+            "2009-2010 : Plateforme du Bâtiment - Alternance Contrôleur de Gestion",
+            "2011-2013 : Croix-Rouge - CDD Secouriste professionnel",
+            "2013 : Cedeo - CDI Gestionnaire Stock"
+        ],
         impacts: ["Parcours formateur multi-directions en back et front office"]
     }
 };
-// Mise à jour du compteur
-const countElement = document.getElementById('reco-count');
-if(countElement) {
-    countElement.innerText = recs.length;
-}
 
 /* ==========================================================================
-   2. INJECTION & CAROUSEL RECOMMANDATIONS (AVEC FILTRES)
+   2. INJECTION & CAROUSEL (AVEC FILTRES)
    ========================================================================== */
-
 function renderRecs(filter = 'Tous') {
     const track = document.getElementById('recoTrack');
     if(!track) return;
 
-    // 1. Filtrage des données selon le tag (Simple ou Tableau)
     const filtered = filter === 'Tous' 
         ? recs 
-        : recs.filter(r => {
-            if (!r.tags) return false;
-            // Si le filtre est un tableau (ex: ['Product', 'Workflow']), on vérifie si un des tags match
-            if (Array.isArray(filter)) {
-                return r.tags.some(tag => filter.includes(tag));
-            }
-            // Sinon (mot simple), on vérifie classiquement
-            return r.tags.includes(filter);
-        });
+        : recs.filter(r => r.tags && (Array.isArray(filter) ? r.tags.some(t => filter.includes(t)) : r.tags.includes(filter)));
 
-    // 2. Injection du HTML
     track.innerHTML = filtered.map(r => `
         <div class="reco-card fade-in">
             <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
                 <div class="pulse-container">
-                    <img src="${r.img}" class="pulse-img" style="width:45px; height:45px; border-radius:50%; border: 1px solid var(--border); object-fit: cover;">
+                    <img src="${r.img}" class="pulse-img">
                 </div>
                 <div>
                     <h4 style="color:var(--white);font-size:0.9rem;margin:0">${r.n}</h4>
                     <p style="font-size:0.65rem;color:var(--blue);font-weight:700;margin:0;text-transform:uppercase">${r.r}</p>
                 </div>
             </div>
-            <p style="font-size:0.85rem;font-style:italic;color:var(--text);line-height:1.5">"${r.t}"</p>
-            <div class="card-tags" style="margin-top:auto; display:flex; gap:5px; flex-wrap:wrap;">
-                ${r.tags ? r.tags.map(tag => `<span style="font-size:0.6rem; color:var(--blue); font-weight:bold; opacity:0.7;">#${tag}</span>`).join('') : ''}
+            <p class="reco-text">"${r.t}"</p>
+            <div class="card-tags">
+                ${r.tags ? r.tags.map(tag => `<span class="mini-tag">#${tag}</span>`).join('') : ''}
             </div>
             <a href="${r.lien}" target="_blank" style="display:block;margin-top:10px;font-size:0.65rem;color:var(--blue);text-decoration:none;font-weight:600">Profil LinkedIn ↗</a>
         </div>
     `).join('');
 
-    // 3. Mise à jour du compteur dynamique
     const countElement = document.getElementById('reco-count');
     if(countElement) countElement.innerText = filtered.length;
-    
     if (window.lucide) lucide.createIcons();
 }
 
-/**
- * Fonction appelée par les boutons de filtre
- * Supporte filterInput = 'Tous', 'Product' ou ['Tag1', 'Tag2']
- */
 function filterRecs(filterInput) {
-    // On gère l'état 'active' des boutons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        // Le bouton devient actif s'il a été cliqué (comparaison simplifiée)
-        btn.classList.remove('active');
-    });
-    
-    // On ajoute 'active' au bouton qui a déclenché l'événement
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     if (window.event && window.event.currentTarget) {
         window.event.currentTarget.classList.add('active');
     }
-
     renderRecs(filterInput);
 }
-
-// Lancement initial
-renderRecs();
 
 function scrollR(d) {
     const track = document.getElementById('recoTrack');
@@ -190,37 +154,28 @@ function scrollR(d) {
 }
 
 /* ==========================================================================
-   3. GESTION DES MODALES (EXPÉRIENCES & LÉGAL)
+   3. GESTION DES MODALES
    ========================================================================== */
-
 function openM(id) {
     const data = exps[id];
     if(!data) return;
 
     const missionsHTML = data.missions.map(m => `<li>${m}</li>`).join('');
     const impactsHTML = data.impacts ? `
-        <div class="modal-section impact-box">
-            <h4><i data-lucide="trending-up" class="modal-icon"></i> Impacts</h4>
+        <div class="impact-box">
+            <strong>Impacts</strong>
             <ul class="modal-list">${data.impacts.map(i => `<li><strong>${i}</strong></li>`).join('')}</ul>
         </div>` : '';
 
     document.getElementById('m-body').innerHTML = `
-        <div class="modal-header">
-            <h2 class="highlight">${data.h}</h2>
-            <h3>${data.t}</h3>
-        </div>
-        <div class="modal-section">
-            <h4><i data-lucide="target" class="modal-icon"></i> Missions</h4>
-            <ul class="modal-list">${missionsHTML}</ul>
-        </div>
+        <h2>${data.h}</h2>
+        <p style="color:var(--blue); font-weight:700; margin-bottom:20px;">${data.t}</p>
+        <ul class="modal-list">${missionsHTML}</ul>
         ${impactsHTML}
         <button onclick="closeM()" class="modal-close-btn">Fermer</button>
     `;
     
-    const modal = document.getElementById('modal');
-    modal.style.display = 'flex';
-    const content = modal.querySelector('.modal-content');
-    if(content) content.scrollTop = 0;
+    document.getElementById('modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
     lucide.createIcons();
 }
@@ -233,7 +188,6 @@ function closeM() {
 function openLegal() { document.getElementById('modal-legal').style.display = 'flex'; }
 function closeLegal() { document.getElementById('modal-legal').style.display = 'none'; }
 
-// Fermeture au clic sur le fond (overlay)
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal-overlay')) {
         e.target.style.display = 'none';
@@ -244,74 +198,102 @@ window.addEventListener('click', (e) => {
 /* ==========================================================================
    4. ACTIONS UTILISATEURS (MAIL & THEME)
    ========================================================================== */
-
 function handleMailClick(event, email) {
-    // Empêche l'ouverture immédiate du lien pour laisser le temps à la copie
     event.preventDefault();
-
-    // 1. Copie dans le presse-papier
     navigator.clipboard.writeText(email).then(() => {
-        // 2. On récupère TOUS les boutons qui affichent le mail (haut et bas)
         const emailButtons = document.querySelectorAll('#emailBtn, .contact-actions-box .btn-main');
-
         emailButtons.forEach(btn => {
             const span = btn.querySelector('span');
             const icon = btn.querySelector('i');
-            const originalText = "Discutons de votre projet";
+            const originalText = span ? span.innerText : "Discutons de votre projet";
             
-            // Changement d'état visuel
-            btn.style.background = "#059669"; // Vert succès
+            btn.style.background = "#059669";
             if (span) span.innerText = "Mail copié !";
-            
-            // Optionnel : changer l'icône si tu utilises Lucide
-            if (icon) {
-                icon.setAttribute('data-lucide', 'check');
-                lucide.createIcons();
-            }
+            if (icon) { icon.setAttribute('data-lucide', 'check'); lucide.createIcons(); }
 
-            // 3. Retour à l'état initial après 2.5 secondes
             setTimeout(() => {
-                btn.style.background = ""; // Reprend le CSS (bleu)
+                btn.style.background = "";
                 if (span) span.innerText = originalText;
-                if (icon) {
-                    icon.setAttribute('data-lucide', 'mail');
-                    lucide.createIcons();
-                }
+                if (icon) { icon.setAttribute('data-lucide', 'mail'); lucide.createIcons(); }
             }, 2500);
         });
-
-        // 4. Ouvre le client mail après une courte pause pour l'UX
-        setTimeout(() => {
-            window.location.href = "mailto:" + email;
-        }, 300);
+        setTimeout(() => { window.location.href = "mailto:" + email; }, 300);
     });
 }
 
-// --- GESTION DU THÈME (VERSION CORRIGÉE) ---
 const themeToggle = document.getElementById('theme-toggle');
-
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    
-    // On change l'icône à l'intérieur du bouton
-    const newIconName = (theme === 'light') ? 'moon' : 'sun';
-    
-    // On force la réécriture du HTML interne pour être sûr que Lucide le voit
-    themeToggle.innerHTML = `<i data-lucide="${newIconName}"></i>`;
-    
-    // On demande à Lucide de transformer le <i> en icône
+    themeToggle.innerHTML = `<i data-lucide="${theme === 'light' ? 'moon' : 'sun'}"></i>`;
     lucide.createIcons();
 }
-
-// Initialisation au chargement
-const savedTheme = localStorage.getItem('theme') || 'dark';
-applyTheme(savedTheme);
 
 themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     applyTheme(current === 'light' ? 'dark' : 'light');
 });
 
-// Lancement final des icônes pour le reste de la page
+/* ==========================================================================
+   SCROLLSPY FINAL & HARMONISÉ
+   ========================================================================== */
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id], footer[id]');
+
+const sectionToNav = {
+    'sectors': 'sectors',
+    'methodo': 'methodo',
+    'skills': 'methodo',
+    'references': 'references',
+    'experience': 'experience',
+    'contact': 'contact'
+};
+
+const observerOptions = {
+    // On centre la détection sur une bande de 40% au milieu de l'écran
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0
+};
+
+const observer = new IntersectionObserver((entries) => {
+    // On ne traite l'observer que si on n'est pas tout en haut et pas tout en bas
+    const scrollY = window.scrollY;
+    const isAtBottom = (window.innerHeight + scrollY) >= document.body.offsetHeight - 100;
+
+    if (scrollY > 200 && !isAtBottom) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const targetNav = sectionToNav[id];
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('highlight');
+                    if (link.getAttribute('href') === `#${targetNav}`) {
+                        link.classList.add('highlight');
+                    }
+                });
+            }
+        });
+    }
+}, observerOptions);
+
+sections.forEach(section => observer.observe(section));
+
+// Gestion exclusive du Haut (Hero) et du Bas (Contact)
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const isAtBottom = (window.innerHeight + scrollY) >= document.body.offsetHeight - 100;
+
+    if (scrollY < 200) {
+        navLinks.forEach(l => l.classList.remove('highlight'));
+    } else if (isAtBottom) {
+        navLinks.forEach(l => l.classList.remove('highlight'));
+        const contactLink = document.querySelector('a[href="#contact"]');
+        if (contactLink) contactLink.classList.add('highlight');
+    }
+});
+
+// Initialisation
+renderRecs();
+applyTheme(localStorage.getItem('theme') || 'dark');
 lucide.createIcons();
