@@ -19,6 +19,22 @@ const recs = [
         tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
     },
     { 
+        n: "Bertrand OGIER", 
+        r: "Directeur pédagogique | Formations à impact | ESS - Innovation - Inclusion", 
+        t: `Cédric est un <strong>professionnel compétent et engagé</strong>. Doué d'une <strong>capacité d'analyse et de structuration des projets</strong>, il est aussi source d'<strong>avis pertinents</strong>, que cela soit d'un point de vue <strong>technique ou stratégique</strong>. Enfin Cédric est un collègue très sympathique et qui fait preuve d'un <strong>esprit d'équipe affirmé</strong>.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E35AQHO3d3JZ5SUgw/profile-framedphoto-shrink_100_100/B4EZrfwx4MKMAo-/0/1764690698247?e=1770674400&v=beta&t=odeH_ileGyjHtB1fL9HxH7288HS2qdlBmy63WX9-xj8", 
+        lien: "https://www.linkedin.com/in/bertrand-ogier-a2874716",
+        tags: ["Analyse", "Organisation", "SoftSkills","Relationnel"]
+    },
+    { 
+        n: "Saïname ALIBAY", 
+        r: "Responsable du service Animation, Communication et Placement entreprises - CFA Numia / EFREI", 
+        t: `J’ai eu le plaisir de travailler avec Cédric Alinc, un excellent collègue, aussi apprécié pour ses qualités humaines que pour son professionnalisme.<strong>Fiable, impliqué et toujours à l’écoute</strong>, Cédric sait créer un <strong>climat de travail collaboratif</strong> et contribue pleinement à créer un <strong>environnement de travail positif et stimulant</strong>. Cédric est une personne sur qui l’on peut compter et avec qui il est réellement agréable de travailler.Je le recommande sans hésitation.`, 
+        img: "https://media.licdn.com/dms/image/v2/D4E03AQGVVGfrdlnBZw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1666281302502?e=1771459200&v=beta&t=ZFNUMJTHwn2-q6ZQCv-1mmhqjuTCRCMkVp5frXbZfuQ", 
+        lien: "https://www.linkedin.com/in/sa%C3%AFname-alibay",
+        tags: ["SoftSkills", "Relationnel", "Product"]
+    },
+    { 
         n: "Mahé BANDEIRA DE VIVAR", 
         r: "Chef de projet - iPorta", 
         t: "Cédric est quelqu'un de très <strong>organisé</strong>, très <strong>réactif </strong>et <strong>vif d'esprit</strong>. <br><br>J'ai apprécié sa <strong>qualité de travail</strong>.", 
@@ -51,6 +67,7 @@ const recs = [
         tags: ["Organisation", "UX Strategy", "SoftSkills"]
     }
 ];
+
 
 const exps = {
     'malin': {
