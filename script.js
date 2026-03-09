@@ -3,6 +3,14 @@
    ========================================================================== */
 const recs = [
     { 	
+        n: "Raida REHOUNI", 
+        r: "Lead Teacher - FullStack Node JS / React Developer @LaCapsule | Robotics Engineer et créateur de Nowisa Language School", 
+        t: `J'ai eu le plaisir d'accompagner et former Cédric au cours d'une formation de 10 semaines sur les sujets de la Data Analyse, du Data Engineering et de la Data Science. J'ai fortement apprécié, sa <strong>motivation, sa rigueur et sa bienveillance</strong> envers les autres étudiants. Fort de ses expériences professionnelles passées, et des compétences acquises durant cette formation, je pense que c'est un <strong>élément à avoir dans son équipe</strong>, qui saura <strong>apporter une vraie valeur aux réflexions sur la résolution de problèmes techniques et d'optimisation</strong> mais également avec de vraies <strong>capacités de management et de coordination</strong>. `, 
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQEjvpnTYn9oXw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1664628265688?e=1774483200&v=beta&t=6Wos4rlWaYxcgrm7wDPJyy317ZW__4cOrVgBACR77Ek", 
+        lien: "https://www.linkedin.com/in/raida-rehouni-48a2b57b",
+        tags: ["Formation", "Management", "SoftSkills"]
+    },
+   { 	
         n: "Florent VALLÉE", 
         r: "Directeur de l'urgence et des opérations - CRf", 
         t: `Cedric est un Chef de projet engagé, à l'<strong>écoute des besoins</strong> des utilisateurs finaux.<br><br> Son <strong>dynamisme</strong>, sa <strong>créativité </strong>et son <strong>engagement </strong>font sa difference`, 
