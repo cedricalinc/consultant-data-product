@@ -1,478 +1,1060 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cédric Alinc | Product Manager</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goshiki — Cédric Alinc · Product Manager & Automatisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/cedricalinc/consultant-data-product/main/Goshiki_assis.svg">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+/* ── TOKENS ── */
+:root {
+  --bleu:#204c89; --bleu-l:#3a6bb8;
+  --teal:#379482; --teal-l:#4aab97;
+  --or:#e0a025;   --or-l:#f0b840;
+  --corail:#c25335; --corail-l:#d96645;
+  --azure:#03a4ff;  --azure-l:#4dbeff;
+}
+[data-theme="dark"] {
+  --bg:#0d0d0b; --bg2:#151512; --card:#1c1b18;
+  --border:rgba(255,255,255,0.07); --text:#b0ada6;
+  --heading:#f0ece4; --nav-bg:rgba(13,13,11,0.93);
+  --tag-bg:#242420; --shadow:rgba(0,0,0,0.5);
+}
+[data-theme="light"] {
+  --bg:#f5f1ea; --bg2:#ece8e0; --card:#ffffff;
+  --border:rgba(26,25,22,0.1); --text:#5a5550;
+  --heading:#1a1916; --nav-bg:rgba(245,241,234,0.95);
+  --tag-bg:#e8e4dc; --shadow:rgba(0,0,0,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;color:var(--heading);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+.nav-brand .k{font-family:serif;font-size:15px;color:var(--or);opacity:.8;}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center;}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--text);padding:5px 10px;border-radius:7px;position:relative;transition:color .3s;white-space:nowrap;}
+.nav-links a:hover{color:var(--heading);}
+.nav-links a.act{color:#000;position: relative;z-index: 1;}
+.nav-links a.act::before{content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--or);
+    opacity: .4;
+    border-radius: 7px;
+    border: 1px solid rgba(224,160,37,.2);
+    animation: rr .3s cubic-bezier(.77,0,.175,1) forwards;
+    transform-origin: left;
+    /* AJOUT ICI */
+    z-index: -1;}
+@keyframes rr{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+.ndot{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--heading);padding:6px;border-radius:8px;cursor:pointer;display:flex;align-items:center;transition:.3s;flex-shrink:0;}
+.theme-btn:hover{border-color:var(--or);color:var(--or);}
+.hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:20px;height:2px;background:var(--heading);border-radius:2px;transition:.3s;}
+.mob-menu{display:none;position:fixed;top:60px;left:0;width:100%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 5% 18px;z-index:999;flex-direction:column;gap:4px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:500;color:var(--text);padding:9px 14px;border-radius:9px;transition:.2s;}
+.mob-menu a:hover,.mob-menu a.act{background:var(--tag-bg);color:var(--heading);opacity:.5}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 79px, var(--border) 79px, var(--border) 80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Colonne gauche = la photo */
+.hero > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 80px 8%;
+  position: relative;
+  z-index: 1;
+}
+
+
+.hero-left {
+  padding: 72px 8% 72px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,6vw,84px);font-weight:300;line-height:1.0;letter-spacing:-.02em;color:var(--heading);}
+.hero-name em{font-style:italic;color:var(--corail);display:block;}
+.hero-desc{font-size:15px;font-weight:300;color:var(--text);max-width:400px;line-height:1.85;border-left:2px solid var(--or);padding-left:18px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.htag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;padding:4px 11px;border-radius:20px;border:1px solid;transition:.3s;}
+.htag:hover{transform:translateY(-2px);}
+.t-b{color:var(--bleu-l);border-color:var(--bleu);background:rgba(32,76,137,.08);}
+.t-t{color:var(--teal-l);border-color:var(--teal);background:rgba(55,148,130,.08);}
+.t-o{color:var(--or-l);border-color:var(--or);background:rgba(224,160,37,.08);}
+.t-c{color:var(--corail-l);border-color:var(--corail);background:rgba(194,83,53,.08);}
+.t-a{color:var(--azure-l);border-color:var(--azure);background:rgba(3,164,255,.08);}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--corail);color:#fff;padding:12px 22px;border-radius:11px;font-size:13px;font-weight:600;transition:.3s;border:none;cursor:pointer;}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(194,83,53,.35);filter:brightness(1.1);}
+.btn-s{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--heading);padding:12px 22px;border-radius:11px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:.3s;}
+.btn-s:hover{border-color:var(--or);color:var(--or);transform:translateY(-3px);}
+.hero-right{background:#1a1916;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;position:relative;overflow:hidden;}
+.hero-right::after{content:'五色';position:absolute;bottom:-30px;right:-15px;font-family:serif;font-size:190px;font-weight:600;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;}
+.logo-hero{width:100%;max-width:370px;animation:float 7s ease-in-out infinite;position:relative;z-index:1;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.hero-pal{display:flex;gap:10px;margin-top:36px;position:relative;z-index:1;}
+.pdot{width:9px;height:9px;border-radius:50%;opacity:.7;transition:.3s;cursor:default;}
+.pdot:hover{transform:scale(1.6);opacity:1;}
+.stats-bar{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.stat-i{background:var(--bg);padding:18px 12px;text-align:center;}
+.stat-i strong{display:block;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--heading);line-height:1;}
+.stat-i span{display:block;font-size:9px;letter-spacing:.07em;font-family:'DM Mono',monospace;color:var(--text);margin-top:3px;text-transform:uppercase;}
+
+/* ── SECTIONS ── */
+.sec{padding:96px 8%;max-width:1200px;margin:0 auto;}
+.bg-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.bg-dark{background:#1a1916;}
+.sec-inner{max-width:1200px;margin:0 auto;padding:96px 8%;}
+.ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.ey-line{display:block;width:22px;height:1px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:300;letter-spacing:-.02em;color:var(--heading);line-height:1.1;margin-bottom:14px;}
+.sec-title em{font-style:italic;}
+.sec-sub{font-size:15px;color:var(--text);max-width:540px;line-height:1.85;margin-bottom:56px;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ── À PROPOS ── */
+.apropos-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+
+.photo-wrap {
+  width: 100%;
+  max-width: min(720px, 28vw);   /* ← s'adapte au viewport */
+  aspect-ratio: 3/4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.av-badge{position:absolute;bottom:20px;left:20px;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:9px 14px;display:flex;align-items:center;gap:9px;font-size:11px;backdrop-filter:blur(8px);}
+.pulse-d{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pd 2s infinite;}
+@keyframes pd{0%,100%{box-shadow:0 0 0 3px rgba(55,148,130,.25)}50%{box-shadow:0 0 0 6px rgba(55,148,130,.1)}}
+.quote-block{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:var(--heading);border-left:3px solid var(--or);padding:14px 22px;margin:26px 0;background:var(--tag-bg);border-radius:0 11px 11px 0;line-height:1.5;}
+.apropos-p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:14px;}
+.chip{font-size:11px;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--tag-bg);color:var(--text);border:1px solid var(--border);}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px;}
+
+/* ── MÉTHODE ── */
+.m-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:56px;}
+.m-step{padding:28px 22px;border-right:1px solid var(--border);transition:background .3s;}
+.m-step:last-child{border-right:none;}
+.m-step:hover{background:var(--card);}
+.m-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--text);opacity:.45;margin-bottom:16px;}
+.m-bar{height:3px;border-radius:2px;margin-bottom:16px;width:32px;}
+.m-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.2;margin-bottom:5px;}
+.m-part{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.8;}
+.m-body{font-size:14px;line-height:1.7;color:var(--text);}
+.m-svcs{margin-top:12px;display:flex;flex-direction:column;gap:4px;}
+.msvc{font-size:9px;font-weight:600;padding:3px 8px;border-radius:9px;display:inline-flex;border:1px solid;width:fit-content;}
+.s-b{color:var(--bleu-l);border-color:rgba(32,76,137,.35);background:rgba(32,76,137,.07);}
+.s-t{color:var(--teal-l);border-color:rgba(55,148,130,.35);background:rgba(55,148,130,.07);}
+.s-o{color:var(--or-l);border-color:rgba(224,160,37,.35);background:rgba(224,160,37,.07);}
+.s-c{color:var(--corail-l);border-color:rgba(194,83,53,.35);background:rgba(194,83,53,.07);}
+.s-a{color:var(--azure-l);border-color:rgba(3,164,255,.35);background:rgba(3,164,255,.07);}
+.m1 .m-bar{background:var(--bleu);} .m1 .m-title{color:var(--bleu-l);}
+.m2 .m-bar{background:var(--teal);} .m2 .m-title{color:var(--teal-l);}
+.m3 .m-bar{background:var(--or);}   .m3 .m-title{color:var(--or-l);}
+.m4 .m-bar{background:var(--corail);} .m4 .m-title{color:var(--corail-l);}
+.m5 .m-bar{background:linear-gradient(90deg,var(--teal),var(--azure));} .m5 .m-title{color:var(--azure-l);}
+
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px 26px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px var(--shadow);}
+.sc-b::before{background:var(--bleu);} .sc-b:hover{border-color:rgba(32,76,137,.35);}
+.sc-t::before{background:var(--teal);} .sc-t:hover{border-color:rgba(55,148,130,.35);}
+.sc-o::before{background:var(--or);} .sc-o:hover{border-color:rgba(224,160,37,.35);}
+.sc-c::before{background:var(--corail);} .sc-c:hover{border-color:rgba(194,83,53,.35);}
+.sc-a::before{background:linear-gradient(90deg,var(--teal),var(--azure));} .sc-a:hover{border-color:rgba(3,164,255,.35);}
+.sc-m::before{background:linear-gradient(90deg,var(--bleu),var(--teal),var(--or),var(--corail));} .sc-m:hover{border-color:rgba(224,160,37,.35);}
+.svc-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.si-b{background:rgba(32,76,137,.1);color:var(--bleu-l);}
+.si-t{background:rgba(55,148,130,.1);color:var(--teal-l);}
+.si-o{background:rgba(224,160,37,.1);color:var(--or-l);}
+.si-c{background:rgba(194,83,53,.1);color:var(--corail-l);}
+.si-a{background:rgba(3,164,255,.1);color:var(--azure-l);}
+.si-m{background:rgba(224,160,37,.1);color:var(--or-l);}
+.svc-mtag{position:absolute;top:16px;right:16px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 8px;border-radius:20px;}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--heading);margin-bottom:7px;line-height:1.2;}
+.svc-body{font-size:12px;line-height:1.8;color:var(--text);margin-bottom:16px;}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.svc-list li{font-size:11px;color:var(--text);display:flex;align-items:flex-start;gap:7px;}
+.svc-list li::before{content:'→';flex-shrink:0;font-size:10px;margin-top:1px;}
+
+/* ── TOOLBOX ── */
+.tb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px;}
+.tb-group{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;}
+.tb-title{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--heading);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.tb-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:10px;font-weight:500;padding:3px 9px;border-radius:7px;background:var(--tag-bg);border:1px solid var(--border);color:var(--text);transition:.2s;}
+.tag:hover{color:var(--heading);border-color:rgba(224,160,37,.35);}
+
+/* ── RECO ── */
+.rf-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px;}
+.rfbtn{font-size:11px;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--tag-bg);color:var(--text);cursor:pointer;transition:.2s;}
+.rfbtn:hover{border-color:var(--or);color:var(--or);}
+.rfbtn.on{background:var(--or);color:#1a1916;border-color:var(--or);}
+.reco-wrap{position:relative;width:100%;display:flex;align-items:center;}
+.reco-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;padding:6px 4px 18px;scrollbar-width:none;width:100%;}
+.reco-track::-webkit-scrollbar{display:none;}
+.reco-card{flex:0 0 290px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s;}
+.reco-card:hover{transform:translateY(-4px);border-color:rgba(224,160,37,.3);}
+.reco-h{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.reco-av{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;}
+.reco-name{font-size:13px;font-weight:700;color:var(--heading);transition:.2s;}
+.reco-name:hover{color:var(--or);}
+.reco-role{font-size:10px;color:var(--text);line-height:1.4;margin-top:2px;}
+.reco-txt{font-size:12px;line-height:1.7;color:var(--text);font-style:italic;flex:1;}
+.reco-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:14px;}
+.reco-tag{font-size:9px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--tag-bg);border:1px solid var(--border);color:var(--text);}
+.rnav{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--heading);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;z-index:10;position:absolute;}
+.rnav:hover{background:var(--or);color:#1a1916;border-color:var(--or);}
+.rp{left:-17px;} .rn{right:-17px;}
+
+/* ── PARCOURS ── */
+.parc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:56px;}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 28px;cursor:pointer;transition:.3s;position:relative;overflow:hidden;}
+.exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.exp-card:hover{transform:translateX(6px);}
+.e-b::before{background:var(--bleu);} .e-b:hover{border-color:rgba(32,76,137,.35);}
+.e-t::before{background:var(--teal);} .e-t:hover{border-color:rgba(55,148,130,.35);}
+.e-o::before{background:var(--or);}   .e-o:hover{border-color:rgba(224,160,37,.35);}
+.e-c::before{background:var(--corail);} .e-c:hover{border-color:rgba(194,83,53,.35);}
+.e-yr{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--text);opacity:.55;}
+.e-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--heading);margin:8px 0 3px;}
+.e-sub{font-size:12px;color:var(--text);font-style:italic;margin-bottom:10px;}
+.e-hint{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);opacity:.45;margin-top:12px;transition:opacity .2s;}
+.exp-card:hover .e-hint{opacity:.9;}
+
+/* ── CONTACT ── */
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.cbtn{display:flex;align-items:center;gap:11px;padding:15px 18px;border-radius:13px;font-size:13px;font-weight:600;transition:.3s;cursor:pointer;border:1px solid;width:100%;margin-bottom:10px;}
+.cb-mail{background:var(--corail);color:#fff;border-color:var(--corail);}
+.cb-mail:hover{filter:brightness(1.1);transform:translateX(4px);}
+.cb-li{background:rgba(3,164,255,.07);color:var(--azure-l);border-color:rgba(3,164,255,.2);}
+.cb-li:hover{background:rgba(3,164,255,.13);transform:translateX(4px);}
+.contact-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:32px;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:26px 8%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+
+/* ── MODAL ── */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:32px;max-width:580px;width:100%;max-height:84vh;overflow-y:auto;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.m-close{position:absolute;top:14px;right:14px;background:var(--tag-bg);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;}
+.m-close:hover{background:var(--or);color:#1a1916;}
+.m-cta{width:100%;background:var(--tag-bg);border:1px solid var(--border);color:var(--heading);padding:12px;border-radius:11px;font-size:13px;font-weight:600;cursor:pointer;margin-top:22px;transition:.2s;}
+.m-cta:hover{background:var(--or);color:#1a1916;}
+.m-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.m-list li{font-size:13px;line-height:1.6;padding-left:18px;position:relative;transition:.2s;}
+.m-list li::before{content:'→';position:absolute;left:0;font-size:11px;}
+.m-list li:hover{transform:translateX(4px);color:var(--heading);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .m-grid{grid-template-columns:repeat(3,1fr);}
+  .m-step:nth-child(3){border-right:none;}
+  .m-step:nth-child(4),.m-step:nth-child(5){border-top:1px solid var(--border);}
+  .tb-grid{grid-template-columns:repeat(2,1fr);}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  @media(max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero > div:first-child {padding: 30px 6% 20px;}
+  .photo-wrap {max-width: 80vw;aspect-ratio: 3/4;}
+  .hero-left { padding: 10px 6% 56px; }
+  .hero-right{min-height:48vw;padding:36px;}
+  .apropos-grid,.contact-inner{grid-template-columns:1fr!important;gap:36px!important;}
+  .photo-wrap{aspect-ratio:16/9;max-height:280px;}
+  .parc-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:repeat(3,1fr);}
+  .av-badge{bottom:0px;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-left{gap:22px;padding:66px 5% 52px;}
+  .m-grid{grid-template-columns:1fr 1fr;}
+  .m-step:nth-child(2),.m-step:nth-child(4){border-right:none;}
+  .m-step:nth-child(3),.m-step:nth-child(4),.m-step:nth-child(5){border-top:1px solid var(--border);}
+  .svc-grid,.tb-grid{grid-template-columns:1fr;}
+  .sec{padding:64px 5%;}
+  .sec-inner{padding:64px 5%;}
+  .rnav{display:none;}
+  .reco-card{flex:0 0 84%;}
+  footer{flex-direction:column;align-items:center;text-align:center;}
+}
+@media(max-width:480px){
+  .hero-name{font-size:clamp(34px,10vw,50px);}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .m-grid{grid-template-columns:1fr;}
+  .m-step{border-right:none!important;border-top:1px solid var(--border);}
+  .m-step:first-child{border-top:none;}
+  .hero-cta{flex-direction:column;}
+  .btn-p,.btn-s{justify-content:center;}
+}
+.fi{animation:fi .4s ease forwards;}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
-    <div class="nav-brand">
-        <a href="#" class="logo" style="text-decoration: none; color: inherit;">Cédric ALINC</a>
-    </div>
-    <div class="nav-menu">
-        <ul class="nav-links">
-            <li><a href="#sectors"><strong><span class="highlight">U</span></strong>nivers</a></li>
-            <li><a href="#methodo"><strong><span class="highlight">M</span></strong>éthode</a></li>
-            <li><a href="#references"><strong><span class="highlight">R</span></strong>éférences</a></li>
-            <li><a href="#experience"><strong><span class="highlight">P</span></strong>arcours</a></li>
-            <li><a href="#contact"><strong><span class="highlight">C</span></strong>ontact</a></li>
-        </ul>
-    </div>
-    <button id="theme-toggle" class="theme-btn" aria-label="Changer le mode">
-        <i data-lucide="sun" id="theme-icon"></i>
-    </button>
+ <a href="#" class="logo" style="text-decoration: none; color: inherit;">
+  <div class="nav-brand" >
+    
+    <svg width="55" height="75" viewBox="0 0 451.5 265.5" style="flex-shrink:0">
+<path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg16fb4578e60" title="Path 17" d="M69.5 209.5C69.5 209.5 63.5 261 63.5 261C63.5 261 128.5 271 128.5 271C128.5 271 69.5 209.5 69.5 209.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg1445e6bd33c" title="Path 1" d="M81 3.5C81 3.5 75.5 77.5 75.5 77.5C75.5 77.5 101 52 101 52C101 52 81 3.5 81 3.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg17ec89be91" title="Path 2" d="M103.5 49.5C103.5 49.5 83.5 1.25 83.5 1.25C83.5 1.25 120 34 120 34C120 34 103.5 49.5 103.5 49.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgcbbbe580e8" title="Path 3" d="M161.5 34.5C161.5 34.5 197.5 1 197.5 1C197.5 1 179 50 179 50C179 50 161.5 34.5 161.5 34.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg83e365c069" title="Path 4" d="M182 54C182 54 199.5 4.5 199.5 4.5C199.5 4.5 205 77 205 77C205 77 182 54 182 54Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg41eb7317f7" title="Path 5" d="M123.5 36.5C123.5 36.5 159 36.5 159 36.5C159 36.5 177.5 54.5 177.5 54.5C177.5 54.5 148 110.5 148 110.5C148 110.5 134 110.5 134 110.5C134 110.5 105 54.5 105 54.5C105 54.5 123.5 36.5 123.5 36.5Z"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgea882cb140" title="Path 6" d="M101 57C101 57 77 83 77 83C77 83 128.5 116 128.5 116C128.5 116 130.5 114 130.5 114C130.5 114 101 57 101 57Z"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg1857ba08f5c" title="Path 7" d="M179.5 56.5C179.5 56.5 205 82.5 205 82.5C205 82.5 152.5 116.5 152.5 116.5C152.5 116.5 150.5 113.5 150.5 113.5C150.5 113.5 179.5 56.5 179.5 56.5Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgee7db45b5a" title="Path 8" d="M134.5 113C134.5 113 131.5 117 131.5 117C131.5 117 141 123.5 141 123.5C141 123.5 149.5 117 149.5 117C149.5 117 146.5 113 146.5 113C146.5 113 134 113 134 113"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" title="Path 22" d="M106.5 107C106.5 107 94 140 94 140C94 140 139 198 139 198C139 198 139 126.5 139 126.5C139 126.5 106.5 108 106.5 108" id="tSvg129336776a4"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" title="Path 23" d="M143.5 126.5C143.5 126.5 175.5 107 175.5 107C175.5 107 188.5 137 188.5 137C188.5 137 143.5 198 143.5 198C143.5 198 143.5 126.5 143.5 126.5Z" id="tSvg15aa43d4674"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg7a08c6d842" title="Path 10" d="M190.5 139C190.5 139 143.5 201.5 143.5 201.5C143.5 201.5 143.5 271.5 143.5 271.5C143.5 271.5 148 271.5 148 271.5C148 271.5 190.5 139 190.5 139Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgc44d8cbb27" title="Path 11" d="M139 202C139 202 92.5 141.5 92.5 141.5C92.5 141.5 134.5 271.5 134.5 271.5C134.5 271.5 139 271.5 139 271.5C139 271.5 139 202 139 202Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg10f8cd5a0f4" title="Path 12" d="M154 262.5C154 262.5 167 222 167 222C167 222 174.5 238.5 174.5 238.5C174.5 238.5 154 262.5 154 262.5Z"/>
+  <path fill="#379482" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg45e09a8a95" title="Path 13" d="M169 216.5C169 216.5 177 235 177 235C177 235 245.5 191.5 245.5 191.5C245.5 191.5 193 141.5 193 141.5C193 141.5 169 216.5 169 216.5Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg170cf8b8040" title="Path 14" d="M181 238C181 238 247 195.5 247 195.5C247 195.5 250 236 250 236C250 236 229 263.5 229 263.5C229 263.5 181 238 181 238"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg6dd4da4507" title="Path 15" d="M177 241.5C177 241.5 222.5 265 222.5 265C222.5 265 152 271.5 152 271.5C152 271.5 177 242 177 242"/>
+  <path fill="#379482" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg13508d28eb9" title="Path 16" d="M77 211C77 211 128 263.5 128 263.5C128 263.5 113 215 113 215C113 215 77 211 77 211Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgfb40d8b050" title="Path 18" d="M63.5 261.5C63.5 261.5 10.5 206.5 10.5 206.5C10.5 206.5 36.5 181.5 36.5 181.5C36.5 181.5 63.5 261.5 63.5 261.5Z"/>
+  <path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg119420ae3cf" title="Path 19" d="M36.5 181.5C36.5 181.5 55 162 55 162C55 162 70.5 210.5 70.5 210.5C70.5 210.5 63.5 261.5 63.5 261.5C63.5 261.5 36.5 181.5 36.5 181.5Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg816607dde6" title="Path 20" d="M10.5 201C10.5 201 34.5 176 34.5 176C34.5 176 27 150.5 27 150.5C27 150.5 1 121 1 121C1 121 16.5 153.5 16.5 153.5C16.5 153.5 10.5 201 10.5 201Z"/>
+  <path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg33348acfe1" title="Path 21" d="M34.5 176C34.5 176 54 157.5 54 157.5C54 157.5 1 121 1 121C1 121 26.5 150 26.5 150C26.5 150 34.5 176 34.5 176Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgfc3f149b19" title="Path 24" d="M54.5 236.5C54.5 236.5 128.5 271 128.5 271C128.5 271 63.5 261.5 63.5 261.5C63.5 261.5 54.5 236.5 54.5 236.5Z" style=""/>
+</svg>
+    Goshiki </br>Cédric ALINC 
+
+  </div>
+	</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#apropos"><span class="ndot" style="background:var(--teal)"></span>Qui suis-je</a></li>
+    <li><a href="#methode"><span class="ndot" style="background:var(--or)"></span>La méthode Goshiki</a></li>
+    <li><a href="#services"><span class="ndot" style="background:var(--corail)"></span>Les services proposés</a></li>
+    <li><a href="#recommandations"><span class="ndot" style="background:var(--bleu)"></span>Quelques références</a></li>
+    <li><a href="#parcours"><span class="ndot" style="background:var(--azure)"></span>Mon parcours</a></li>
+    <li><a href="#contact"><span class="ndot" style="background:var(--corail)"></span>Contactez-moi</a></li>
+  </ul>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="theme-btn" id="themeBtn"><i data-lucide="sun" id="themeIcon" style="width:15px;height:15px"></i></button>
+    <button class="hamburger" id="burger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
-
-<header class="hero">
-    <div class="hero-container" style="text-align: center;">
-        <span class="badge" >PROFIL HYBRIDE PRODUCT & DATA</span>
-        
-        <div class="title-group">
-            <div class="hero-image-wrapper">
-    <div class="pulse-container" style="width: 150px; height: 150px; margin: 20px auto;">
-        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEknWlAtfHEAA/profile-displayphoto-scale_200_200/B4EZvTUvkzKgAc-/0/1768776990823?e=1772668800&v=beta&t=45VqGXhVhMEmRK-L5K3K79vKg2IU7ZXukybe6gE4hRw" 
-             alt="Cédric Alinc" 
-             class="profile-img pulse-img" 
-             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-    </div>
-</div>
-            <h1 class="hero-title">
-                Concevoir pour l’<span class="highlight">utilisateur</span> ;<br>
-                Piloter par la <span class="highlight">donnée.</span>
-            </h1>
-        </div>
-
-        <div class="hero-content">
-            <p class="philosophy" style="text-align:left">
-                <strong>Product Manager</strong> avec un socle technique de <strong>Développeur Fullstack</strong> et de <strong>Modern Data Stack</strong>. <br><br>
-                J'allie les données à une écoute active des utilisateurs pour transformer des problématiques complexes en solutions simples, scalables et impactantes.<br><br>
-                Je peux vous accompagner dans la réflexion, les interviews, la création des process, le pilotage de projet ou la formation des utilisateurs.
-            </p>
-            
-            <div class="hero-stats" style="text-align: center;justify-content: center;" >
-                <div class="stat"><strong>20</strong><span>Ans d'action</br>(pro & bénévole)</span></div>
-		<div class="stat"><strong>>75K</strong><span>Users SI</span></div>
-                <div class="stat"><strong>95%</strong><span>Test</br>OrthoPass</span></div>
-                <div class="stat"><strong>>10</strong><span>Ans d'encadrement </br>(pro & bénévole)</span></div>
-                <div class="stat"><strong>>1200</strong><span>Formés</span></div>
-		<div class="stat"><strong>>2500</strong><span>Heures de formation</span></div>                
-            </div>
-
-<div class="contact-container">
-            <div class="contact-actions-box">
-        <a href="mailto:cedric.alinc.pro@gmail.com" 
-   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
-   class="btn-main" 
-   id="emailBtn">
-    <i data-lucide="mail"></i>
-    <span>Discutons de votre projet</span>
-</a>
-
-        <a style="color:white" href="https://www.linkedin.com/in/cedric-alinc/" 
-           class="btn-alt btn-linkedin-custom" 
-           target="_blank">
-            <i data-lucide="linkedin" style="color:#00BFFF;" ></i>
-            <span>Profil LinkedIn</span>
-        </a>
-    </div>
-</div>    
-
-            <p class="contact-footer-note">L'adresse mail est automatiquement copiée dans votre presse-papier.</p>
-        </div>
-    </div>
-
-
-
-</header>
-
-<section id="sectors" class="section bg-alt">
-    <h2 class="section-heading"><strong><span class="highlight">U</span></strong>nivers métiers</h2>
-    <div class="grid-layout" >
-        <div class="card-item"><i data-lucide="graduation-cap" style="color:coral"></i><h3>Formation et Education</h3></div>
-        <div class="card-item"><i data-lucide="landmark" style="color:gold"></i><h3>Banque et Assurance</h3></div>
-        <div class="card-item"><i data-lucide="home" style="color:indianred"></i><h3>Immobilier & Logistique</h3></div>
-        <div class="card-item"><i data-lucide="heart-pulse" style="color:red"></i><h3>Humanitaire & ESS</h3></div>
-    </div>
-</section>
-
-<section id="methodo" class="section">
-    <h2 class="section-heading"><strong><span class="highlight">M</span></strong>éthode</h2>
-    <div class="methodo-flow">
-        <div class="methodo-step">
-            <div class="step-icon">01</div>
-            <h4>Discovery</h4>
-            <p>Analyse Data, Audit, Interviews, User Research, Étude des processus, Identification des besoins, paint points et opportunités.</p>
-        </div>
-        <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
-        <div class="methodo-step">
-            <div class="step-icon">02</div>
-            <h4>Strategy</h4>
-            <p>Rédaction des processus, Priorisation (RICE, MOSCOW), Roadmap, Alignement des architectures SI.</p>
-        </div>
-        <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
-        <div class="methodo-step">
-            <div class="step-icon">03</div>
-            <h4>Delivery</h4>
-            <p>Pilotage Agile Scrum, Rédaction de User stories, Automatisations, Data Monitoring.</p>
-        </div>
-    </div>
-</section>
-
-<section id="skills" class="section">
-    <h2 class="section-heading"><strong><span class="highlight">T</span></strong>oolbox <strong><span class="highlight">T</span></strong>echnique</h2>
-    <div class="toolbox-grid">
-        <div class="toolbox-category">
-	<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        	<i data-lucide="layers" style="color:DarkCyan"></i>
-        	<span>Data Stack</span>
-    	</h3>
-            <div class="tag-container">
-                <span class="tag">SQL</span>
-		<span class="tag">Python</span>
-		<span class="tag">Airbyte</span>
-		<span class="tag">Fivetran</span>
-		<span class="tag">Apache Kafka</span>
-		<span class="tag">Airflow</span>
-		<span class="tag">dbt</span>
-		<span class="tag">BigQuery</span>
-		<span class="tag">Tableau</span>
-		<span class="tag">Power BI</span>
-            </div>
-        </div>
-
-        <div class="toolbox-category">
-	<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        	<i data-lucide="layers" style="color:OrangeRed"></i>
-        	<span>Product</span>
-    	</h3>            
-	<div class="tag-container">
-                <span class="tag">Scrum</span>
-		<span class="tag">UX Research</span>
-		<span class="tag">Jira</span>
-		<span class="tag">Trello</span>
-		<span class="tag">Notion</span>
-		<span class="tag">Whimsical</span>
-		<span class="tag">Figma</span>
-		<span class="tag">RICE</span>
-		<span class="tag">MOSCOW</span>
-
-            </div>
-        </div>
-        <div class="toolbox-category">
-		<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        		<i data-lucide="layers" style="color:Gold"></i>
-        		<span>Tech & No-Code</span>
-    		</h3>
-            <div class="tag-container">
-                <span class="tag">Node.js</span>
-		<span class="tag">React</span>	
-		<span class="tag">React Native</span>	
-		<span class="tag">Reduce</span>	
-		<span class="tag">HTML</span>	
-		<span class="tag">CSS</span>	
-		<span class="tag">Javascript</span>	
-		<span class="tag">Java</span>	
-		<span class="tag">Make</span>
-		<span class="tag">n8n</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="references" class="section bg-alt">
-    <h2 class="section-heading"><strong><span class="highlight">R</span></strong>éférences<span id="reco-count" class="badge-count">0</span></h2>
-    <div class="filter-container">
-    <button class="filter-btn active" onclick="filterRecs('Tous')">Tous</button>
-    <button class="filter-btn" onclick="filterRecs(['Product', 'Product Ops', 'Vision Produit'])">Product</button>
-    <button class="filter-btn" onclick="filterRecs(['User-Centric', 'UX Strategy'])">Utilisateurs</button>
-    <button class="filter-btn" onclick="filterRecs(['Organisation','Workflow','Réactivité'])">Organisation</button>
-    <button class="filter-btn" onclick="filterRecs(['SoftSkills','Relationnel'])">SoftSkills</button>
-<button class="filter-btn" onclick="filterRecs(['Management','Pédagogie','Mentoring'])">Accompagnement</button>
-    </div>
-    <div class="reco-wrapper">
-        <button class="arrow-btn prev" onclick="scrollR(-1)"><i data-lucide="chevron-left"></i></button>
-        <div class="reco-track" id="recoTrack"></div>
-        <button class="arrow-btn next" onclick="scrollR(1)"><i data-lucide="chevron-right"></i></button>
-    </div>
-</section>
-
-<section id="experience" class="section bg-alt">
-    <h2 class="section-heading"><strong><span class="highlight">P</span></strong>arcours <strong><span class="highlight">P</span></strong>rofessionnel</h2>
-    <div class="experience-list">
-        <div class="exp-card" onclick="openM('malin')">
-            <div class="exp-header"><span class="exp-year">2025</span><h3>Programme Malin</h3></div>
-            <p><strong style="color:LightSeaGreen">Bénévolat de compétence</strong><br>Accompagnement et création d'outils sur mesure (Projets et BUJO)</p>
-            <span class="exp-more">Détails de la mission →</span>
-        </div>
-        <div class="exp-card" onclick="openM('numia')">
-            <div class="exp-header"><span class="exp-year">2023<br>2025</span><h3>CFA numiA</h3></div>
-            <p><strong style="color:LightSeaGreen">Product Manager</strong><br>Création et pilotage d'outils, prestataires et direction (15K Users)</p>
-            <span class="exp-more">Détails de la mission →</span>
-        </div>
-        <div class="exp-card" onclick="openM('clemence')">
-            <div class="exp-header"><span class="exp-year">2022<br>2023</span><h3>Clémence Consulting</h3></div>
-            <p><strong style="color:LightSeaGreen">Consultant Product Owner</strong><br>Missions en Énergie et Immobilier</p>
-            <span class="exp-more">Détails de la mission →</span>
-        </div>
-        <div class="exp-card" onclick="openM('visiativ')">
-            <div class="exp-header"><span class="exp-year">2021<br>2022</span><h3>iPorta - Visiativ</h3></div>
-            <p><strong style="color:LightSeaGreen">Ingénieur Développeur </strong><br>Création de fonctionnalités sur mesure - Gamification RH</p>
-            <span class="exp-more">Détails de la mission →</span>
-        </div>
-        <div class="exp-card" onclick="openM('crf')">
-            <div class="exp-header"><span class="exp-year">2013<br>2021</span><h3>Croix-Rouge française</h3></div>
-            <p><strong style="color:LightSeaGreen">Product Manager / Chef de projet</strong><br>SI bénévole & Dématérialisation des factures (60K Users)</p>
-            <span class="exp-more">Détails de la mission →</span>
-        </div>
-        <div class="exp-card" onclick="openM('histo')">
-            <div class="exp-header"><span class="exp-year">2006<br>2013</span><h3>Historique</h3></div>
-            <p><strong style="color:LightSeaGreen">1ers postes</strong><br>Premières expériences professionnelles</p>
-            <span class="exp-more">Détails des expériences →</span>
-        </div>
-    </div>
-
-    <div class="dual-layout">
-<div class="info-block-container">
-    <h2 class="section-heading" style="text-align:left;"><strong><span class="highlight">F</span></strong>ormations</h2>
-    <div class="info-block formation-timeline">
-        
-        <div class="formation-category">
-            <i data-lucide="graduation-cap"></i> <span>Bootcamps & Stratégie</span>
-        </div>
-        
-        <div class="list-item">
-            <span class="item-year">2025</span>
-            <div class="item-content">
-                <div class="item-title">Data Engineer / Analyst</div>
-                <div class="item-org">La Capsule</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2022</span>
-            <div class="item-content">
-                <div class="item-title">Product Strategy</div>
-                <div class="item-org">Join Lion</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2020</span>
-            <div class="item-content">
-                <div class="item-title">Développeur Fullstack JS - RNCP 6</div>
-                <div class="item-org">La Capsule</div>
-            </div>
-        </div>
-
-        <div class="formation-category">
-            <i data-lucide="monitor-play"></i> <span>Expertises en ligne</span>
-        </div>
-
-        <div class="list-item">
-            <span class="item-year">2021</span>
-            <div class="item-content">
-                <div class="item-title">Full Stack & Ingénierie pédagogique (~42h)</div>
-                <div class="item-org">Openclassrooms</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2019</span>
-            <div class="item-content">
-                <div class="item-title">Fondamentaux Tech & Business (~41h)</div>
-                <div class="item-org">Openclassrooms</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2018</span>
-            <div class="item-content">
-                <div class="item-title">Design Thinking, UX & Agilité (~45h)</div>
-                <div class="item-org">Openclassrooms</div>
-            </div>
-        </div>
-
-        <div class="formation-category">
-            <i data-lucide="book-open"></i> <span>Université</span>
-        </div>
-
-        <div class="list-item">
-            <span class="item-year">2010</span>
-            <div class="item-content">
-                <div class="item-title">M2 Management Stratégique et Entrepreneuriat</div>
-                <div class="item-org">Paris II Panthéon-Assas</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2009</span>
-            <div class="item-content">
-                <div class="item-title">M1 Maîtrise des Sciences de Gestion</div>
-                <div class="item-org">Paris II Panthéon-Assas</div>
-            </div>
-        </div>
-        <div class="list-item">
-            <span class="item-year">2007</span>
-            <div class="item-content">
-                <div class="item-title">DUT Gestion des Entreprises et Administrations</div>
-                <div class="item-org">Paris V Paris Cité</div>
-            </div>
-        </div>
-    </div>
+<div class="mob-menu" id="mobMenu">
+  <a href="#apropos" onclick="closeMob()"><span class="ndot" style="background:var(--teal)"></span>Qui suis-je</a>
+  <a href="#methode" onclick="closeMob()"><span class="ndot" style="background:var(--or)"></span>La méthode Goshiki</a>
+  <a href="#services" onclick="closeMob()"><span class="ndot" style="background:var(--corail)"></span>Les services proposés</a>
+  <a href="#recommandations" onclick="closeMob()"><span class="ndot" style="background:var(--bleu)"></span>Quelques références</a>
+  <a href="#parcours" onclick="closeMob()"><span class="ndot" style="background:var(--azure)"></span>Mon parcours</a>
+  <a href="#contact" onclick="closeMob()"><span class="ndot" style="background:var(--corail)"></span>Contactez-moi</a>
 </div>
 
-
-        <div class="info-block-container">
-            <h2 class="section-heading"><strong><span class="highlight">C</span></strong>ertifications</h2>
-            <div class="info-block formation-timeline">
-        
-                   
-                <div class="list-item">
-                    <span class="item-year">2021</span>
-                    <div class="item-content">
-                        <div class="item-title">Méthode Scrum</div>
-                        <div class="item-org">Udemy</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2021</span>
-                    <div class="item-content">
-                        <div class="item-title">Score 950 / 1000</div>
-                        <div class="item-org">OrthoPass</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2021</span>
-                    <div class="item-content">
-                        <div class="item-title">Atelier RGPD</div>
-                        <div class="item-org">CNIL</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2018</span>
-                    <div class="item-content">
-                        <div class="item-title">Chef de Projet</div>
-                        <div class="item-org">Demos</div>
-                    </div>
-                </div>
-            </div>
-
-<div class="info-block-container">
-            <h2 class="section-heading"><strong><span class="highlight">B</span></strong>énévolat</h2>
-              <div class="info-block formation-timeline">
-        
-        <div class="formation-category">
-            <i data-lucide="cross" style="color:red"></i>
-        	<span>Croix-Rouge française <span class="badge-count" style="font-size: 100%;">15 ans</span></span>
-
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div style="position:relative">
+      <div class="photo-wrap">
+        <img src="https://github.com/cedricalinc/consultant-data-product/blob/main/c%C3%A9dric.png?raw=true" alt="Cédric Alinc" onerror="this.style.display='none'">
+        <div class="av-badge">
+          <div class="pulse-d"></div>
+          <span style="font-size:11px;color:var(--heading);font-weight:600">Disponible pour missions</span>
         </div>
+      </div>
+      
+    </div>
 
-                <div class="list-item">
-                    <span class="item-year">2016</span>
-                    <div class="item-content">
-                        <div class="item-title">Élu et Responsable local</div>
-                        <div class="item-org">5 ans</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2013</span>
-                    <div class="item-content">
-                        <div class="item-title">Chef d'intervention</div>
-                        <div class="item-org">8 ans</div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <span class="item-year">2009</span>
-                    <div class="item-content">
-                        <div class="item-title">Formateur</div>
-                        <div class="item-org">12 ans</div>
-                    </div>
-                </div>
+  <div class="hero-left reveal">
+    <div class="eyebrow" style="color:var(--or)"><span class="eyebrow" style="background:var(--or);width:28px;height:1px;display:block"></span>Freelance · Product · Dev · Data</div>
+    <h1 class="hero-name">Cédric ALINC</h1>
+    <p class="hero-desc"> Concevoir pour l’utilisateur, piloter par la donnée. 
 
-                <div class="list-item">
-                    <span class="item-year">2007</span>
-                    <div class="item-content">
-                        <div class="item-title">Secouriste</div>
-                        <div class="item-org">14 ans</div>
-                    </div>
-                </div>
+    <div class="hero-tags">
+ 	<span class="htag t-c">Vision stratégique</span>
+	<span class="htag t-b">Diagnostic terrain</span>
+	<span class="htag t-t">Produit</span>
+	<span class="htag t-o">Pilotage &amp; KPI</span>
+	<span class="htag t-a">Montée en compétences</span>
+    </div>
+    <div class="hero-cta">
+      <button class="btn-p" onclick="mailClick()" id="heroBtn">
+        <i data-lucide="mail" style="width:15px;height:15px"></i><span>Discutons de votre projet</span>
+      </button>
 
-            </div>
-
-
-
-   
-            </div>
-        </div>
-
-            </div>
+      <button class="btn-p" style="background-color:var(--azure)">
+      	<a href="https://www.linkedin.com/in/cedric-alinc/" target="_blank" >
+        	<svg xmlns="http://www.w3.org/2000/svg" 
+     			width="15" height="15" 
+     			viewBox="0 0 24 24" 
+    			fill="none" 
+     			stroke=#FFF
+     			stroke-width="2" 
+     			stroke-linecap="round" 
+     			stroke-linejoin="round">
+  		<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+  		<rect width="4" height="12" x="2" y="9"></rect>
+  		<circle cx="4" cy="4" r="2"></circle>
+		</svg>  
+		LinkedIn
+      	</a>
+      </button>
+    </div>
+  </div>
+  
 </section>
 
+<!-- STATS -->
+<div class="stats-bar reveal" style="border-radius:0;border-left:none;border-right:none;border-top:none">
+  <div class="stat-i"><strong>20</strong><span>ans d'expérience </br>(pro & bénévole)</span></div>
+  <div class="stat-i"><strong>&gt;75K</strong><span>users accompagnés</span></div>
+  <div class="stat-i"><strong>&gt;1200</strong><span>personnes formées</span></div>
+  <div class="stat-i"><strong>&gt;2500</strong><span>heures de formations</span></div>
+  <div class="stat-i"><strong>&gt;10</strong><span>ans management </br>(pro & bénévole)</span></div>
+  <div class="stat-i"><strong>95%</strong><span>test Orthopass</span></div>
+</div>
 
-<footer id="contact" class="section">
-    <div class="contact-container">
-        <h2 class="section-heading"><strong><span class="highlight">C</span></strong>ontact</h2>
+<!-- À PROPOS -->
+<section class="sec" id="apropos">
+  <div class="apropos-grid reveal">
+    
+	<div>
+    <svg class="logo-hero" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.50 265.50">
+      <path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg16fb4578e60" title="Path 17" d="M69.5 209.5C69.5 209.5 63.5 261 63.5 261C63.5 261 128.5 271 128.5 271C128.5 271 69.5 209.5 69.5 209.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg1445e6bd33c" title="Path 1" d="M81 3.5C81 3.5 75.5 77.5 75.5 77.5C75.5 77.5 101 52 101 52C101 52 81 3.5 81 3.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg17ec89be91" title="Path 2" d="M103.5 49.5C103.5 49.5 83.5 1.25 83.5 1.25C83.5 1.25 120 34 120 34C120 34 103.5 49.5 103.5 49.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgcbbbe580e8" title="Path 3" d="M161.5 34.5C161.5 34.5 197.5 1 197.5 1C197.5 1 179 50 179 50C179 50 161.5 34.5 161.5 34.5Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg83e365c069" title="Path 4" d="M182 54C182 54 199.5 4.5 199.5 4.5C199.5 4.5 205 77 205 77C205 77 182 54 182 54Z"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg41eb7317f7" title="Path 5" d="M123.5 36.5C123.5 36.5 159 36.5 159 36.5C159 36.5 177.5 54.5 177.5 54.5C177.5 54.5 148 110.5 148 110.5C148 110.5 134 110.5 134 110.5C134 110.5 105 54.5 105 54.5C105 54.5 123.5 36.5 123.5 36.5Z"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgea882cb140" title="Path 6" d="M101 57C101 57 77 83 77 83C77 83 128.5 116 128.5 116C128.5 116 130.5 114 130.5 114C130.5 114 101 57 101 57Z"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg1857ba08f5c" title="Path 7" d="M179.5 56.5C179.5 56.5 205 82.5 205 82.5C205 82.5 152.5 116.5 152.5 116.5C152.5 116.5 150.5 113.5 150.5 113.5C150.5 113.5 179.5 56.5 179.5 56.5Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgee7db45b5a" title="Path 8" d="M134.5 113C134.5 113 131.5 117 131.5 117C131.5 117 141 123.5 141 123.5C141 123.5 149.5 117 149.5 117C149.5 117 146.5 113 146.5 113C146.5 113 134 113 134 113"/>
+  <path fill="#dd4a00" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" title="Path 22" d="M106.5 107C106.5 107 94 140 94 140C94 140 139 198 139 198C139 198 139 126.5 139 126.5C139 126.5 106.5 108 106.5 108" id="tSvg129336776a4"/>
+  <path fill="#e0a025" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" title="Path 23" d="M143.5 126.5C143.5 126.5 175.5 107 175.5 107C175.5 107 188.5 137 188.5 137C188.5 137 143.5 198 143.5 198C143.5 198 143.5 126.5 143.5 126.5Z" id="tSvg15aa43d4674"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg7a08c6d842" title="Path 10" d="M190.5 139C190.5 139 143.5 201.5 143.5 201.5C143.5 201.5 143.5 271.5 143.5 271.5C143.5 271.5 148 271.5 148 271.5C148 271.5 190.5 139 190.5 139Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgc44d8cbb27" title="Path 11" d="M139 202C139 202 92.5 141.5 92.5 141.5C92.5 141.5 134.5 271.5 134.5 271.5C134.5 271.5 139 271.5 139 271.5C139 271.5 139 202 139 202Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg10f8cd5a0f4" title="Path 12" d="M154 262.5C154 262.5 167 222 167 222C167 222 174.5 238.5 174.5 238.5C174.5 238.5 154 262.5 154 262.5Z"/>
+  <path fill="#379482" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg45e09a8a95" title="Path 13" d="M169 216.5C169 216.5 177 235 177 235C177 235 245.5 191.5 245.5 191.5C245.5 191.5 193 141.5 193 141.5C193 141.5 169 216.5 169 216.5Z"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg170cf8b8040" title="Path 14" d="M181 238C181 238 247 195.5 247 195.5C247 195.5 250 236 250 236C250 236 229 263.5 229 263.5C229 263.5 181 238 181 238"/>
+  <path fill="#204c89" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg6dd4da4507" title="Path 15" d="M177 241.5C177 241.5 222.5 265 222.5 265C222.5 265 152 271.5 152 271.5C152 271.5 177 242 177 242"/>
+  <path fill="#379482" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg13508d28eb9" title="Path 16" d="M77 211C77 211 128 263.5 128 263.5C128 263.5 113 215 113 215C113 215 77 211 77 211Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgfb40d8b050" title="Path 18" d="M63.5 261.5C63.5 261.5 10.5 206.5 10.5 206.5C10.5 206.5 36.5 181.5 36.5 181.5C36.5 181.5 63.5 261.5 63.5 261.5Z"/>
+  <path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg119420ae3cf" title="Path 19" d="M36.5 181.5C36.5 181.5 55 162 55 162C55 162 70.5 210.5 70.5 210.5C70.5 210.5 63.5 261.5 63.5 261.5C63.5 261.5 36.5 181.5 36.5 181.5Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg816607dde6" title="Path 20" d="M10.5 201C10.5 201 34.5 176 34.5 176C34.5 176 27 150.5 27 150.5C27 150.5 1 121 1 121C1 121 16.5 153.5 16.5 153.5C16.5 153.5 10.5 201 10.5 201Z"/>
+  <path fill="#03a4ff" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvg33348acfe1" title="Path 21" d="M34.5 176C34.5 176 54 157.5 54 157.5C54 157.5 1 121 1 121C1 121 26.5 150 26.5 150C26.5 150 34.5 176 34.5 176Z"/>
+  <path fill="#118bd1" stroke="" fill-opacity="1" stroke-width="1" stroke-opacity="0" id="tSvgfc3f149b19" title="Path 24" d="M54.5 236.5C54.5 236.5 128.5 271 128.5 271C128.5 271 63.5 261.5 63.5 261.5C63.5 261.5 54.5 236.5 54.5 236.5Z" style=""/>
+    </svg>
+
+  </div>    <div>
+      <div class="ey" style="color:var(--teal)"><span class="ey-line" style="background:var(--teal)"></span>Qui suis-je</div>
+      <div class="chips">
+        <span class="chip">Product Management</span><span class="chip">Data &amp; SQL</span>
+        <span class="chip">No-Code</span><span class="chip">Développement</span>
+        <span class="chip">UX Research</span><span class="chip">Formation</span>
+        <span class="chip">Multi-secteurs</span>
+      </div>
+	<br>
+      <h2 class="sec-title">20 ans d'expérience à votre service.</em></h2>
+      
+      <p class="apropos-p">Je m'appelle <strong style="color:var(--heading)">Cédric Alinc</strong>. <br>Après 20 ans à piloter des projets dans des organisations aussi différentes que la Croix-Rouge, des CFA, des entreprises immobilières ou des banques et assurances, j'ai créé <strong style="color:var(--heading)">Goshiki</strong> pour travailler autrement.</p>
+      <p class="apropos-p">Mon approche est <strong style="color:var(--heading)">hybride par nature</strong> : je pense stratégie et je pilote de développement. Je conçois des produits et je forme les équipes. Je livre des dashboards et je vous explique comment les lire.</p>
+      <p class="apropos-p" style="color:var(--teal)"><strong>Mon credo</strong> :  <strong style="color:var(--heading)">Je fais bien pour que vous puissiez faire seul.</strong></p>
+
+<blockquote class="quote-block">Goshiki (五色) signifie "5 couleurs". Chacune représente une étape de ma méthode pour former un cycle complet qui vous <strong style="color:var(--heading)">rend autonome</strong>.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTHODE -->
+<section id="methode" class="bg-alt">
+
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="ey" style="color:var(--or)"><span class="ey-line" style="background:var(--or)"></span>Le renard origami</div>
+      <h2 class="sec-title">La méthode <em>Goshiki</em></h2>
+      <p class="sec-sub">Chaque partie du renard origami représente une étape. Cinq couleurs. Cinq disciplines. Un mouvement continu de la base vers l'autonomie.</p>
+    </div>
+
+<div class="hero-right">
+    <svg class="logo-hero" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451.50 265.50">
+      <path fill="#03a4ff" fill-opacity=".85" d="M2 217.5C2 217.5 65 219 65 219C65 219 48.5 191 48.5 191C48.5 191 2 217 2 217"/>
+      <path fill="#03a4ff" d="M166.5 116C166.5 116 52.5 188.5 52.5 188.5C52.5 188.5 68.5 216 68.5 216C68.5 216 166.5 116 166.5 116Z"/>
+      <path fill="#118BD1" d="M38.4066 159C38.4066 159 48.5 191 48.5 191C48.5 191 1 218 1 218C1 218 38.4066 159 38.4066 159Z"/>
+      <path fill="#118BD1" d="M166.5 116C166.5 116 42 157.5 42 157.5C42 157.5 52.5 188.5 52.5 188.5C52.5 188.5 166.5 116 166.5 116Z"/>
+      <path fill="#379482" d="M171.5 114.5C171.5 114.5 146.5 142 146.5 142C146.5 142 137.5 218.5 137.5 218.5C137.5 218.5 183.5 205 183.5 205C183.5 205 281.5 97.5 281.5 97.5C281.5 97.5 171.5 114.5 171.5 114.5"/>
+      <path fill="#204c89" d="M113.5 204C113.5 204 137 189.5 137 189.5C137 189.5 134.5 220.5 134.5 220.5C134.5 220.5 100.5 263 100.5 263C100.5 263 100.5 242 100.5 242C100.5 242 113.5 204 113.5 204Z"/>
+      <path fill="#204c89" d="M217.5 174C217.5 174 187 208 187 208C187 208 173.5 212.5 173.5 212.5C173.5 212.5 175 217 175 217C175 217 221.5 202.5 221.5 202.5C221.5 202.5 236.5 181 236.5 181C236.5 181 217.5 174 217.5 174Z"/>
+      <path fill="#204c89" d="M176.5 220.5C176.5 220.5 199.5 213.5 199.5 213.5C199.5 213.5 229.5 252.5 229.5 252.5C229.5 252.5 215 252.5 215 252.5C215 252.5 176.5 220.5 176.5 220.5Z"/>
+      <path fill="#379482" d="M284.5 97.5C284.5 97.5 220.5 170.5 220.5 170.5C220.5 170.5 284.5 197.5 284.5 197.5C284.5 197.5 284.5 97.5 284.5 97.5Z"/>
+      <path fill="#204c89" d="M369 250.5C369 250.5 375 264 375 264C375 264 394 264 394 264C394 264 380.5 250.5 380.5 250.5C380.5 250.5 369 250.5 369 250.5Z"/>
+      <path fill="#204c89" d="M386 201C386 201 383 227 383 227C383 227 404.5 211.5 404.5 211.5C404.5 211.5 395 182.5 395 182.5C395 182.5 363 159.5 363 159.5C363 159.5 344.5 189 344.5 189C344.5 189 386 201 386 201Z"/>
+      <path fill="#204c89" d="M288 97C288 97 288 198.5 288 198.5C288 198.5 359 264.5 359 264.5C359 264.5 371.5 264.5 371.5 264.5C371.5 264.5 288 96 288 96"/>
+      <path fill="#e0a025" d="M292 95C292 95 326.5 60 326.5 60C326.5 60 336 183.5 336 183.5C336 183.5 292 95 292 95Z"/>
+      <path fill="#e0a025" d="M345.5 99.5C345.5 99.5 420 83 420 83C420 83 432 87 432 87C432 87 431 109.5 431 109.5C431 109.5 345.5 99.5 345.5 99.5Z"/>
+      <path fill="#c25335" d="M334 101.5C334 101.5 340.5 185.5 340.5 185.5C340.5 185.5 394 110.5 394 110.5C394 110.5 334 101.5 334 101.5Z"/>
+      <path fill="#204c89" d="M436.5 90C436.5 90 435.5 108 435.5 108C435.5 108 450.5 96.5 450.5 96.5C450.5 96.5 436.5 90 436.5 90Z"/>
+      <path fill="#c25335" d="M339 1C339 1 330 51.5 330 51.5C330 51.5 333 93.5 333 93.5C333 93.5 370 45.5 370 45.5C370 45.5 339 1 339 1Z"/>
+      <path fill="#c25335" d="M366.5 32.5C366.5 32.5 385 1.5 385 1.5C385 1.5 396 49.5 396 49.5C396 49.5 374.5 43 374.5 43C374.5 43 366.5 32.5 366.5 32.5Z"/>
+      <path fill="#c25335" d="M336 96C336 96 374.5 47.5 374.5 47.5C374.5 47.5 406.5 57.5 406.5 57.5C406.5 57.5 419 79.5 419 79.5C419 79.5 336 96 336 96Z"/>
+    </svg>
+    <div class="hero-pal">
+      <div class="pdot" style="background:#03a4ff"></div>
+      <div class="pdot" style="background:#379482"></div>
+      <div class="pdot" style="background:#e0a025"></div>
+      <div class="pdot" style="background:#c25335"></div>
+      <div class="pdot" style="background:#204c89"></div>
+    </div>
+  </div>
+    <div class="m-grid reveal">
+      <div class="m-step m4">
+        <div class="m-num">01 / 05</div><div class="m-bar"></div>
+        <div class="m-title">Vision &amp; décision</div><div class="m-part">La Tête</div>
+        <p class="m-body">Réfléchir avant d'agir. Le centre nerveux d'où partent toutes les décisions et réceptacle des retours du corps. </p>
+        <div class="m-svcs"><span class="msvc s-c">Stratégie produit</span><span class="msvc s-c">Priorisation</span><span class="msvc s-c">Alignement SI</span></div>
+      </div>
+      <div class="m-step m1">
+        <div class="m-num">02 / 05</div><div class="m-bar"></div>
+        <div class="m-title">Diagnostic terrain</div><div class="m-part">Les Pattes & la Truffe</div>
+        <p class="m-body">Comme le renard qui sent le sol avant de bondir, on commence par comprendre votre réalité de l'intérieur : données, entretiens, cartographie des flux.</p>
+        <div class="m-svcs"><span class="msvc s-b">Audit process</span><span class="msvc s-b">User research</span><span class="msvc s-b">Data analyse</span></div>
+      </div>
+      <div class="m-step m2">
+        <div class="m-num">03 / 05</div><div class="m-bar"></div>
+        <div class="m-title">Produit &amp; organes</div><div class="m-part">Le Corps</div>
+        <p class="m-body">Conception et déploiement de la solution technique : automatisations, outils sur mesure, intégrations, architecture de données.</p>
+        <div class="m-svcs"><span class="msvc s-t">n8n / Make</span><span class="msvc s-t">Data stack</span><span class="msvc s-t">Développement</span></div>
+      </div>
+      <div class="m-step m3">
+        <div class="m-num">04 / 05</div><div class="m-bar"></div>
+        <div class="m-title">Structure</div><div class="m-part">La Nuque</div>
+        <p class="m-body">Ce qui relie le corps à la tête : gouvernance, KPIs, tableaux de bord. Les cadres qui vous permettent de piloter avec clarté.</p>
+        <div class="m-svcs"><span class="msvc s-o">Dashboards</span><span class="msvc s-o">KPI design</span><span class="msvc s-o">Roadmap</span></div>
+      </div>
+
+      <div class="m-step m5">
+        <div class="m-num">05 / 05</div><div class="m-bar" style="background:linear-gradient(90deg,var(--teal),var(--azure))"></div>
+        <div class="m-title">Autonomie</div><div class="m-part">La Queue</div>
+        <p class="m-body">La finalité de tout. Je vous rends capables d'avancer seuls — formation des équipes, transmission du savoir-faire, documentation complète.</p>
+        <div class="m-svcs"><span class="msvc s-a">Formation</span><span class="msvc s-a">Documentation</span><span class="msvc s-a">Handover</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="reveal">
+
+    <div class="ey" style="color:var(--corail)"><span class="ey-line" style="background:var(--corail)"></span>Ce que je fais concrètement</div>
+    <h2 class="sec-title">Services <em>&amp; expertises</em></h2>
+    <p class="sec-sub">Tout ou partie du renard pour vous accompagner, chaque mission s'adapte à là où vous en êtes.</p>
+  </div>
+
+<div style="display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;padding:4px 11px;border-radius:20px;border:1px solid rgba(3,164,255,.3);color:var(--azure-l)">Formation · Éducation</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;padding:4px 11px;border-radius:20px;border:1px solid rgba(224,160,37,.3);color:var(--or-l)">Banque · Assurance</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;padding:4px 11px;border-radius:20px;border:1px solid rgba(194,83,53,.3);color:var(--corail-l)">Immobilier</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;padding:4px 11px;border-radius:20px;border:1px solid rgba(55,148,130,.3);color:var(--teal-l)">ESS · Humanitaire</span>
+        </div>
+
+  <div class="svc-grid reveal">
+    <div class="svc-card sc-c">
+      <span class="svc-mtag s-c">Tête · Vision</span>
+      <div class="svc-icon si-c"><i data-lucide="compass" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Stratégie et process</h3>
+      <p class="svc-body">Cap, arbitrages et alignement pour décider vite et juste.</p>
+      <ul class="svc-list">
+        <li style="color:var(--corail-l)">Stratégie produit & cap décisionnel</li>
+        <li>Gouvernance & priorisation stratégique</li>
+        <li>Alignement organisation / vision</li>
+      </ul>
+    </div>
+    <div class="svc-card sc-b">
+      <span class="svc-mtag s-b">Pattes/Truffe · Diagnostic</span>
+      <div class="svc-icon si-b"><i data-lucide="search" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Audit &amp; Discovery</h3>
+      <p class="svc-body">On plonge dans votre réalité avant de proposer quoi que ce soit. Pas de solution sans diagnostic honnête.</p>
+      <ul class="svc-list">
+        <li style="color:var(--bleu-l)">Interviews métiers &amp; user research</li>
+        <li>Cartographie des processus existants</li>
+        <li>Analyse de données &amp; pain points</li>
+        <li>Benchmark &amp; opportunités SI</li>
+      </ul>
+    </div>
+    <div class="svc-card sc-t">
+      <span class="svc-mtag s-t">Corps · Produit</span>
+      <div class="svc-icon si-t"><i data-lucide="zap" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Automatisation &amp; outils</h3>
+      <p class="svc-body">On transforme une vision floue en plan d'action concret et priorisé avec des outils qui font tourner votre organisation.</p>
+      <ul class="svc-list">
+        <li style="color:var(--teal-l)">Workflows, développement et no-code</li>
+        <li>Intégrations CRM / Drive / Sheets</li>
+        <li>Roadmap &amp; priorisation (RICE, MoSCoW)</li>
+        <li>User stories &amp; spécifications</li>
+        <li>Pilotage Agile Scrum</li>
+        <li>Modern Data Stack (dbt, Airflow…)</li>
+      </ul>
+    </div>
+    <div class="svc-card sc-o">
+      <span class="svc-mtag s-o">Nuque · Structure</span>
+      <div class="svc-icon si-o"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Pilotage &amp; KPI</h3>
+      <p class="svc-body">Des tableaux de bord que vous utiliserez vraiment — pas juste de beaux graphiques sans usage.</p>
+      <ul class="svc-list">
+        <li style="color:var(--or-l)">Design des indicateurs clés</li>
+        <li>Dashboards Tableau, Power BI</li>
+        <li>Gouvernance de la donnée</li>
+        <li>Rituels de pilotage &amp; reporting</li>
+      </ul>
+    </div>
+
+    <div class="svc-card sc-a">
+      <span class="svc-mtag s-a">Queue · Autonomie</span>
+      <div class="svc-icon si-a"><i data-lucide="graduation-cap" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Formation &amp; transmission</h3>
+      <p class="svc-body">Des formations pour vos équipes pour qu'elles puissent agir en autonomie, avec un suivi J+30 pour assurer l'efficience.</p>
+      <ul class="svc-list">
+        <li style="color:var(--azure-l)">Ateliers pratiques sur mesure</li>
+        <li>Formations
+		<ul>
+			<li>Excel</li>
+			<li>Découvrir la méthode Agile</li>
+			<li>La Data pour les métiers</li>
+			<li>Démystifier le Dev pour les non techniques</li>
+		</ul>
+	</li>
+        <li>Documentation &amp; bases de connaissance</li>
+        <li>Montée en compétences équipe</li>
+        <li>&gt;2500h de formation dispensées</li>
+      </ul>
+    </div>
+    <div class="svc-card sc-m">
+      <span class="svc-mtag s-o">Renard · Transverse</span>
+      <div class="svc-icon si-m"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+      <h3 class="svc-title">Mission complète</h3>
+      <p class="svc-body">De A à Z : j'interviens sur tout le cycle, du premier atelier jusqu'à l'autonomie de vos équipes.</p>
+      <ul class="svc-list">
+        <li style="color:var(--or-l)">Accompagnement longue durée</li>
+        <li>Gestion de projet bout en bout</li>
+        <li>Coordination prestataires &amp; équipes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLBOX -->
+<section id="toolbox" class="bg-alt">
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="ey" style="color:var(--teal)"><span class="ey-line" style="background:var(--teal)"></span>Outillage</div>
+      <h2 class="sec-title">Toolbox <em>technique</em></h2>
+    </div>
+    <div class="tb-grid reveal">
+      <div class="tb-group">
+        <div class="tb-title"><span class="tb-dot" style="background:var(--teal)"></span>Data Stack</div>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Airbyte</span><span class="tag">Fivetran</span><span class="tag">dbt</span><span class="tag">Airflow</span><span class="tag">BigQuery</span><span class="tag">Kafka</span><span class="tag">Tableau</span><span class="tag">Power BI</span></div>
+      </div>
+      <div class="tb-group">
+        <div class="tb-title"><span class="tb-dot" style="background:var(--corail)"></span>Product &amp; Design</div>
+        <div class="tags"><span class="tag">Scrum</span><span class="tag">UX Research</span><span class="tag">Figma</span><span class="tag">Jira</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Whimsical</span><span class="tag">RICE</span><span class="tag">MoSCoW</span></div>
+      </div>
+      <div class="tb-group">
+        <div class="tb-title"><span class="tb-dot" style="background:var(--azure)"></span>Tech &amp; No-Code</div>
+        <div class="tags"><span class="tag">n8n</span><span class="tag">Make</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">React Native</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Java</span></div>
+      </div>
+      <div class="tb-group">
+        <div class="tb-title"><span class="tb-dot" style="background:var(--or)"></span>Collaboration &amp; SI</div>
+        <div class="tags"><span class="tag">Google Workspace</span><span class="tag">Slack</span><span class="tag">GitHub</span><span class="tag">Confluence</span><span class="tag">RGPD</span><span class="tag">Architecture SI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMANDATIONS -->
+<section class="sec" id="recommandations">
+  <div class="reveal">
+    <div class="ey" style="color:var(--bleu-l)"><span class="ey-line" style="background:var(--bleu)"></span>Ce qu'ils disent</div>
+    <h2 class="sec-title">Références <em>&amp; témoignages</em></h2>
+  </div>
+  <div class="rf-row reveal" id="rfRow"></div>
+  <div class="reco-wrap">
+    <button class="rnav rp" onclick="sR(-1)"><i data-lucide="chevron-left" style="width:15px;height:15px"></i></button>
+    <div class="reco-track" id="recoTrack"></div>
+    <button class="rnav rn" onclick="sR(1)"><i data-lucide="chevron-right" style="width:15px;height:15px"></i></button>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section class="sec" id="parcours">
+  <div class="reveal">
+    <div class="ey" style="color:var(--azure-l)"><span class="ey-line" style="background:var(--azure)"></span>20 ans de terrain</div>
+    <h2 class="sec-title">Parcours <em>professionnel</em></h2>
+    <p class="sec-sub">Cliquez sur une expérience pour en voir le détail.</p>
+  </div>
+  <div class="parc-grid reveal" id="parcGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-dark" style="position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.02) 79px,rgba(255,255,255,.02) 80px);pointer-events:none"></div>
+  <div class="sec-inner" style="position:relative;z-index:1">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="ey" style="color:var(--or)"><span class="ey-line" style="background:var(--or)"></span>Travaillons ensemble</div>
+        <h2 class="sec-title" style="color:#f0ece4">Parlons de votre<br><em style="color:var(--corail-l)">projet.</em></h2>
+        <p class="sec-sub" style="color:rgba(240,236,228,.6)">Que vous ayez besoin d'un diagnostic, d'une automatisation, d'un dashboard ou d'une formation — la première conversation est toujours gratuite.</p>
+        
+      </div>
+      <div class="reveal">
         <div class="contact-card">
-            <div class="contact-header">
-                <h2>Prêt à donner vie à vos projets ?</h2>
-                <p>Que ce soit pour du Product Management, de la Data ou de l'automatisation, discutons de vos enjeux.</p>
-            </div>
-            <div class="hero-cta-wrapper">
-    <div class="contact-actions-box">
-        <a href="mailto:cedric.alinc.pro@gmail.com" 
-   onclick="handleMailClick(event, 'cedric.alinc.pro@gmail.com')" 
-   class="btn-main" 
-   id="emailBtn">
-    <i data-lucide="mail"></i>
-    <span>Discutons de votre projet</span>
-</a>
-
-        <a style="color:white" href="https://www.linkedin.com/in/cedric-alinc/" 
-           class="btn-alt btn-linkedin-custom" 
-           target="_blank">
-            <i data-lucide="linkedin" style="color:#00BFFF"></i>
-            <span>Profil LinkedIn</span>
-        </a>
+          <button class="cbtn cb-mail" id="contactBtn" onclick="mailClick()">
+            <i data-lucide="mail" style="width:17px;height:17px"></i><span>Discutons de votre projet</span>
+          </button>
+          <a href="https://www.linkedin.com/in/cedric-alinc/" target="_blank" class="cbtn cb-li">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+     			width="15" height="15" 
+     			viewBox="0 0 24 24" 
+    			fill="none" 
+     			stroke=#FFF
+     			stroke-width="2" 
+     			stroke-linecap="round" 
+     			stroke-linejoin="round">
+  		<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+  		<rect width="4" height="12" x="2" y="9"></rect>
+  		<circle cx="4" cy="4" r="2"></circle>
+		</svg><span>Profil LinkedIn</span>
+          </a>
+          <p style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(240,236,228,.35);text-align:center;margin-top:4px;letter-spacing:.1em">L'adresse mail est copiée dans votre presse-papier</p>
+                  </div>
+      </div>
     </div>
-</div>    
+  </div>
+</section>
 
-            <p class="contact-footer-note">L'adresse mail est automatiquement copiée dans votre presse-papier.</p>
-        </div>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--text)">© 2026 Cédric Alinc — Goshiki</div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:12px;color:var(--text)">
+    <a href="#" onclick="openLegal()" onmouseover="this.style.color='var(--or)'" onmouseout="this.style.color='var(--text)'">Mentions légales</a>
+    <span style="opacity:.3">·</span><span>GitHub Pages</span>
+  </div>
+  <div style="font-family:serif;font-size:22px;color:var(--or);opacity:.3">五色</div>
 </footer>
 
-<footer class="legal-footer">
-    <div class="legal-container">
-        <div class="legal-top">
-            <p>&copy; 2026 Cédric ALINC — Tous droits réservés.</p>
-            <p>Conçu et développé avec passion.</p>
-        </div>
-        <div class="legal-bottom">
-            <a href="#" onclick="openLegal()">Mentions légales</a>
-            <span class="separator">|</span>
-            <span>Hébergé par GitHub Pages</span>
-        </div>
-    </div>
-</footer>
-
-<div id="modal-legal" class="modal-overlay">
-    <div class="modal-content legal-modal">
-        <h2 class="highlight">Mentions Légales</h2>
-        <div class="legal-text">
-            <p><strong>Propriétaire :</strong> Cédric ALINC</p>
-            <p><strong>Hébergement :</strong> GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, États-Unis.</p>
-            <p><strong>Propriété intellectuelle :</strong> L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.</p>
-            <p><strong>Données personnelles :</strong> Ce site ne collecte aucune donnée via des cookies tiers. Seul le clic sur le bouton de contact déclenche votre logiciel de messagerie.</p>
-        </div>
-        <button onclick="closeLegal()" class="modal-close-btn">Fermer</button>
-    </div>
+<!-- MODAL EXP -->
+<div class="modal-ov" id="expModal" onclick="if(event.target===this)closeExp()">
+  <div class="modal-box">
+    <button class="m-close" onclick="closeExp()">✕</button>
+    <div id="expContent"></div>
+    <button class="m-cta" onclick="closeExp()">Fermer</button>
+  </div>
 </div>
 
-<div id="modal" class="modal-overlay" onclick="closeM()">
-    <div class="modal-content" onclick="event.stopPropagation()" id="m-body"></div>
+<!-- MODAL LEGAL -->
+<div class="modal-ov" id="legalModal" onclick="if(event.target===this)closeLegal()">
+  <div class="modal-box">
+    <button class="m-close" onclick="closeLegal()">✕</button>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--or);margin-bottom:18px">Mentions légales</div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.8;color:var(--text)">
+      <p><strong style="color:var(--heading)">Propriétaire :</strong> Cédric Alinc — Goshiki</p>
+      <p><strong style="color:var(--heading)">Hébergement :</strong> GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, États-Unis.</p>
+      <p><strong style="color:var(--heading)">Propriété intellectuelle :</strong> L'ensemble de ce site relève de la législation française. Le logo Goshiki et la méthode associée sont la propriété exclusive de Cédric Alinc.</p>
+      <p><strong style="color:var(--heading)">Données personnelles :</strong> Ce site ne collecte aucune donnée via des cookies tiers. Le bouton de contact copie l'email dans votre presse-papier et ouvre votre client mail.</p>
+    </div>
+    <button class="m-cta" onclick="closeLegal()">Fermer</button>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+/* ─ DONNÉES ─ */
+const recs = [
+    { 	
+        n: "Nelly PEREZ", 
+        r: "Directrice adjointe - Programme Malin", 
+        t: `Cédric est <strong>très professionnel et impliqué</strong> dans tout ce qu'il fait. Il apporte une <strong>vision à la fois stratégique et pragmatique toujours très pertinente et adaptée</strong> à la situation ou aux personnes qu'il accompagne. Il <strong>mène toujours à bien ses projets sans abandonner mais en s'adaptant aux circonstances et aux personnes</strong>, avec un supplément <strong>créativité très appréciable</strong>. C'est un plaisir de travailler avec lui au quotidien. `, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/nelly.jfif", 
+        lien: "https://www.linkedin.com/in/nelly-perez-544515a6",
+        tags: ["Product", "UX Strategy", "SoftSkills"]
+    },
+    { 	
+        n: "Emma HEDEF", 
+        r: "Directrice Digital et Marketing - Programme Malin", 
+        t: `Je tiens à partager un retour très positif sur l’accompagnement de Cédric en tant que Product Manager auprès de notre association Programme Malin. <br><br>Il nous a aidés à concevoir un espace de travail centralisé sur Notion, inspiré de la méthode Bullet Journal, pour mieux <strong>aligner la vision</strong>, <strong>clarifier </strong>les rôles, <strong>prioriser </strong>efficacement et <strong>fluidifier</strong> la collaboration entre plusieurs intervenants. <br><br>Au-delà des outils, j’ai particulièrement apprécié sa <strong>pédagogie</strong>, sa <strong>patience</strong> et la <strong>pertinence de ses recommandations</strong>.<br><br> Il a su <strong>structurer des besoins complexes sans les alourdir</strong>, et <strong>accompagner les équipes</strong> vers plus de clarté et d’autonomie dès les premières semaines. <br><br>Un <strong>accompagnement à la fois structurant, pragmatique et humain</strong>, que je recommande sans hésiter.`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/emma.jfif", 
+        lien: "https://www.linkedin.com/in/emma-hedef",
+        tags: ["Workflow", "Product", "User-Centric", "Pédagogie", "SoftSkills"] 
+    }, 
+       { 	
+        n: "Robin MARIEN", 
+        r: "Product Manager - VIVERIS", 
+        t: `Je souhaite recommander chaleureusement Cédric, avec qui j’ai eu le plaisir de collaborer lors de ma précédente mission.
+Cédric possède une <strong>vraie capacité à simplifier des workflows métiers très complexes</strong>, en les <strong>rendant clairs et actionnables </strong>grâce à des schémas et outils visuels toujours pertinents.
+<strong>À l’écoute de l’équipe comme des utilisateurs</strong>, il sait <strong>comprendre les besoins</strong> et <strong>instaurer une relation de confiance</strong>. Il <strong>coordonne des équipes parfois exigeantes avec un calme remarquable et une profonde dimension humaine</strong>, sans doute héritée de son parcours dans le milieu humanitaire et associatif.
+<strong>Très organisé, pédagogue et disponible</strong>, j’ai beaucoup appris à ses côtés, tant sur les méthodes que sur sa vision produit.
+Je recommande Cédric sans hésitation pour ses prochains projets : il saura, j’en suis certain, les relever avec brio. `, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/Robin.jfif", 
+        lien: "https://www.linkedin.com/in/robin-marien-64a571135/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B4egAn7uoQNuNwnwaGSKfwQ%3D%3D",
+        tags: ["Product", "Workflow","Management", "Pédagogie","SoftSkills","Organisation","Réactivité"]
+    },    
+    { 	
+        n: "Raida REHOUNI", 
+        r: "Lead Teacher - FullStack Node JS / React Developer @LaCapsule | Robotics Engineer et créateur de Nowisa Language School", 
+        t: `J'ai eu le plaisir d'accompagner et former Cédric au cours d'une formation de 10 semaines sur les sujets de la Data Analyse, du Data Engineering et de la Data Science. J'ai fortement apprécié, sa <strong>motivation, sa rigueur et sa bienveillance</strong> envers les autres étudiants. Fort de ses expériences professionnelles passées, et des compétences acquises durant cette formation, je pense que c'est un <strong>élément à avoir dans son équipe</strong>, qui saura <strong>apporter une vraie valeur aux réflexions sur la résolution de problèmes techniques et d'optimisation</strong> mais également avec de vraies <strong>capacités de management et de coordination</strong>. `, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/raida.jfif", 
+        lien: "https://www.linkedin.com/in/raida-rehouni-48a2b57b",
+        tags: ["Management", "SoftSkills"]
+    },    
+    { 	
+        n: "Florent VALLÉE", 
+        r: "Directeur de l'urgence et des opérations - CRf", 
+        t: `Cedric est un Chef de projet engagé, à l'<strong>écoute des besoins</strong> des utilisateurs finaux.<br><br> Son <strong>dynamisme</strong>, sa <strong>créativité </strong>et son <strong>engagement </strong>font sa difference`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/florent.jfif", 
+        lien: "https://www.linkedin.com/in/florent-vall%C3%A9e-b13a8b116",
+        tags: ["Product", "User-Centric", "SoftSkills"]
+    },
+ { 
+        n: "Bertrand OGIER", 
+        r: "Directeur pédagogique | Formations à impact | ESS - Innovation - Inclusion", 
+        t: "Cédric est un <strong>professionnel compétent et engagé</strong>. Doué d'une <strong>capacité d'analyse et de structuration des projets</strong>, il est aussi source d'<strong>avis pertinents, que cela soit d'un point de vue technique ou stratégique</strong>. Enfin Cédric est un collègue très <strong>sympathique et qui fait preuve d'un esprit d'équipe affirmé</strong>.", 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/bertrand.jfif", 
+        lien: "https://www.linkedin.com/in/bertrand-ogier-a2874716",
+        tags: ["Organisation", "Réactivité", "Product"]
+    },
+    { 
+        n: "Saïname ALIBAY", 
+        r: "Responsable du service Animation, Communication et Placement entreprises - CFA Numia / EFREI", 
+        t: `J’ai eu le plaisir de travailler avec Cédric Alinc, un excellent collègue, aussi apprécié pour ses qualités humaines que pour son professionnalisme.<strong>Fiable, impliqué et toujours à l’écoute</strong>, Cédric sait créer un <strong>climat de travail collaboratif</strong> et contribue pleinement à créer un <strong>environnement de travail positif et stimulant</strong>. Cédric est une personne sur qui l’on peut compter et avec qui il est réellement agréable de travailler.Je le recommande sans hésitation.`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/sainame.jfif", 
+        lien: "https://www.linkedin.com/in/sa%C3%AFname-alibay",
+        tags: ["SoftSkills", "Product"]
+    },
 
+  { 
+        n: "Damya BOUKHEMAL", 
+        r: "Product Owner - CFA Numia", 
+        t: `J’ai beaucoup apprécié travailler avec Cédric.<br> <br>Son <strong>expérience </strong>et sa <strong>vision </strong>ont apporté une réelle plus value à notre équipe.<br> <br>Au-delà de ses <strong>solides compétences professionnelles</strong>, c’est un manager qui sait les mettre en œuvre avec <strong>efficacité </strong>et surtout les <strong>partager avec son équipe</strong>. <br>J’ai personnellement beaucoup appris à ses côtés, tant sur le plan technique que méthodologique. <br><br>Son <strong>sens du collectif</strong>, sa capacité à <strong>accompagner</strong> et à <strong>faire monter les autres en compétences</strong> font de lui un <strong>professionnel fiable et engagé</strong>.`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/damya.jfif", 
+        lien: "https://www.linkedin.com/in/damya-boukhemal/",
+        tags: ["Management", "Organisation", "Product"] 
+    },
+    { 
+        n: "Mahé BANDEIRA DE VIVAR", 
+        r: "Chef de projet - iPorta", 
+        t: "Cédric est quelqu'un de très <strong>organisé</strong>, très <strong>réactif </strong>et <strong>vif d'esprit</strong>. <br><br>J'ai apprécié sa <strong>qualité de travail</strong>.", 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/mahe.jfif", 
+        lien: "https://www.linkedin.com/in/mahe-de-vivar/",
+        tags: ["Organisation", "Réactivité", "Product"]
+    },
+{ 	
+        n: "Ludovic LEVY", 
+        r: "Pilote Google Workspace Accompagnement et Gouvernance - CRf", 
+        t: `J'ai eu le plaisir de collaborer avec Cédric pendant 5 ans et c’est une <strong>personne sur qui l’on peut compter</strong> en toutes circonstances. <br><br>Au-delà de ses compétences de Product Manager, j'ai particulièrement apprécié la <strong>solidité de ses engagements</strong> et sa <strong>loyauté</strong> exemplaire.<br><br> Cédric est un collaborateur toujours <strong>jovial</strong>, qui apporte une <strong>énergie positive</strong> au sein d'une équipe. <br><br>Je le recommande vivement pour son <strong>professionnalisme </strong>et ses <strong>qualités humaines rares</strong>.`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/ludo.jfif", 
+        lien: "https://www.linkedin.com/in/ludovic-levy-94071a55",
+        tags: ["Product", "SoftSkills"]
+    },
+    { 	
+        n: "Marlène BIARD", 
+        r: "#Slasheuse : Communication engagée | Coaching professionnel | Bilans de compétences | Animation de conférences | Evénementiel | Formation soft skills", 
+        t: `J’ai eu le plaisir de travailler avec Cédric à la Croix-Rouge, où il occupait le rôle de chef de projet en maîtrise d’ouvrage informatique. <br><br>J’ai particulièrement apprécié sa grande <strong>réactivité</strong> et sa capacité à apporter des <strong>réponses concrètes et pragmatiques</strong> aux problématiques rencontrées.<br><br> <strong>Toujours à l’écoute des besoins</strong> des utilisateurs et des parties prenantes, Cédric sait <strong>transformer des enjeux</strong> parfois complexes en <strong>solutions simples et efficaces</strong>, avec un objectif constant : <strong>améliorer et fluidifier l’expérience client</strong>. <br><br>Son <strong>sens du service, sa rigueur et son engagement </strong>ont été de réels atouts pour la réussite des projets menés ensemble.`, 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/marlene.jfif", 
+        lien: "https://www.linkedin.com/in/marlene-biard-53860742",
+        tags: ["Organisation", "UX Strategy", "SoftSkills"]
+    },
+    { 
+        n: "Amélie ROBIN", 
+        r: "Chef de projet - Lyon Métropole Habitat", 
+        t: "J’ai eu le plaisir de travailler avec Cédric il y a quelques années : <strong>fiable et posé</strong> en toutes circonstances pour <strong>gérer des projets et leurs aléas</strong>, c’est un <strong>atout dans l’équipe, qui sait écouter et dialoguer</strong> pour faire avancer le projet.", 
+        img: "https://raw.githubusercontent.com/cedricalinc/consultant-data-product/refs/heads/main/Goshiki/amelie.jfif", 
+        lien: "https://www.linkedin.com/in/am%C3%A9lie-robin-11ab33b8",
+        tags: ["SoftSkills", "Réactivité", "Organisation","Product"]
+    }
+];
+
+const exps = {
+  malin:{h:"Programme Malin",t:"Accompagnement Bénévolat de compétence",y:"2025",color:"var(--teal)",cls:"e-t",missions:["Interviews métiers &amp; user research","Création d'un intranet Notion structuré","SI pour le suivi projet et la méthode BUJO","Accompagnement de la direction"],impacts:["Amélioration du pilotage des projets","Optimisation des Business Units","Autonomie des équipes renforcée"]},
+  numia:{h:"CFA numiA",t:"Product Manager &amp; Responsable d'équipe",y:"2023–2025",color:"var(--corail)",cls:"e-c",missions:["Transformation numérique", "Optimisation des processus", "Pilotage de direction"],impacts:["Gain de productivité de 50% sur l'administratif alternance","Simplification d'usage pour 15K users","Dashboards interactifs déployés"]},
+  clemence:{h:"Clémence Consulting",t:"Consultant Product Owner",y:"2022–2023",color:"var(--or)",cls:"e-o",missions:["Optimisation de processus financiers","Rédaction spécifications SI", "Pilotage des développements","Pilotage d'outils SI"],impacts:["Fiabilisation des flux critiques","Accélération des cycles de facturation","Pilotage sécurisé de millions d'€ budget Immo"]},
+  visiativ:{h:"iPorta · Visiativ",t:"Ingénieur Développement",y:"2021–2022",color:"var(--bleu-l)",cls:"e-b",missions:["Développement de fonctionnalités spécifiques","Parcours gamifié d'onboarding","Maintenance &amp; évolutions produit","Collaboration équipes produit"],impacts:["Fonctionnalités sur-mesure livrées","Sentiment d'accueil positif +50%","Amélioration de la rétention utilisateurs"]},
+  crf:{h:"Croix-Rouge française",t:"Product Manager / Chef de projet SI · Bénévole 15 ans",y:"2006–2021",color:"var(--corail)",cls:"e-c",missions:["SI bénévoles pour 60K users", "Dématérialisation des factures fournisseurs","Responsable local élu (5 ans)","Formateur secourisme (12 ans)","Chef d'intervention (8 ans)"],impacts:["Projets SI livrés dans les délais","Formation de centaines de secouristes","Impact humanitaire direct et mesurable"]},
+  histo:{h:"Historique",t:"1ères expériences",y:"2006–2013",color:"var(--teal)",cls:"e-t",missions:["2006 : BNP - CDD Procurement","2007 : Edu-Performance Canada - Stage Comptabilité","2007 : ESSEC - CDD Formation Intra","2007 : Assurances BRED - CDD Gestionnaire","2008 : Armée de l'Air - Stage RH","2009-2010 : Plateforme du Bâtiment - Alternance Contrôleur de Gestion","2011-2013 : Croix-Rouge - CDD Secouriste professionnel","2013 : Cedeo - CDI Gestionnaire Stock"],impacts:["Parcours formateur multi-directions en back et front office"]}
+};
+
+/* ─ RECO ─ */
+const allTags = [...new Set(recs.flatMap(r=>r.tags))];
+let activeTag = null;
+
+function renderReco() {
+  const track = document.getElementById('recoTrack');
+  const rf = document.getElementById('rfRow');
+  rf.innerHTML = `<button class="rfbtn ${!activeTag?'on':''}" onclick="filterR(null)">Tous</button>` +
+    allTags.map(t=>`<button class="rfbtn ${activeTag===t?'on':''}" onclick="filterR('${t}')">${t}</button>`).join('');
+  const list = activeTag ? recs.filter(r=>r.tags.includes(activeTag)) : recs;
+  track.innerHTML = list.map(r=>`
+    <div class="reco-card fi">
+      <div class="reco-h">
+        <img class="reco-av" src="${r.img}" alt="${r.n}" onerror="this.style.display='none'">
+        <div>
+          <a class="reco-name" href="${r.lien}" target="_blank">${r.n}</a>
+          <div class="reco-role">${r.r}</div>
+        </div>
+      </div>
+      <p class="reco-txt">${r.t}</p>
+      <div class="reco-tags">${r.tags.map(t=>`<span class="reco-tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function filterR(t) { activeTag=t; renderReco(); }
+function sR(d) { document.getElementById('recoTrack').scrollBy({left:d*300,behavior:'smooth'}); }
+
+/* ─ PARCOURS ─ */
+function renderParc() {
+  document.getElementById('parcGrid').innerHTML = Object.entries(exps).map(([k,e])=>`
+    <div class="exp-card ${e.cls}" onclick="openExp('${k}')">
+      <div class="e-yr">${e.y}</div>
+      <div class="e-title">${e.h}</div>
+      <div class="e-sub">${e.t}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${e.missions.slice(0,2).map(m=>`<span class="chip" style="font-size:10px">${m}</span>`).join('')}</div>
+      <div class="e-hint">Cliquer pour le détail →</div>
+    </div>`).join('');
+}
+
+/* ─ MODAL EXP ─ */
+function openExp(k) {
+  const e = exps[k]; if(!e) return;
+  document.getElementById('expContent').innerHTML = `
+    <div style="width:3px;height:36px;border-radius:2px;background:${e.color};margin-bottom:18px"></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--heading)">${e.h}</div>
+    <div style="font-size:12px;font-style:italic;color:var(--text);margin-bottom:4px">${e.t}</div>
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:${e.color};margin-bottom:20px;letter-spacing:.1em">${e.y}</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);opacity:.5;margin-bottom:8px">Missions</div>
+    <ul class="m-list">${e.missions.map(m=>`<li>${m}</li>`).join('')}</ul>
+    <div style="background:var(--tag-bg);border-left:3px solid ${e.color};border-radius:0 11px 11px 0;padding:14px 18px;margin-top:18px">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);opacity:.5;margin-bottom:8px">Impacts</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">${e.impacts.map(i=>`<li style="font-size:12px;padding-left:16px;position:relative;line-height:1.6"><span style="position:absolute;left:0;color:${e.color};font-weight:700">✓</span>${i}</li>`).join('')}</ul>
+    </div>`;
+  document.getElementById('expModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeExp(){ document.getElementById('expModal').classList.remove('open'); document.body.style.overflow=''; }
+
+/* ─ MAIL ─ */
+const EMAIL = 'cedric.alinc.pro@gmail.com';
+function mailClick() {
+  navigator.clipboard.writeText(EMAIL).catch(()=>{}).finally(()=>{
+    ['heroBtn','contactBtn'].forEach(id=>{
+      const b=document.getElementById(id); if(!b) return;
+      const sp=b.querySelector('span'); const ic=b.querySelector('i');
+      const og=b.style.background; b.style.background='#059669';
+      if(sp) sp.innerText='Mail copié !';
+      if(ic){ic.setAttribute('data-lucide','check');lucide.createIcons();}
+      setTimeout(()=>{
+        b.style.background=og;
+        if(sp) sp.innerText='Discutons de votre projet';
+        if(ic){ic.setAttribute('data-lucide','mail');lucide.createIcons();}
+      },2400);
+    });
+    setTimeout(()=>{ window.location.href='mailto:'+EMAIL; },300);
+  });
+}
+
+/* ─ THEME ─ */
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem('theme',t);
+  const ic=document.getElementById('themeIcon');
+  if(ic){ic.setAttribute('data-lucide',t==='light'?'moon':'sun');lucide.createIcons();}
+}
+document.getElementById('themeBtn').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+
+/* ─ BURGER ─ */
+document.getElementById('burger').onclick=()=>document.getElementById('mobMenu').classList.toggle('open');
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+
+/* ─ LEGAL ─ */
+function openLegal(){document.getElementById('legalModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeLegal(){document.getElementById('legalModal').classList.remove('open');document.body.style.overflow='';}
+
+/* ─ SCROLLSPY ─ */
+const navAs = document.querySelectorAll('.nav-links a,.mob-menu a');
+const smap = {hero:null,apropos:'apropos',methode:'methode',services:'services',toolbox:'services',recommandations:'recommandations',parcours:'parcours',contact:'contact'};
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const t=smap[e.target.id];
+      navAs.forEach(a=>{a.classList.remove('act');if(t&&a.getAttribute('href')==='#'+t)a.classList.add('act');});
+    }
+  });
+},{rootMargin:'-38% 0px -38% 0px',threshold:0}).observe && document.querySelectorAll('section[id]').forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const t=smap[e.target.id];navAs.forEach(a=>{a.classList.remove('act');if(t&&a.getAttribute('href')==='#'+t)a.classList.add('act');});}});},{rootMargin:'-38% 0px -38% 0px',threshold:0}).observe(s));
+
+/* ─ REVEAL ─ */
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*55);ro.unobserve(e.target);}});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ─ RESPONSIVE GRIDS ─ */
+function fixGrids(){
+  const ag=document.querySelector('.apropos-grid');
+  const ci=document.querySelector('.contact-inner');
+  const w=window.innerWidth;
+  if(ag) ag.style.gridTemplateColumns=w<=900?'1fr':'1fr 1fr';
+  if(ci) ci.style.gridTemplateColumns=w<=900?'1fr':'1fr 1fr';
+}
+window.addEventListener('resize',fixGrids);
+
+/* ─ INIT ─ */
+applyTheme(localStorage.getItem('theme')||'dark');
+renderReco();
+renderParc();
+fixGrids();
+lucide.createIcons();
+</script>
 </body>
 </html>
