@@ -34,7 +34,7 @@
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.7;transition:background .3s,color .3s;min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 
-.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;height:60px;}
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;height:60px;transition:background .3s,border-color .3s;}
 .nav-brand{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;color:var(--heading);display:flex;align-items:center;gap:10px;white-space:nowrap;}
 .nav-tool-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--text);padding:4px 12px;border:1px solid var(--border);border-radius:20px;display:none;}
 @media(min-width:640px){.nav-tool-tag{display:inline-block;}}
@@ -137,7 +137,7 @@ input[type="file"]{padding:9px 12px;font-size:.85rem;color:var(--text);}
 
 <nav class="navbar">
   <a href="https://goshiki.fr" class="nav-brand">
-    <svg width="30" height="41" viewBox="0 0 451.5 265.5" style="flex-shrink:0">
+    <svg width="55" height="75" viewBox="0 0 451.5 265.5" style="flex-shrink:0">
       <path fill="#03a4ff" d="M69.5 209.5C69.5 209.5 63.5 261 63.5 261C63.5 261 128.5 271 128.5 271C128.5 271 69.5 209.5 69.5 209.5Z"/>
       <path fill="#dd4a00" d="M81 3.5C81 3.5 75.5 77.5 75.5 77.5C75.5 77.5 101 52 101 52C101 52 81 3.5 81 3.5Z"/>
       <path fill="#dd4a00" d="M103.5 49.5C103.5 49.5 83.5 1.25 83.5 1.25C83.5 1.25 120 34 120 34C120 34 103.5 49.5 103.5 49.5Z"/>
@@ -160,12 +160,12 @@ input[type="file"]{padding:9px 12px;font-size:.85rem;color:var(--text);}
       <path fill="#03a4ff" d="M36.5 181.5C36.5 181.5 55 162 55 162C55 162 70.5 210.5 70.5 210.5C70.5 210.5 63.5 261.5 63.5 261.5C63.5 261.5 36.5 181.5 36.5 181.5Z"/>
       <path fill="#118bd1" d="M10.5 201C10.5 201 34.5 176 34.5 176C34.5 176 27 150.5 27 150.5C27 150.5 1 121 1 121C1 121 16.5 153.5 16.5 153.5C16.5 153.5 10.5 201 10.5 201Z"/>
       <path fill="#03a4ff" d="M34.5 176C34.5 176 54 157.5 54 157.5C54 157.5 1 121 1 121C1 121 26.5 150 26.5 150C26.5 150 34.5 176 34.5 176Z"/>
-      <path fill="#54.5 236.5C54.5 236.5 128.5 271 128.5 271C128.5 271 63.5 261.5 63.5 261.5C63.5 261.5 54.5 236.5 54.5 236.5Z"/>
+      <path fill="#118bd1" d="M54.5 236.5C54.5 236.5 128.5 271 128.5 271C128.5 271 63.5 261.5 63.5 261.5C63.5 261.5 54.5 236.5 54.5 236.5Z"/>
     </svg>
     Goshiki <br>Cédric ALINC
   </a>
   <span class="nav-tool-tag">Générateur CV Word Universel (.doc)</span>
-  <button class="theme-btn" id="themeBtn"><i data-lucide="sun" id="themeIcon" style="width:15px;height:15px"></i></button>
+  <button class="theme-btn" id="themeBtn" aria-label="Changer de thème"><i data-lucide="sun" id="themeIcon" style="width:15px;height:15px"></i></button>
 </nav>
 
 <main class="tool-wrap">
