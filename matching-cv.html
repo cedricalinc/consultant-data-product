@@ -198,6 +198,31 @@ a{text-decoration:none;color:inherit;}
   let offersList = [];
   let cvContents = [];
 
+  function normalizeKey(k) {
+    return k.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  }
+  function getField(row, candidates) {
+    const keys = Object.keys(row);
+    for (const cand of candidates) {
+      const normCand = normalizeKey(cand);
+      const match = keys.find(k => normalizeKey(k) === normCand);
+      if (match && row[match] !== undefined && row[match] !== null && String(row[match]).trim() !== '') {
+        return String(row[match]).trim();
+      }
+    }
+    return null;
+  }
+  function getFieldFuzzy(row, substrings) {
+    const keys = Object.keys(row);
+    for (const sub of substrings) {
+      const match = keys.find(k => normalizeKey(k).includes(sub));
+      if (match && row[match] !== undefined && row[match] !== null && String(row[match]).trim() !== '') {
+        return String(row[match]).trim();
+      }
+    }
+    return null;
+  }
+
   document.getElementById('offerFile').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if(!file) return;
@@ -207,11 +232,15 @@ a{text-decoration:none;color:inherit;}
     const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
     const jsonData = XLSX.utils.sheet_to_json(firstSheet);
     
-    offersList = jsonData.map((row, idx) => ({
-      id: idx + 1,
-      intitule: row.Intitule || row.Poste || row.Titre || `Offre #${idx + 1}`,
-      description: JSON.stringify(row)
-    }));
+    offersList = jsonData.map((row, idx) => {
+      const poste = getField(row, ['Intitule','Poste','Titre','Job','Title'])
+        || getFieldFuzzy(row, ['poste','titre','intitule','fonction','metier','job','position','libelle'])
+        || `Offre ${idx + 1}`;
+      const entreprise = getField(row, ['Entreprise','Societe','Company','Client','Structure'])
+        || getFieldFuzzy(row, ['entreprise','societe','company','client','structure','employeur']);
+      const intitule = `#${idx + 1} ${entreprise ? entreprise + ' - ' : ''}${poste}`;
+      return { id: idx + 1, intitule, description: JSON.stringify(row) };
+    });
   });
 
   document.getElementById('cvFiles').addEventListener('change', async (e) => {
@@ -407,7 +436,7 @@ ${allCvText}`;
 
       container.innerHTML += `
         <div class="offer-block">
-          <h4><i data-lucide="briefcase" width="16"></i> Poste : ${offreTitre}</h4>
+          <h4><i data-lucide="briefcase" width="16"></i> ${offreTitre}</h4>
           <p style="font-size:0.9rem; font-weight:600; color:var(--heading); margin-bottom:.8rem;">Top 3 des meilleurs candidats :</p>
           <div class="top3-grid">${top3Html}</div>
           <details style="margin-top:1rem; cursor:pointer;">
