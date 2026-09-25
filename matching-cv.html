@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matching Intelligent Multi-Offres & CV — Goshiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/cedricalinc/consultant-data-product/main/Goshiki_assis.svg">
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Bibliothèques SheetJS, PDF.js, Mammoth -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<style>
+:root {
+  --bleu:#204c89; --bleu-l:#3a6bb8;
+  --teal:#379482; --teal-l:#4aab97;
+  --or:#e0a025;   --or-l:#f0b840;
+  --corail:#c25335; --corail-l:#d96645;
+  --azure:#03a4ff;  --azure-l:#4dbeff;
+}
+[data-theme="dark"] {
+  --bg:#0d0d0b; --bg2:#151512; --card:#1c1b18;
+  --border:rgba(255,255,255,0.07); --text:#b0ada6;
+  --heading:#f0ece4; --nav-bg:rgba(13,13,11,0.93);
+  --tag-bg:#242420; --shadow:rgba(0,0,0,0.5);
+}
+[data-theme="light"] {
+  --bg:#f5f1ea; --bg2:#ece8e0; --card:#ffffff;
+  --border:rgba(26,25,22,0.1); --text:#5a5550;
+  --heading:#1a1916; --nav-bg:rgba(245,241,234,0.95);
+  --tag-bg:#e8e4dc; --shadow:rgba(0,0,0,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.7;transition:background .3s,color .3s;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+
+/* ── NAVBAR GOSHIKI ── */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;height:60px;transition:background .3s,border-color .3s;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;color:var(--heading);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+.nav-tool-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--text);padding:4px 12px;border:1px solid var(--border);border-radius:20px;display:none;}
+@media(min-width:640px){.nav-tool-tag{display:inline-block;}}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--heading);padding:7px;border-radius:8px;cursor:pointer;display:flex;align-items:center;transition:.3s;}
+.theme-btn:hover{border-color:var(--or);color:var(--or);}
+
+/* ── LAYOUT ── */
+.main-container{max-width:1200px;margin:0 auto;padding:110px 5% 80px;}
+.ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--text);}
+.ey-line{display:block;width:22px;height:1px;background:var(--azure);}
+.page-header{margin-bottom:2rem;text-align:center;}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,2.5rem);font-weight:300;letter-spacing:-.02em;color:var(--heading);margin-bottom:.6rem;line-height:1.15;}
+.page-header h1 em{font-style:italic;color:var(--azure);}
+.page-header p{font-size:15px;color:var(--text);max-width:650px;margin:0 auto;line-height:1.85;}
+@media(max-width:480px){.main-container{padding:96px 5% 60px;}}
+
+/* ── PANELS & CARDS ── */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;box-shadow:0 10px 30px var(--shadow);margin-bottom:2rem;}
+.panel h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--heading);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;}
+
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:1.5rem;}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--heading);margin-bottom:.5rem;}
+.form-input,.file-drop{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;color:var(--heading);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;outline:none;}
+.file-drop{border:2px dashed var(--border);text-align:center;cursor:pointer;transition:border-color .2s;padding:1.5rem;}
+.file-drop:hover{border-color:var(--azure);}
+
+.btn-primary{background:var(--azure);color:#fff;border:none;padding:.9rem 2rem;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s;}
+.btn-primary:hover{background:var(--azure-l);}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
+
+/* LOADER SPINNER */
+.loader-container{display:none;text-align:center;padding:3rem;}
+.spinner{width:45px;height:45px;border:3px solid var(--border);border-top-color:var(--azure);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* RESULTS */
+.results-section{display:none;}
+.offer-block{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+.offer-block h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--heading);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;}
+.top3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem;}
+.top3-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;}
+.top3-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;}
+.top3-name{font-weight:700;color:var(--heading);font-size:1rem;}
+.top3-score{font-family:'DM Mono',monospace;font-weight:700;color:var(--teal);background:var(--bg2);padding:.2rem .6rem;border-radius:6px;font-size:.9rem;}
+.top3-details{font-size:.85rem;display:flex;flex-direction:column;gap:.4rem;}
+
+.email-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;font-family:'DM Mono',monospace;font-size:.85rem;color:var(--azure);white-space:pre-wrap;margin-top:.4rem;word-break:break-all;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="https://goshiki.fr" class="nav-brand">
+    <svg width="55" height="75" viewBox="0 0 451.5 265.5" style="flex-shrink:0">
+      <path fill="#03a4ff" d="M69.5 209.5C69.5 209.5 63.5 261 63.5 261C63.5 261 128.5 271 128.5 271C128.5 271 69.5 209.5 69.5 209.5Z"/>
+      <path fill="#dd4a00" d="M81 3.5C81 3.5 75.5 77.5 75.5 77.5C75.5 77.5 101 52 101 52C101 52 81 3.5 81 3.5Z"/>
+      <path fill="#dd4a00" d="M103.5 49.5C103.5 49.5 83.5 1.25 83.5 1.25C83.5 1.25 120 34 120 34C120 34 103.5 49.5 103.5 49.5Z"/>
+      <path fill="#dd4a00" d="M161.5 34.5C161.5 34.5 197.5 1 197.5 1C197.5 1 179 50 179 50C179 50 161.5 34.5 161.5 34.5Z"/>
+      <path fill="#dd4a00" d="M182 54C182 54 199.5 4.5 199.5 4.5C199.5 4.5 205 77 205 77C205 77 182 54 182 54Z"/>
+      <path fill="#dd4a00" d="M123.5 36.5C123.5 36.5 159 36.5 159 36.5C159 36.5 177.5 54.5 177.5 54.5C177.5 54.5 148 110.5 148 110.5C148 110.5 134 110.5 134 110.5C134 110.5 105 54.5 105 54.5C105 54.5 123.5 36.5 123.5 36.5Z"/>
+      <path fill="#e0a025" d="M101 57C101 57 77 83 77 83C77 83 128.5 116 128.5 116C128.5 116 130.5 114 130.5 114C130.5 114 101 57 101 57Z"/>
+      <path fill="#e0a025" d="M179.5 56.5C179.5 56.5 205 82.5 205 82.5C205 82.5 152.5 116.5 152.5 116.5C152.5 116.5 150.5 113.5 150.5 113.5C150.5 113.5 179.5 56.5 179.5 56.5Z"/>
+      <path fill="#204c89" d="M134.5 113C134.5 113 131.5 117 131.5 117C131.5 117 141 123.5 141 123.5C141 123.5 149.5 117 149.5 117C149.5 117 146.5 113 146.5 113C146.5 113 134 113 134 113"/>
+      <path fill="#dd4a00" d="M106.5 107C106.5 107 94 140 94 140C94 140 139 198 139 198C139 198 139 126.5 139 126.5C139 126.5 106.5 108 106.5 108"/>
+      <path fill="#e0a025" d="M143.5 126.5C143.5 126.5 175.5 107 175.5 107C175.5 107 188.5 137 188.5 137C188.5 137 143.5 198 143.5 198C143.5 198 143.5 126.5 143.5 126.5Z"/>
+      <path fill="#204c89" d="M190.5 139C190.5 139 143.5 201.5 143.5 201.5C143.5 201.5 143.5 271.5 143.5 271.5C143.5 271.5 148 271.5 148 271.5C148 271.5 190.5 139 190.5 139Z"/>
+      <path fill="#204c89" d="M139 202C139 202 92.5 141.5 92.5 141.5C92.5 141.5 134.5 271.5 134.5 271.5C134.5 271.5 139 271.5 139 271.5C139 271.5 139 202 139 202Z"/>
+      <path fill="#204c89" d="M154 262.5C154 262.5 167 222 167 222C167 222 174.5 238.5 174.5 238.5C174.5 238.5 154 262.5 154 262.5Z"/>
+      <path fill="#379482" d="M169 216.5C169 216.5 177 235 177 235C177 235 245.5 191.5 245.5 191.5C245.5 191.5 193 141.5 193 141.5C193 141.5 169 216.5 169 216.5Z"/>
+      <path fill="#204c89" d="M181 238C181 238 247 195.5 247 195.5C247 195.5 250 236 250 236C250 236 229 263.5 229 263.5C229 263.5 181 238 181 238"/>
+      <path fill="#204c89" d="M177 241.5C177 241.5 222.5 265 222.5 265C222.5 265 152 271.5 152 271.5C152 271.5 177 242 177 242"/>
+      <path fill="#379482" d="M77 211C77 211 128 263.5 128 263.5C128 263.5 113 215 113 215C113 215 77 211 77 211Z"/>
+      <path fill="#118bd1" d="M63.5 261.5C63.5 261.5 10.5 206.5 10.5 206.5C10.5 206.5 36.5 181.5 36.5 181.5C36.5 181.5 63.5 261.5 63.5 261.5Z"/>
+      <path fill="#03a4ff" d="M36.5 181.5C36.5 181.5 55 162 55 162C55 162 70.5 210.5 70.5 210.5C70.5 210.5 63.5 261.5 63.5 261.5C63.5 261.5 36.5 181.5 36.5 181.5Z"/>
+      <path fill="#118bd1" d="M10.5 201C10.5 201 34.5 176 34.5 176C34.5 176 27 150.5 27 150.5C27 150.5 1 121 1 121C1 121 16.5 153.5 16.5 153.5C16.5 153.5 10.5 201 10.5 201Z"/>
+      <path fill="#03a4ff" d="M34.5 176C34.5 176 54 157.5 54 157.5C54 157.5 1 121 1 121C1 121 26.5 150 26.5 150C26.5 150 34.5 176 34.5 176Z"/>
+      <path fill="#118bd1" d="M54.5 236.5C54.5 236.5 128.5 271 128.5 271C128.5 271 63.5 261.5 63.5 261.5C63.5 261.5 54.5 236.5 54.5 236.5Z"/>
+    </svg>
+    Goshiki <br>Cédric ALINC
+  </a>
+  <span class="nav-tool-tag">Matching Multi-Offres</span>
+  <button class="theme-btn" id="themeToggle" aria-label="Changer de thème"><i data-lucide="sun" id="themeIcon" style="width:15px;height:15px"></i></button>
+</nav>
+
+<div class="main-container">
+  
+  <header class="page-header">
+    <div class="ey"><span class="ey-line"></span>Recrutement · IA</div>
+    <h1>Matching automatisé <em>multi-offres</em> & CV</h1>
+    <p>Chargez votre fichier d'offres d'emploi et vos CVs pour lancer l'analyse croisée par poste.</p>
+  </header>
+
+  <!-- PANEL CONFIG & UPLOAD -->
+  <div class="panel">
+    <h3><i data-lucide="sliders" width="20" style="color:var(--azure)"></i> Paramètres et Fichiers</h3>
+    
+    <div class="form-group" style="margin-bottom:1.5rem;">
+      <label for="apiKey">Clé API Gemini (Stockée uniquement en session)</label>
+      <input type="password" id="apiKey" class="form-input" placeholder="AIzaSy...">
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Offres d'emploi (Excel .xlsx / .csv)</label>
+        <div class="file-drop" onclick="document.getElementById('offerFile').click()">
+          <i data-lucide="upload-cloud" width="24" style="color:var(--azure); margin-bottom:8px;"></i>
+          <p id="offerFileName">Cliquez pour charger les offres</p>
+          <input type="file" id="offerFile" accept=".xlsx,.xls,.csv" style="display:none">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>CV des candidats (Excel / PDF / Word / TXT)</label>
+        <div class="file-drop" onclick="document.getElementById('cvFiles').click()">
+          <i data-lucide="users" width="24" style="color:var(--teal); margin-bottom:8px;"></i>
+          <p id="cvFileNames">Cliquez pour charger les CVs</p>
+          <input type="file" id="cvFiles" accept=".xlsx,.xls,.csv,.pdf,.docx,.txt" multiple style="display:none">
+        </div>
+      </div>
+    </div>
+
+    <button id="runBtn" class="btn-primary" onclick="runMatching()"><i data-lucide="play" width="18"></i> Lancer l'analyse multi-offres</button>
+  </div>
+
+  <!-- LOADER -->
+  <div class="loader-container" id="loader">
+    <div class="spinner"></div>
+    <p id="loaderStatus" style="font-weight:600; color:var(--heading);">Analyse multi-offres en cours...</p>
+  </div>
+
+  <!-- RESULTS SECTION -->
+  <div class="results-section" id="resultsSection">
+    
+    <div class="panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+        <h3><i data-lucide="bar-chart-2" width="20" style="color:var(--teal)"></i> Top 3 Candidats par Offre</h3>
+        <button class="btn-primary" onclick="exportToExcel()"><i data-lucide="download" width="18"></i> Télécharger le fichier Excel multi-onglets</button>
+      </div>
+      <div id="offersResultsContainer"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const apiKeyInput = document.getElementById('apiKey');
+  if(sessionStorage.getItem('goshiki_gemini_key')) {
+    apiKeyInput.value = sessionStorage.getItem('goshiki_gemini_key');
+  }
+  apiKeyInput.addEventListener('input', () => {
+    sessionStorage.setItem('goshiki_gemini_key', apiKeyInput.value.trim());
+  });
+
+  let offersList = [];
+  let cvContents = [];
+
+  document.getElementById('offerFile').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    document.getElementById('offerFileName').innerText = file.name;
+    const data = await file.arrayBuffer();
+    const workbook = XLSX.read(data);
+    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+    
+    offersList = jsonData.map((row, idx) => ({
+      id: idx + 1,
+      intitule: row.Intitule || row.Poste || row.Titre || `Offre #${idx + 1}`,
+      description: JSON.stringify(row)
+    }));
+  });
+
+  document.getElementById('cvFiles').addEventListener('change', async (e) => {
+    const files = e.target.files;
+    if(!files || files.length === 0) return;
+    document.getElementById('cvFileNames').innerText = `${files.length} fichier(s) sélectionné(s)`;
+    cvContents = [];
+
+    for(let file of files) {
+      let text = "";
+      const fileNameLower = file.name.toLowerCase();
+      if(fileNameLower.endsWith('.xlsx') || fileNameLower.endsWith('.xls') || fileNameLower.endsWith('.csv')) {
+        const data = await file.arrayBuffer();
+        const workbook = XLSX.read(data);
+        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        text = XLSX.utils.sheet_to_csv(firstSheet);
+      } else if(fileNameLower.endsWith('.pdf')) {
+        text = await extractTextFromPDF(file);
+      } else if(fileNameLower.endsWith('.docx')) {
+        text = await extractTextFromDocx(file);
+      } else {
+        text = await file.text();
+      }
+      cvContents.push({ name: file.name, text: text });
+    }
+  });
+
+  async function extractTextFromPDF(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let fullText = "";
+    for(let i=1; i<=pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const tokenizedText = await page.getTextContent();
+      fullText += tokenizedText.items.map(item => item.str).join(' ') + "\n";
+    }
+    return fullText;
+  }
+
+  async function extractTextFromDocx(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
+    return result.value;
+  }
+
+  let globalMatchingResults = {};
+
+  async function fetchWithRetry(url, options, maxRetries = 5) {
+    let delay = 3000;
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const response = await fetch(url, options);
+        if (response.ok) return await response.json();
+        const errorData = await response.json().catch(() => ({}));
+        if ((response.status === 429 || response.status >= 500) && attempt < maxRetries) {
+          let secondsLeft = Math.ceil(delay / 1000);
+          while (secondsLeft > 0) {
+            document.getElementById('loaderStatus').innerText = `Surcharge serveur. Nouvelle tentative dans ${secondsLeft}s...`;
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            secondsLeft--;
+          }
+          delay *= 2;
+          continue;
+        }
+        throw new Error(errorData.error?.message || `Erreur HTTP ${response.status}`);
+      } catch (err) {
+        if (attempt === maxRetries) throw err;
+        let secondsLeft = Math.ceil(delay / 1000);
+        while (secondsLeft > 0) {
+          document.getElementById('loaderStatus').innerText = `Erreur réseau. Nouvelle tentative dans ${secondsLeft}s...`;
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          secondsLeft--;
+        }
+        delay *= 2;
+      }
+    }
+  }
+
+  async function runMatching() {
+    const apiKey = apiKeyInput.value.trim();
+    if(!apiKey) { alert("Veuillez renseigner votre clé API Gemini."); return; }
+    if(offersList.length === 0) { alert("Veuillez charger un fichier d'offres d'emploi valide."); return; }
+    if(cvContents.length === 0) { alert("Veuillez charger des CVs."); return; }
+
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('resultsSection').style.display = 'none';
+
+    try {
+      const allCvText = cvContents.map(c => `--- FICHIER CV: ${c.name} ---\n${c.text}`).join('\n\n');
+      globalMatchingResults = {};
+
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${apiKey}`;
+
+      for(let i = 0; i < offersList.length; i++) {
+        const offre = offersList[i];
+        document.getElementById('loaderStatus').innerText = `Analyse pour l'offre : "${offre.intitule}" (${i+1}/${offersList.length})...`;
+
+        const prompt = `Tu es un expert en recrutement. Analyse cette offre d'emploi spécifique et évalue TOUS les candidats fournis ci-dessous par rapport à cette offre précise.
+Donne pour chaque candidat un pourcentage de correspondance entre 0.0 et 1.0, ses avantages, ses éléments manquants et ses red flags.
+
+Offre d'emploi :
+${offre.description}
+
+Candidats :
+${allCvText}`;
+
+        const options = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              response_mime_type: "application/json",
+              response_schema: {
+                type: "ARRAY",
+                items: {
+                  type: "OBJECT",
+                  properties: {
+                    nom: { type: "STRING" },
+                    email: { type: "STRING" },
+                    correspondance: { type: "NUMBER" },
+                    avantages: { type: "STRING" },
+                    manquants: { type: "STRING" },
+                    redFlags: { type: "STRING" }
+                  },
+                  required: ["nom", "email", "correspondance", "avantages", "manquants", "redFlags"]
+                }
+              }
+            }
+          })
+        };
+
+        const data = await fetchWithRetry(url, options, 5);
+        let rawText = data.candidates[0].content.parts[0].text;
+        globalMatchingResults[offre.intitule] = JSON.parse(rawText);
+      }
+
+      renderResults();
+    } catch (err) {
+      alert("Erreur lors de l'analyse : " + err.message);
+    } finally {
+      document.getElementById('loader').style.display = 'none';
+    }
+  }
+
+  function renderResults() {
+    const container = document.getElementById('offersResultsContainer');
+    container.innerHTML = "";
+
+    for(const [offreTitre, candidats] of Object.entries(globalMatchingResults)) {
+      const sortedCandidates = [...candidats].sort((a, b) => b.correspondance - a.correspondance);
+      const top3 = sortedCandidates.slice(0, 3);
+
+      let top3Html = "";
+      top3.forEach(c => {
+        const pct = Math.round(c.correspondance * 100);
+        top3Html += `
+          <div class="top3-card">
+            <div class="top3-header">
+              <span class="top3-name">${c.nom}</span>
+              <span class="top3-score">${pct}%</span>
+            </div>
+            <div class="top3-details">
+              <p style="font-size:0.8rem; font-family:'DM Mono',monospace; color:var(--text);">${c.email}</p>
+              <p style="color:var(--teal)"><strong>+</strong> ${c.avantages}</p>
+              <p style="color:var(--or)"><strong>-</strong> ${c.manquants}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      // Génération des listes d'e-mails par paliers (uniquement format xxx@yyy.com, zzz@yyy.com)
+      let emailsHtml = "";
+      const thresholds = [
+        { label: "> 80%", min: 0.8 },
+        { label: "> 70%", min: 0.7 },
+        { label: "> 60%", min: 0.6 },
+        { label: "> 50%", min: 0.5 }
+      ];
+
+      thresholds.forEach(t => {
+        const matched = candidats.filter(r => r.correspondance >= t.min);
+        if(matched.length === 0) return;
+        const emailsString = matched.map(m => m.email).join(', ');
+
+        emailsHtml += `
+          <div style="margin-top:.6rem;">
+            <strong style="font-size:0.8rem; color:var(--heading);">Palier ${t.label} :</strong>
+            <div class="email-box">${emailsString}</div>
+          </div>
+        `;
+      });
+
+      container.innerHTML += `
+        <div class="offer-block">
+          <h4><i data-lucide="briefcase" width="16"></i> Poste : ${offreTitre}</h4>
+          <p style="font-size:0.9rem; font-weight:600; color:var(--heading); margin-bottom:.8rem;">Top 3 des meilleurs candidats :</p>
+          <div class="top3-grid">${top3Html}</div>
+          <details style="margin-top:1rem; cursor:pointer;">
+            <summary style="font-size:0.9rem; font-weight:600; color:var(--azure);">Afficher les listes d'e-mails par palier</summary>
+            ${emailsHtml}
+          </details>
+        </div>
+      `;
+    }
+
+    document.getElementById('resultsSection').style.display = 'block';
+    lucide.createIcons();
+  }
+
+  function exportToExcel() {
+    if(Object.keys(globalMatchingResults).length === 0) return;
+    const wb = XLSX.utils.book_new();
+
+    // ── 1. CONSTRUCTION DE L'ONGLET GLOBAL (Matrice Croisée) ──
+    // Récupération unique de tous les étudiants et de toutes les offres
+    let allStudentEmailsSet = new Set();
+    let studentMap = {}; // email -> nom
+    for(const candidats of Object.values(globalMatchingResults)) {
+      candidats.forEach(c => {
+        if(c.email) {
+          allStudentEmailsSet.add(c.email);
+          studentMap[c.email] = c.nom;
+        }
+      });
+    }
+    const studentEmails = Array.from(allStudentEmailsSet);
+    const offerTitles = Object.keys(globalMatchingResults);
+
+    // En-tête : ["Étudiant", "Email", Offre1, Offre2, ...]
+    let globalWsData = [["Étudiant", "Email", ...offerTitles]];
+
+    studentEmails.forEach(email => {
+      let row = [studentMap[email], email];
+      offerTitles.forEach(offre => {
+        const found = globalMatchingResults[offre].find(c => c.email === email);
+        if(found) {
+          row.push(`${Math.round(found.correspondance * 100)}%`);
+        } else {
+          row.push("0%");
+        }
+      });
+      globalWsData.push(row);
+    });
+
+    const wsGlobal = XLSX.utils.aoa_to_sheet(globalWsData);
+    XLSX.utils.book_append_sheet(wb, wsGlobal, "Récap Global");
+
+    // ── 2. CONSTRUCTION DES ONGLETS PAR OFFRE ──
+    for(const [offreTitre, candidats] of Object.entries(globalMatchingResults)) {
+      let wsData = [
+        ["TABLEAU RECAPITULATIF DES CANDIDATS"],
+        ["Nom du candidat", "Email", "Correspondance", "Avantages", "Éléments manquants", "Red Flags"]
+      ];
+
+      candidats.forEach(r => {
+        wsData.push([
+          r.nom, 
+          r.email, 
+          `${Math.round(r.correspondance * 100)}%`, 
+          r.avantages, 
+          r.manquants, 
+          r.redFlags
+        ]);
+      });
+
+      wsData.push([], [], ["LISTES D'EMAILS PAR PALIERS DE CORRESPONDANCE"]);
+
+      const thresholds = [
+        { label: "> 80%", min: 0.8 },
+        { label: "> 70%", min: 0.7 },
+        { label: "> 60%", min: 0.6 },
+        { label: "> 50%", min: 0.5 }
+      ];
+
+      thresholds.forEach(t => {
+        const matched = candidats.filter(r => r.correspondance >= t.min);
+        if(matched.length === 0) return;
+        const emailsString = matched.map(m => m.email).join(', ');
+        
+        wsData.push([`Palier ${t.label}`]);
+        wsData.push([emailsString]);
+        wsData.push([]); 
+      });
+
+      const ws = XLSX.utils.aoa_to_sheet(wsData);
+      const safeSheetName = offreTitre.replace(/[\/\\\?\*\[\]\:]/g, "").substring(0, 31);
+      XLSX.utils.book_append_sheet(wb, ws, safeSheetName);
+    }
+
+    XLSX.writeFile(wb, "matching_multi_offres_goshiki.xlsx");
+  }
+
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const htmlElement = document.documentElement;
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    htmlElement.setAttribute('data-theme', newTheme);
+    themeIcon.setAttribute('data-lucide', newTheme === 'dark' ? 'sun' : 'moon');
+    lucide.createIcons();
+  });
+</script>
+</body>
+</html>
